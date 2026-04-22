@@ -13,48 +13,66 @@ export default async function PagesHomePage({ params }: Props) {
         <div className="w-full bg-[#f0f8ff] min-h-screen flex flex-col items-center">
             {/* The report pages container - simulating a 2-page vertical spread */}
 
-            <div className="w-full lg:max-w-11/12 mx-auto lg:p-12 p-2">
-                <Image
-                    src="/page-home/page-4.png"
-                    alt="page-1"
-                    width={1240}
-                    height={1754}
-                    className="w-full h-auto mb-2 sm:block hidden"
-                    priority
-                />
-                <Image
-                    src="/page-home/page-4-mobile.png"
-                    alt="page-1"
-                    width={1240}
-                    height={1754}
-                    className="w-full h-auto mb-2 sm:hidden block"
-                    priority
-                />
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 w-full mx-auto lg:p-4 p-2">
+                <div className="">
+                    <Image
+                        src="/page-home/page-4.png"
+                        alt="page-1"
+                        width={1240}
+                        height={1754}
+                        className="w-full h-auto mb-2 sm:block hidden"
+                        priority
+                    />
+                    <Image
+                        src="/page-home/page-4-mobile-head.png"
+                        alt="page-1"
+                        width={1240}
+                        height={1754}
+                        className="w-full h-auto sm:hidden block"
+                    />
+                    <Image
+                        src="/page-home/page-4-mobile.png"
+                        alt="page-1"
+                        width={1240}
+                        height={1754}
+                        className="w-full h-auto mb-2 sm:hidden block"
+                        priority
+                    />
+                </div>
 
-                <Image
-                    src="/page-home/page-5.png"
-                    alt="page-1"
-                    width={1240}
-                    height={1754}
-                    className="w-full h-auto sm:block hidden"
-                    priority
-                />
-                <Image
-                    src="/page-home/page-5-mobile-1.png"
-                    alt="page-1"
-                    width={1240}
-                    height={1754}
-                    className="w-full h-auto sm:hidden block"
-                    priority
-                />
-                <Image
-                    src="/page-home/page-5-mobile-2.png"
-                    alt="page-1"
-                    width={1240}
-                    height={1754}
-                    className="w-full h-auto sm:hidden block"
-                    priority
-                />
+                <div className="">
+                    <Image
+                        src="/page-home/page-5.png"
+                        alt="page-1"
+                        width={1240}
+                        height={1754}
+                        className="w-full h-auto sm:block hidden"
+                        priority
+                    />
+                    <Image
+                        src="/page-home/page-5-mobile-head.png"
+                        alt="page-1"
+                        width={1240}
+                        height={1754}
+                        className="w-full h-auto sm:hidden block"
+                    />
+                    <Image
+                        src="/page-home/page-5-mobile-1.png"
+                        alt="page-1"
+                        width={1240}
+                        height={1754}
+                        className="w-full h-auto sm:hidden block"
+                        priority
+                    />
+                    <Image
+                        src="/page-home/page-5-mobile-2.png"
+                        alt="page-1"
+                        width={1240}
+                        height={1754}
+                        className="w-full h-auto sm:hidden block"
+                        priority
+                    />
+                </div>
             </div>
         </div>
     );
