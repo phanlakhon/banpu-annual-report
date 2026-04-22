@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -122,6 +123,95 @@ function renderSection(
         );
     }
 
+    if (section.type === "pdf_banner") {
+        return (
+            <div className="w-full mb-8 sm:mb-12 md:mb-16 lg:mb-20">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                    src={section.src}
+                    alt={section.alt || "banner"}
+                    className="w-full h-auto object-contain"
+                />
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_row") {
+        const gapClasses = section.withGap ? "gap-6 sm:gap-[2%]" : "gap-6 sm:gap-0";
+
+        return (
+            <div className={`flex flex-col sm:flex-row justify-center sm:justify-between items-center sm:items-start ${gapClasses} mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-8 sm:px-[6%]`}>
+                {section.items.map((item, idx) => {
+                    return (
+                        /* eslint-disable-next-line @next/next/no-img-element */
+                        <img
+                            key={idx}
+                            src={item.src}
+                            alt={item.alt || `column-${idx}`}
+                            className="w-full max-w-[300px] sm:max-w-none sm:w-auto h-auto object-contain min-w-0 shrink"
+                        />
+                    );
+                })}
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_page") {
+        return (
+            <div className="w-full">
+                {section.items.map((subSection, i) => (
+                    <div key={i}>
+                        {renderSection(subSection, locale, accentColor)}
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_header") {
+        return (
+            <div className="px-8 sm:px-[6%] mt-6 mb-8 sm:mb-12 md:mb-14 flex items-center justify-start gap-3 text-[8px] sm:text-[9px] md:text-[10px] text-gray-500 font-light tracking-wider">
+                <span className="w-1.5 h-3 md:w-2 md:h-4 rounded-sm" style={{ backgroundColor: accentColor }}></span>
+                <span>{t(section.text)}</span>
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_note") {
+        return (
+            <div className="px-8 sm:px-[6%] mt-8 sm:mt-12 md:mt-16 mb-10 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed">
+                <strong>{locale === 'th' ? 'หมายเหตุ :' : 'Note :'}</strong> {t(section.text)}
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_spread") {
+        return (
+            <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 w-full mx-auto">
+                <div className="">
+                    <Image
+                        src={section.leftSrc}
+                        alt={section.alt ? `${section.alt} Left` : "left page"}
+                        width={1240}
+                        height={1754}
+                        className="w-full h-auto mb-2"
+                        priority
+                    />
+                </div>
+                <div className="">
+                    <Image
+                        src={section.rightSrc}
+                        alt={section.alt ? `${section.alt} Right` : "right page"}
+                        width={1240}
+                        height={1754}
+                        className="w-full h-auto mb-2"
+                        priority
+                    />
+                </div>
+            </div>
+        );
+    }
+
     return null;
 }
 
@@ -134,10 +224,10 @@ export default async function PageDetail({ params }: Props) {
         locale === "th" ? text.th : text.en;
 
     return (
-        <div className="min-h-screen bg-[#f5f8ff] flex flex-col">
+        <div className="min-h-screen flex flex-col transition-colors duration-300" style={{ backgroundColor: page.backgroundColor || '#f5f8ff' }}>
             {/* Page content */}
-            <div className="flex-1 px-4 sm:px-6 md:px-10 py-6 md:py-10">
-                <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-5 sm:p-6 md:p-8 lg:p-10">
+            <div className={page.layout === 'pdf_composition' ? "w-full mx-auto lg:p-4 p-2 flex-1" : "flex-1 px-4 sm:px-6 md:px-10 py-6 md:py-10"}>
+                <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 gap-2 w-full" : "max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-5 sm:p-6 md:p-8 lg:p-10"}>
                     {page.sections.length > 0 ? (
                         page.sections.map((section, i) => (
                             <div key={i}>
@@ -171,7 +261,7 @@ export default async function PageDetail({ params }: Props) {
                 </div>
             </div>
 
-            {/* Prev / Next navigation */}
+            {/* Prev / Next navigation
             <div className="shrink-0 border-t border-gray-200 bg-white px-4 sm:px-6 md:px-10 py-4 md:py-5">
                 <div className="max-w-4xl mx-auto flex items-center justify-between gap-2">
                     {page.prevPage ? (
@@ -221,6 +311,7 @@ export default async function PageDetail({ params }: Props) {
                     )}
                 </div>
             </div>
+            */}
         </div>
     );
 }

@@ -5,13 +5,21 @@ export type PageSection =
   | { type: 'highlights'; title?: BilingualText; content: BilingualText; items: Array<{ label: BilingualText; value: string }> }
   | { type: 'quote'; content: BilingualText; attribution?: BilingualText }
   | { type: 'list'; title?: BilingualText; items: BilingualText[] }
-  | { type: 'image'; src: string; alt?: string; caption?: BilingualText };
+  | { type: 'image'; src: string; alt?: string; caption?: BilingualText }
+  | { type: 'pdf_banner'; src: string; alt?: string }
+  | { type: 'pdf_row'; items: Array<{ src: string; alt?: string; colSpan?: number }>; withGap?: boolean }
+  | { type: 'pdf_spread'; leftSrc: string; rightSrc: string; alt?: string }
+  | { type: 'pdf_page'; items: PageSection[] }
+  | { type: 'pdf_note'; text: BilingualText }
+  | { type: 'pdf_header'; text: BilingualText };
 
 export type PageData = {
   pageId: string;
   title: BilingualText;
   subtitle?: BilingualText;
   accentColor: string;
+  backgroundColor?: string;
+  layout?: 'article' | 'pdf_composition';
   sections: PageSection[];
   prevPage?: string;
   nextPage?: string;
@@ -23,7 +31,98 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'จุดเด่นในรอบปี 2568', en: 'Highlights of 2025' },
     subtitle: { th: '', en: '' },
     accentColor: '#1e90e6',
-    sections: [],
+    backgroundColor: '#e3f6fc',
+    layout: 'pdf_composition',
+    sections: [
+      {
+        type: 'pdf_page',
+        items: [
+          {
+            type: 'pdf_banner',
+            src: '/04-page/04_p06_banner.png',
+          },
+          {
+            type: 'pdf_row',
+            items: [
+              { src: '/04-page/04_p06_col1.png' },
+              { src: '/04-page/04_p06_col2.png' },
+              { src: '/04-page/04_p06_col3.png' }
+            ]
+          }
+        ]
+      },
+      {
+        type: 'pdf_page',
+        items: [
+          {
+            type: 'pdf_banner',
+            src: '/04-page/04_p07_banner.png',
+          },
+          {
+            type: 'pdf_row',
+            items: [
+              { src: '/04-page/04_p07_col1.png' },
+              { src: '/04-page/04_p07_col2.png' },
+              { src: '/04-page/04_p07_col3.png' }
+            ]
+          },
+          {
+            type: 'pdf_note',
+            text: {
+              th: 'รายงานฉบับนี้นำเสนอผลการดำเนินงานของปี 2568 ก่อนวันที่ 29 มกราคม 2569 ที่ประชุมวิสามัญผู้ถือหุ้นครั้งที่ 1/2569 ที่ได้มีมติอนุมัติการปรับโครงสร้างกลุ่มบริษัท โดยการควบรวม (Amalgamation) ระหว่างบริษัทฯ และ BPP เพื่อจัดตั้งบริษัทใหม่ (NewCo)',
+              en: 'This report presents the performance of 2025 prior to January 29, 2026, when the EGM No. 1/2026 approved the corporate restructuring through the amalgamation between the Company and BPP to form a new company (NewCo).'
+            }
+          }
+        ]
+      },
+      {
+        type: 'pdf_page',
+        items: [
+          {
+            type: 'pdf_header',
+            text: {
+              th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
+              en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
+            }
+          },
+          {
+            type: 'pdf_row',
+            items: [
+              { src: '/04-page/04_p08_row1_left.png' },
+              { src: '/04-page/04_p08_row1_right.png' }
+            ]
+          },
+          {
+            type: 'pdf_row',
+            items: [
+              { src: '/04-page/04_p08_row2_left.png' },
+              { src: '/04-page/04_p08_row2_right.png' }
+            ]
+          },
+          {
+            type: 'pdf_row',
+            items: [
+              { src: '/04-page/04_p08_row3_left.png' },
+              { src: '/04-page/04_p08_row3_right.png' }
+            ]
+          },
+          {
+            type: 'pdf_row',
+            items: [
+              { src: '/04-page/04_p08_row4_left.png' },
+              { src: '/04-page/04_p08_row4_right.png' }
+            ]
+          },
+          {
+            type: 'pdf_note',
+            text: {
+              th: 'รายงานฉบับนี้นำเสนอผลการดำเนินงานของปี 2568 ก่อนวันที่ 29 มกราคม 2569 ที่ประชุมวิสามัญผู้ถือหุ้นครั้งที่ 1/2569 ที่ได้มีมติอนุมัติการปรับโครงสร้างกลุ่มบริษัท โดยการควบรวม (Amalgamation) ระหว่างบริษัทฯ และ BPP เพื่อจัดตั้งบริษัทใหม่ (NewCo)',
+              en: 'This report presents the performance of 2025 prior to January 29, 2026, when the EGM No. 1/2026 approved the corporate restructuring through the amalgamation between the Company and BPP to form a new company (NewCo).'
+            }
+          }
+        ]
+      }
+    ],
     prevPage: undefined,
     nextPage: '08',
   },
