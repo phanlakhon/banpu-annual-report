@@ -1,0 +1,34 @@
+{
+  "Navigation": {
+    "about": "About Banpu",
+    "group_map": "Group Operation Map",
+    "corp_gov": "Corporate Governance",
+    "investor": "Investor Relations",
+    "newsroom": "Newsroom",
+    "digital": "Digital Transformation",
+    "sustainability": "Sustainability",
+    "social": "Social Responsibility"
+  },
+  "Menu": {
+    "highlight": "Highlight of the Year",
+    "performance": "Performance in the past year",
+    "board_report": "Board of Directors' Report",
+    "ceo_message": "Message from the CEO",
+    "part1": "Part 1 Business Operation and Performance",
+    "part1_1": "Policy and Overview",
+    "part1_2": "Business Map",
+    "part1_3": "Vision and Mission",
+    "part2": "Part 2 Corporate Governance",
+    "part2_1": "Corporate Governance Policy",
+    "part2_2": "Corporate Governance Structure",
+    "part3": "Part 3 Certification of Information Accuracy",
+    "part3_1": "Attachment 1: Board Details",
+    "part3_2": "Attachment 2: Executives Details"
+  },
+  "Hero": {
+    "title": "Paving a Smarter Path Forward with Renewable Power",
+    "power_plants": "Power Plants",
+    "megawatt": "Megawatt",
+    "project": "Project"
+  }
+}

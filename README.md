@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BANPU PDF to HTML Web Project
 
-## Getting Started
+## เป้าหมาย
+แปลงไฟล์ PDF จำนวน 360 หน้าเป็นเว็บ HTML โดยเริ่มจากตัวอย่าง 10 หน้าแรก (Demo) ตาม Reference ที่ลูกค้าให้
 
-First, run the development server:
+## โครงสร้างโปรเจค
+- `src/app/[locale]/pages/` — เก็บไฟล์ HTML ของแต่ละหน้า
+- `src/components/` — ส่วนประกอบ UI เช่น Sidebar, LanguageSwitcher
+- `src/i18n/` — ระบบจัดการภาษา
+- `public/assets/` — รูปภาพและไฟล์ประกอบ
+- `messages/` — ข้อความภาษา EN/TH
+- `README.md` — เอกสารอธิบายโปรเจค
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## วิธีแปลง PDF เป็น HTML
+1. ใช้เครื่องมือเช่น pdf2htmlEX หรือแปลงเป็นรูปภาพแล้วนำมาวางใน HTML
+2. ปรับแต่ง HTML/CSS ให้เหมือน Reference
+3. แยกแต่ละหน้าเป็นไฟล์ เช่น 01.html, 02.html, ... ใน `src/app/[locale]/pages/`
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## วิธีเพิ่มหน้าใหม่
+- คัดลอกไฟล์ HTML ตัวอย่าง แล้วเปลี่ยนเนื้อหา/รูปภาพตามหน้า PDF ที่ต้องการ
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## วิธีรันโปรเจค
+1. ติดตั้ง dependencies: `npm install`
+2. รัน dev server: `npm run dev`
+3. เปิดดูที่ `http://localhost:3000`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## การทำงานต่อ
+- เพิ่มหน้าใหม่ใน `src/app/[locale]/pages/`
+- ปรับแต่งเมนู/ภาษาใน `messages/`
+- อัปเดต Sidebar หรือส่วนประกอบอื่นๆ ใน `src/components/`
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## หมายเหตุ
+- หากมีข้อสงสัยหรือปัญหา ให้ดูโค้ดตัวอย่างและ README นี้ก่อน
+- ทุกไฟล์และโครงสร้างถูกออกแบบให้ขยายต่อได้ง่าย
