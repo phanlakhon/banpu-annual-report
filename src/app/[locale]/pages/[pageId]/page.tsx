@@ -126,7 +126,7 @@ function renderSection(
 
     if (section.type === "pdf_banner") {
         return (
-            <div className="w-full mb-8 sm:mb-12 md:mb-16 lg:mb-20">
+            <div className="w-full">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                     src={section.src}
@@ -163,12 +163,28 @@ function renderSection(
 
     if (section.type === "pdf_page") {
         return (
-            <div className="w-full py-4" style={{ backgroundColor: section.backgroundColor }}>
-                {section.items.map((subSection, i) => (
-                    <div key={i}>
-                        {renderSection(subSection, locale, accentColor)}
+            <div className="w-full relative" style={{ backgroundColor: section.backgroundColor || '#f5f8ff' }}>
+                <div className="max-w-[1100px] mx-auto w-full">
+                    {section.items.map((subSection, i) => (
+                        <div key={i}>
+                            {renderSection(subSection, locale, accentColor)}
+                        </div>
+                    ))}
+                </div>
+                {section.pageNumber && (
+                    <div className="w-full px-4 pt-2 pb-4 flex items-center pointer-events-none">
+                        <div 
+                            className={`text-xs md:text-sm font-bold ${
+                                section.pageNumberAlign 
+                                    ? (section.pageNumberAlign === 'left' ? 'mr-auto' : 'ml-auto')
+                                    : (parseInt(section.pageNumber) % 2 === 0 ? 'mr-auto' : 'ml-auto')
+                            }`} 
+                            style={{ color: section.pageNumberColor || '#311b92' }}
+                        >
+                            {section.pageNumber}
+                        </div>
                     </div>
-                ))}
+                )}
             </div>
         );
     }
@@ -248,18 +264,84 @@ function renderSection(
         );
     }
 
-    if (section.type === "pdf_header") {
+    if (section.type === "pdf_title") {
         return (
-            <div className="px-8 sm:px-[6%] mt-6 mb-8 sm:mb-12 md:mb-14 flex items-center justify-start gap-3 text-[8px] sm:text-[9px] md:text-[10px] text-gray-500 font-light tracking-wider">
-                <span className="w-1.5 h-3 md:w-2 md:h-4 rounded-sm" style={{ backgroundColor: accentColor }}></span>
-                <span>{t(section.text)}</span>
+            <div className="px-4 sm:px-8 md:px-[2%] py-6 sm:py-8 md:py-10">
+                <h2 className="text-2xl font-medium text-gradient-banpu leading-tight">
+                    {t(section.text)}
+                </h2>
             </div>
         );
     }
 
+    if (section.type === "pdf_sub_title") {
+        return (
+            <div className="w-full text-center mt-8 mb-4">
+                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800">
+                    {t(section.text)}
+                </h3>
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_quote_block") {
+        return (
+            <div className="w-full px-8 sm:px-[10%] py-8 md:py-12 flex flex-col items-center text-center relative mt-2 mb-6">
+                {/* Solid light blue container with rounded feel */}
+                <div className="absolute inset-0 bg-[#e3f6fc] -z-10 rounded-2xl mx-4 sm:mx-8 md:mx-[2%]"></div>
+                
+                {/* Opening Quote */}
+                <div className="text-[#3ab4e8] opacity-60 mb-4">
+                    <svg width="36" height="28" viewBox="0 0 40 30" fill="currentColor">
+                        <path d="M0 15V0H15V15H8C8 20 10 22 15 22V30C5 30 0 25 0 15ZM25 15V0H40V15H33C33 20 35 22 40 22V30C30 30 25 25 25 15Z" />
+                    </svg>
+                </div>
+
+                <p className="text-lg sm:text-xl md:text-[22px] font-bold text-gray-700 leading-snug max-w-3xl tracking-tight">
+                    {t(section.text)}
+                </p>
+
+                {/* Closing Quote */}
+                <div className="text-[#3ab4e8] opacity-60 mt-6 rotate-180">
+                    <svg width="36" height="28" viewBox="0 0 40 30" fill="currentColor">
+                        <path d="M0 15V0H15V15H8C8 20 10 22 15 22V30C5 30 0 25 0 15ZM25 15V0H40V15H33C33 20 35 22 40 22V30C30 30 25 25 25 15Z" />
+                    </svg>
+                </div>
+
+                {/* Signature area */}
+                <div className="mt-8 md:mt-10 self-end mr-10 md:mr-20 flex flex-col items-center gap-0.5">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={section.signatureSrc} alt="Signature" className="h-10 md:h-12 object-contain" />
+                    <div className="text-sm md:text-base font-bold text-[#2a2e82] mt-2">
+                        {t(section.signatureName)}
+                    </div>
+                    <div className="text-[10px] md:text-xs text-gray-500 font-medium">
+                        {t(section.signaturePosition)}
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_text_columns") {
+        return (
+            <div className="px-8 sm:px-[6%] py-4 md:py-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+                {section.columns.map((col, i) => (
+                    <div key={i} className="text-xs sm:text-sm md:text-[13px] text-gray-800 leading-relaxed text-justify whitespace-pre-line">
+                        {t(col)}
+                    </div>
+                ))}
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_header") {
+        return null; // Temporarily hidden as per user request
+    }
+
     if (section.type === "pdf_note") {
         return (
-            <div className="px-8 sm:px-[6%] mt-4 sm:mt-6 mb-6 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed whitespace-pre-line">
+            <div className="px-4 sm:px-8 md:px-[2%] mt-4 sm:mt-6 mb-6 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed whitespace-pre-line">
                 {!section.hidePrefix && <strong>{locale === 'th' ? 'หมายเหตุ :' : 'Note :'} </strong>}{t(section.text)}
             </div>
         );
@@ -281,8 +363,8 @@ export default async function PageDetail({ params }: Props) {
     return (
         <div className="min-h-screen flex flex-col transition-colors duration-300" style={{ backgroundColor: page.backgroundColor || '#f5f8ff' }}>
             {/* Page content */}
-            <div className={page.layout === 'pdf_composition' ? "w-full mx-auto lg:p-4 p-2 flex-1" : "flex-1 px-4 sm:px-6 md:px-10 py-6 md:py-10"}>
-                <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 gap-2 w-full" : "max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-5 sm:p-6 md:p-8 lg:p-10"}>
+            <div className={page.layout === 'pdf_composition' ? "w-full mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}>
+                <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-4 sm:p-5 md:p-6 lg:p-8"}>
                     {page.sections.length > 0 ? (
                         page.sections.map((section, i) => (
                             <div key={i}>
@@ -307,7 +389,7 @@ export default async function PageDetail({ params }: Props) {
                                 </span>
                             </div>
                             <p className="text-gray-400 text-sm">
-                                {locale === "th"
+                                        {locale === "th"
                                     ? "กำลังเตรียมเนื้อหา"
                                     : "Content in preparation"}
                             </p>
@@ -316,57 +398,63 @@ export default async function PageDetail({ params }: Props) {
                 </div>
             </div>
 
-            {/* Prev / Next navigation
-            <div className="shrink-0 border-t border-gray-200 bg-white px-4 sm:px-6 md:px-10 py-4 md:py-5">
-                <div className="max-w-4xl mx-auto flex items-center justify-between gap-2">
+            {/* Prev / Next navigation */}
+            <div className="shrink-0 border-t border-gray-100 bg-white/80 backdrop-blur-md px-4 sm:px-6 md:px-10 py-3 md:py-4 bottom-0 z-20">
+                <div className="max-w-[1100px] mx-auto flex items-center justify-between gap-4">
                     {page.prevPage ? (
                         <Link
                             href={`/${locale}/pages/${page.prevPage}`}
-                            className="flex items-center gap-1.5 text-xs md:text-sm font-medium text-gray-600 hover:text-[#1e90e6] transition-colors"
+                            className="group flex items-center gap-2 text-xs md:text-sm font-semibold text-gray-600 hover:text-[#2a2e82] transition-all max-w-[40%]"
                         >
-                            <ChevronLeft size={16} />
-                            <span>
-                                {locale === "th" ? "หน้า" : "Page"}{" "}
-                                {page.prevPage}
-                            </span>
+                            <div className="w-8 h-8 shrink-0 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-[#2a2e82] group-hover:bg-[#f0f7fb] transition-all">
+                                <ChevronLeft size={18} />
+                            </div>
+                            <div className="flex flex-col min-w-0">
+                                <span className="text-[10px] text-gray-400 font-normal uppercase tracking-wider">{locale === "th" ? "ก่อนหน้า" : "Previous"}</span>
+                                <span className="truncate text-[#2a2e82]">
+                                    {pagesData[page.prevPage] ? t(pagesData[page.prevPage].title) : `${locale === "th" ? "หน้า" : "Page"} ${page.prevPage}`}
+                                </span>
+                            </div>
                         </Link>
                     ) : (
                         <Link
                             href={`/${locale}`}
-                            className="flex items-center gap-1.5 text-xs md:text-sm font-medium text-gray-600 hover:text-[#1e90e6] transition-colors"
+                            className="group flex items-center gap-2 text-xs md:text-sm font-semibold text-gray-600 hover:text-[#2a2e82] transition-all"
                         >
-                            <ChevronLeft size={16} />
+                            <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-[#2a2e82] group-hover:bg-[#f0f7fb] transition-all">
+                                <ChevronLeft size={18} />
+                            </div>
                             <span>{locale === "th" ? "หน้าหลัก" : "Home"}</span>
                         </Link>
                     )}
 
-                    <span className="text-[10px] md:text-xs text-gray-400 text-center hidden sm:block">
-                        {locale === "th"
-                            ? "รายงานประจำปี 2568"
-                            : "Annual Report 2025"}
-                    </span>
+                    <div className="hidden md:flex flex-col items-center">
+                        <span className="text-[10px] font-bold text-[#2a2e82] tracking-[0.2em] uppercase">Banpu</span>
+                        <span className="text-[9px] text-gray-400 mt-0.5">
+                            {locale === "th" ? "รายงานประจำปี 2568" : "Annual Report 2025"}
+                        </span>
+                    </div>
 
                     {page.nextPage ? (
                         <Link
                             href={`/${locale}/pages/${page.nextPage}`}
-                            className="flex items-center gap-1.5 text-xs md:text-sm font-medium text-gray-600 hover:text-[#1e90e6] transition-colors"
+                            className="group flex items-center gap-2 text-right text-xs md:text-sm font-semibold text-gray-600 hover:text-[#2a2e82] transition-all max-w-[40%]"
                         >
-                            <span>
-                                {locale === "th" ? "หน้า" : "Page"}{" "}
-                                {page.nextPage}
-                            </span>
-                            <ChevronRight size={16} />
+                            <div className="flex flex-col min-w-0">
+                                <span className="text-[10px] text-gray-400 font-normal uppercase tracking-wider">{locale === "th" ? "ถัดไป" : "Next"}</span>
+                                <span className="truncate text-[#2a2e82]">
+                                    {pagesData[page.nextPage] ? t(pagesData[page.nextPage].title) : `${locale === "th" ? "หน้า" : "Page"} ${page.nextPage}`}
+                                </span>
+                            </div>
+                            <div className="w-8 h-8 shrink-0 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-[#2a2e82] group-hover:bg-[#f0f7fb] transition-all">
+                                <ChevronRight size={18} />
+                            </div>
                         </Link>
                     ) : (
-                        <span className="text-xs md:text-sm text-gray-300">
-                            {locale === "th"
-                                ? "จบเนื้อหาตัวอย่าง"
-                                : "End of demo"}
-                        </span>
+                        <div className="w-[80px]"></div>
                     )}
                 </div>
             </div>
-            */}
         </div>
     );
 }
