@@ -21,16 +21,26 @@ export type PageSection =
   | { type: 'image'; src: string; alt?: string; caption?: BilingualText }
   | { type: 'pdf_banner'; src: string; mobileSrcs?: string[]; alt?: string }
   | { type: 'pdf_row'; items: Array<{ src: string; alt?: string; colSpan?: number }>; withGap?: boolean }
-  | { type: 'pdf_page'; items: PageSection[]; backgroundColor?: string }
+  | { type: 'pdf_page'; items: PageSection[]; backgroundColor?: string; noPadding?: boolean; noMinHeight?: boolean; pageNumber?: string; pageNumberAlign?: 'left' | 'right'; pageNumberColor?: string }
   | { type: 'pdf_note'; text: BilingualText; hidePrefix?: boolean }
   | { type: 'pdf_header'; text: BilingualText }
-  | { 
-      type: 'pdf_table'; 
-      headerTitle?: BilingualText; 
-      columns: BilingualText[]; 
-      sections: TableSectionData[];
-      highlightColumnIndex?: number;
-    };
+  | { type: 'pdf_title'; text: BilingualText }
+  | { type: 'pdf_sub_title'; text: BilingualText }
+  | {
+    type: 'pdf_quote_block';
+    text: BilingualText;
+    signatureSrc: string;
+    signatureName: BilingualText;
+    signaturePosition: BilingualText
+  }
+  | { type: 'pdf_text_columns'; columns: BilingualText[] }
+  | {
+    type: 'pdf_table';
+    headerTitle?: BilingualText;
+    columns: BilingualText[];
+    sections: TableSectionData[];
+    highlightColumnIndex?: number;
+  };
 
 export type PageData = {
   pageId: string;
@@ -38,7 +48,7 @@ export type PageData = {
   subtitle?: BilingualText;
   accentColor: string;
   backgroundColor?: string;
-  layout?: 'article' | 'pdf_composition';
+  layout?: 'article' | 'pdf_composition' | 'pdf_single_full';
   sections: PageSection[];
   prevPage?: string;
   nextPage?: string;
@@ -80,45 +90,54 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'จุดเด่นในรอบปี 2568', en: 'Highlights of 2025' },
     subtitle: { th: '', en: '' },
     accentColor: '#1e90e6',
-    backgroundColor: '#e3f6fc',
+    backgroundColor: '#ffffff',
     layout: 'pdf_composition',
     sections: [
       {
         type: 'pdf_page',
+        backgroundColor: '#d0f5fe',
+        pageNumber: '04',
+        pageNumberAlign: 'left',
         items: [
           {
             type: 'pdf_banner',
-            src: '/04-page/04_p06_banner.png',
+            src: '/page-04/04_p06_banner.png',
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/04-page/04_p06_col1.png' },
-              { src: '/04-page/04_p06_col2.png' },
-              { src: '/04-page/04_p06_col3.png' }
+              { src: '/page-04/04_p06_col1.png' },
+              { src: '/page-04/04_p06_col2.png' },
+              { src: '/page-04/04_p06_col3.png' }
             ]
           }
         ]
       },
       {
         type: 'pdf_page',
+        backgroundColor: '#c4f6fd',
+        pageNumber: '05',
+        pageNumberAlign: 'right',
         items: [
           {
             type: 'pdf_banner',
-            src: '/04-page/04_p07_banner.png',
+            src: '/page-04/04_p07_banner.png',
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/04-page/04_p07_col1.png' },
-              { src: '/04-page/04_p07_col2.png' },
-              { src: '/04-page/04_p07_col3.png' }
+              { src: '/page-04/04_p07_col1.png' },
+              { src: '/page-04/04_p07_col2.png' },
+              { src: '/page-04/04_p07_col3.png' }
             ]
           }
         ]
       },
       {
         type: 'pdf_page',
+        backgroundColor: '#ddf7ff',
+        pageNumber: '06',
+        pageNumberAlign: 'left',
         items: [
           {
             type: 'pdf_header',
@@ -130,29 +149,29 @@ export const pagesData: Record<string, PageData> = {
           {
             type: 'pdf_row',
             items: [
-              { src: '/04-page/04_p08_row1_left.png' },
-              { src: '/04-page/04_p08_row1_right.png' }
+              { src: '/page-04/04_p08_row1_left.png' },
+              { src: '/page-04/04_p08_row1_right.png' }
             ]
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/04-page/04_p08_row2_left.png' },
-              { src: '/04-page/04_p08_row2_right.png' }
+              { src: '/page-04/04_p08_row2_left.png' },
+              { src: '/page-04/04_p08_row2_right.png' }
             ]
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/04-page/04_p08_row3_left.png' },
-              { src: '/04-page/04_p08_row3_right.png' }
+              { src: '/page-04/04_p08_row3_left.png' },
+              { src: '/page-04/04_p08_row3_right.png' }
             ]
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/04-page/04_p08_row4_left.png' },
-              { src: '/04-page/04_p08_row4_right.png' }
+              { src: '/page-04/04_p08_row4_left.png' },
+              { src: '/page-04/04_p08_row4_right.png' }
             ]
           },
           {
@@ -167,6 +186,8 @@ export const pagesData: Record<string, PageData> = {
       {
         type: 'pdf_page',
         backgroundColor: '#ffffff',
+        pageNumber: '07',
+        pageNumberAlign: 'right',
         items: [
           {
             type: 'pdf_header',
@@ -261,15 +282,26 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'ผลการดำเนินงานในรอบปีที่ผ่านมา', en: 'Performance in the Past Year' },
     subtitle: { th: '', en: '' },
     accentColor: '#2a2e82',
+    layout: 'pdf_composition',
     sections: [
       {
         type: 'pdf_page',
+        backgroundColor: '#ffffff',
+        pageNumber: '08',
+        pageNumberAlign: 'left',
         items: [
           {
             type: 'pdf_header',
             text: {
               th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
               en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
+            }
+          },
+          {
+            type: 'pdf_title',
+            text: {
+              th: 'ผลการดำเนินงานในรอบปีที่ผ่านมา',
+              en: 'Performance in the Past Year'
             }
           },
           {
@@ -347,6 +379,48 @@ export const pagesData: Record<string, PageData> = {
             }
           }
         ]
+      },
+      {
+        type: 'pdf_page',
+        backgroundColor: '#e3f6fc',
+        pageNumber: '09',
+        pageNumberAlign: 'right',
+        items: [
+          {
+            type: 'pdf_header',
+            text: {
+              th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
+              en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
+            }
+          },
+          {
+            type: 'pdf_row',
+            items: [
+              { src: '/page-08/08_row1_col1.png' },
+              { src: '/page-08/08_row1_col2.png' },
+              { src: '/page-08/08_row1_col3.png' }
+            ]
+          },
+          {
+            type: 'pdf_row',
+            items: [
+              { src: '/page-08/08_row2_col1.png' },
+              { src: '/page-08/08_row2_col2.png' }
+            ]
+          },
+          {
+            type: 'pdf_sub_title',
+            text: { th: 'รายได้รวม', en: 'Total Revenue' }
+          },
+          {
+            type: 'pdf_row',
+            items: [
+              { src: '/page-08/08_row3_col1.png' },
+              { src: '/page-08/08_row3_col2.png' },
+              { src: '/page-08/08_row3_col3.png' }
+            ]
+          }
+        ]
       }
     ],
     prevPage: '04',
@@ -357,7 +431,108 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'รายงานคณะกรรมการบริษัท', en: "Board of Directors' Report" },
     subtitle: { th: '', en: '' },
     accentColor: '#311b92',
-    sections: [],
+    backgroundColor: '#ffffff',
+    layout: 'pdf_composition',
+    sections: [
+      {
+        type: 'pdf_page',
+        backgroundColor: '#ffffff',
+        noPadding: true,
+        pageNumber: '10',
+        pageNumberAlign: 'left',
+        items: [
+          {
+            type: 'pdf_page',
+            backgroundColor: '#e3f6fc',
+            noMinHeight: true,
+            items: [
+              {
+                type: 'pdf_header',
+                text: {
+                  th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
+                  en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
+                }
+              },
+              {
+                type: 'pdf_title',
+                text: { th: 'รายงานคณะกรรมการ', en: 'Board of Directors\' Report' }
+              },
+              {
+                type: 'pdf_banner',
+                src: '/page-10/10_quote_message.png',
+              },
+            ]
+          },
+          {
+            type: 'pdf_page',
+            backgroundColor: '#ffffff',
+            noMinHeight: true,
+            items: [
+              {
+                type: 'pdf_text_columns',
+                columns: [
+                  {
+                    th: 'ในปี 2568 คณะกรรมการบริษัทได้กำกับดูแลการดำเนินงานของบ้านปูภายใต้บริบทที่มีความท้าทายเพิ่มขึ้น จากทั้งการเปลี่ยนแปลงด้านภูมิรัฐศาสตร์ สภาพแวดล้อมทางธุรกิจและเทคโนโลยีที่มีความซับซ้อนมากขึ้น โดยคณะกรรมการยังคงยึดมั่นในหลักธรรมาภิบาล ความโปร่งใส และความรับผิดชอบต่อผู้มีส่วนได้เสียทุกฝ่าย เพื่อเสริมสร้างรากฐานของการดำเนินงานที่มั่นคงและยั่งยืนในระยะยาว\n\nสำหรับประเด็นเชิงยุทธศาสตร์ขององค์กร คณะกรรมการได้กำกับดูแลในประเด็นสำคัญที่ฝ่ายบริหารนำเสนอภายใต้ยุทธศาสตร์ Energy Symphonics ที่สะท้อนทิศทางหลักในการขับเคลื่อนธุรกิจของบ้านปู รวมถึงกำกับดูแลการลงทุนของบริษัทฯ และบริษัทย่อยให้เป็นไปตามแผนกลยุทธ์ การควบรวมระหว่างบ้านปู และบ้านปู เพาเวอร์ เพื่อสนับสนุนการปรับโครงสร้างองค์กรให้มีความคล่องตัว และประสิทธิภาพด้านเงินทุนมากยิ่งขึ้น โดยคณะกรรมการให้ความสำคัญกับบทบาทกำกับดูแล (Oversight) ในด้านความโปร่งใส การปฏิบัติตามกฎหมาย และการประเมินความเสี่ยง เพื่อให้กระบวนการดังกล่าวเป็นไปอย่างรัดกุมและสอดคล้องกับหลักธรรมาภิบาล',
+                    en: 'In 2025, the Board of Directors oversaw Banpu\'s operations within an increasingly challenging context, driven by geopolitical shifts and more complex business and technological environments. The Board remains committed to corporate governance, transparency, and accountability to all stakeholders to strengthen the foundation for stable and sustainable long-term operations.\n\nRegarding corporate strategic issues, the Board oversaw key matters presented by the management under the "Energy Symphonics" strategy, reflecting the core direction of Banpu\'s business. This included overseeing investments of the Company and its subsidiaries in accordance with the strategic plan, and the amalgamation between Banpu and Banpu Power to support corporate restructuring for greater agility and capital efficiency. The Board prioritized its oversight role in transparency, legal compliance, and risk assessment to ensure these processes were rigorous and aligned with corporate governance principles.'
+                  },
+                  {
+                    th: 'คณะกรรมการให้ความสำคัญกับการนำเทคโนโลยีและปัญญาประดิษฐ์ (AI) มาเพิ่มประสิทธิภาพการดำเนินธุรกิจ ที่ผ่านมาบริษัทฯ ได้นำ AI มาใช้ในธุรกิจหลัก ทั้งในด้านแผนการผลิต การตลาด และการจัดการห่วงโซ่อุปทาน เพื่อช่วยวิเคราะห์ข้อมูลเชิงลึก ควบคุมคุณภาพสินค้า และช่วยให้ลูกค้าสามารถสร้างมูลค่าเพิ่มเสริมความได้เปรียบในการแข่งขัน ในขณะเดียวกันด้านการกำกับดูแล ได้ส่งเสริมการนำเทคโนโลยีดิจิทัลและ AI มาประยุกต์ใช้ในการวิเคราะห์และการตรวจสอบ เพื่อเพิ่มประสิทธิภาพการตรวจสอบและติดตามผลอันนำไปสู่การปกป้ององค์กรจากความเสียหายและการสร้างมูลค่าเพิ่ม\n\nด้านการขับเคลื่อนด้านความยั่งยืน คณะกรรมการได้ทบทวนและปรับปรุงนโยบายด้าน ESG ที่สำคัญในปี 2568 ได้แก่ นโยบายสิทธิมนุษยชน นโยบายด้านการเปลี่ยนแปลง',
+                    en: 'The Board places high importance on leveraging technology and Artificial Intelligence (AI) to enhance business efficiency. The Company has integrated AI into its core businesses, including production planning, marketing, and supply chain management, to facilitate in-depth data analysis, quality control, and enable customers to create added value and competitive advantages. Concurrently, in terms of governance, the Board promoted the application of digital technology and AI in analysis and auditing to improve monitoring efficiency, leading to organizational protection and value creation.\n\nIn driving sustainability, the Board reviewed and updated key ESG policies in 2025, including the Human Rights Policy and Climate Change Policy.'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: 'pdf_page',
+        backgroundColor: '#ffffff',
+        noPadding: true,
+        pageNumber: '11',
+        pageNumberAlign: 'right',
+        items: [
+          {
+            type: 'pdf_page',
+            backgroundColor: '#e3f6fc',
+            noMinHeight: true,
+            items: [
+              {
+                type: 'pdf_header',
+                text: {
+                  th: 'รายงานประจำปี 2568 แบบแสดงรายการข้อมูลประจำปี (แบบ 56-1 One Report) บริษัท บ้านปู จำกัด (มหาชน)',
+                  en: 'Annual Report 2025 (Form 56-1 One Report) Banpu Public Company Limited'
+                }
+              },
+              {
+                type: 'pdf_banner',
+                src: '/page-10/10_chairman_photo.png',
+              },
+            ]
+          },
+          {
+            type: 'pdf_page',
+            backgroundColor: '#ffffff',
+            noMinHeight: true,
+            items: [
+              {
+                type: 'pdf_text_columns',
+                columns: [
+                  {
+                    th: 'สภาพภูมิอากาศ นโยบายด้านความหลากหลายทางชีวภาพ และหลักจรรยาบรรณคู่ค้า รวมถึงได้ตั้งเป้าหมายระยะ 5 ปี สำหรับรอบปี 2569 - 2573 โดยหัวข้อที่ได้มีการตั้งเป้าหมาย เช่น การใช้น้ำ คุณภาพอากาศ และอาชีวอนามัย และความปลอดภัย เป็นต้น พร้อมทั้งติดตามประเด็นความเสี่ยงด้าน ESG เพื่อให้การดำเนินงานด้านความยั่งยืนมีความครบถ้วน\n\nสำหรับการควบคุมภายในและบริหารความเสี่ยง คณะกรรมการได้ติดตามความมีประสิทธิภาพของระบบควบคุมภายใน การจัดการความเสี่ยง และการปฏิบัติตามกฎหมาย พร้อมสนับสนุนแผนการตรวจสอบประจำปีให้เป็นไปตามมาตรฐานการตรวจสอบภายในสากล (Global Internal Audit Standards) และมุ่งเน้นการตรวจสอบตามระดับความเสี่ยงที่มีนัยสำคัญ (Risk-based Approach) เพื่อให้บริษัทฯ มีความพร้อมต่อความเสี่ยงด้านไซเบอร์ เทคโนโลยี และความท้าทายที่เพิ่มขึ้นในสภาวะแวดล้อมทางธุรกิจปัจจุบัน',
+                    en: 'Climate Change, Biodiversity Policy, and Supplier Code of Conduct. The Board also established 5-year targets for 2026-2030, covering areas such as water usage, air quality, and occupational health and safety, while monitoring ESG risk issues to ensure comprehensive sustainability operations.\n\nFor internal control and risk management, the Board monitored the effectiveness of internal control systems, risk management, and legal compliance. The Board supported the annual audit plan in alignment with Global Internal Audit Standards, focusing on a risk-based approach to ensure the Company\'s preparedness for cyber risks, technology shifts, and increasing challenges in the current business environment.'
+                  },
+                  {
+                    th: 'ในปี 2568 คณะกรรมการยังคงติดตามและประเมินประสิทธิภาพในการนำนโยบายบรรษัทภิบาลและคู่มือจริยธรรมธุรกิจไปปฏิบัติในองค์กร ซึ่งผลสำรวจที่ได้อยู่ในระดับที่น่าพอใจ นอกจากนี้ยังได้พิจารณาปรับปรุงแบบประเมินผลการปฏิบัติงานของคณะกรรมการประจำปี 2568 ทั้งรายคณะและรายบุคคล เพื่อพัฒนาเกณฑ์การประเมินดังกล่าวให้สอดรับกับบริบทขององค์กรในปัจจุบัน และสะท้อนความคิดเห็นของกรรมการได้อย่างมีประสิทธิภาพยิ่งขึ้น\n\nคณะกรรมการขอขอบคุณผู้ถือหุ้น ลูกค้า คู่ค้า ชุมชน พนักงานและผู้มีส่วนได้เสียทุกกลุ่มที่ให้การสนับสนุนอย่างต่อเนื่อง คณะกรรมการบริษัทเชื่อมั่นว่าความมุ่งมั่นในการกำกับดูแลด้วยความโปร่งใส ซื่อสัตย์ และรับผิดชอบ เพื่อให้กลุ่มบริษัทฯ เติบโตอย่างมั่นคง ท่ามกลางสถานการณ์โลกที่ท้าทายดังเช่นในปี 2568 จะเสริมสร้างรากฐานที่มั่นคงให้แก่บ้านปู และสนับสนุนให้บริษัทฯ มีความพร้อมในการรับมือกับความท้าทายและโอกาสในอนาคต',
+                    en: 'In 2025, the Board continued to monitor and assess the effectiveness of corporate governance policy and business ethics manual implementation, with satisfactory survey results. Additionally, the Board refined the performance evaluation forms for the Board and individual directors for 2025 to better align with the current organizational context and more effectively reflect directors\' feedback.\n\nThe Board expresses its gratitude to shareholders, customers, partners, communities, employees, and all stakeholders for their ongoing support. The Board of Directors remains confident that our commitment to governance with transparency, integrity, and responsibility—ensuring stable growth amidst global challenges as seen in 2025—will strengthen Banpu\'s foundation and ensure the Company\'s readiness for future challenges and opportunities.'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
     prevPage: '08',
     nextPage: '12',
   },
