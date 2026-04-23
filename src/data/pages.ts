@@ -21,7 +21,7 @@ export type PageSection =
   | { type: 'image'; src: string; alt?: string; caption?: BilingualText }
   | { type: 'pdf_banner'; src: string; mobileSrcs?: string[]; alt?: string }
   | { type: 'pdf_row'; items: Array<{ src: string; alt?: string; colSpan?: number }>; withGap?: boolean }
-  | { type: 'pdf_page'; items: PageSection[] }
+  | { type: 'pdf_page'; items: PageSection[]; backgroundColor?: string }
   | { type: 'pdf_note'; text: BilingualText; hidePrefix?: boolean }
   | { type: 'pdf_header'; text: BilingualText }
   | { 
@@ -166,6 +166,7 @@ export const pagesData: Record<string, PageData> = {
       },
       {
         type: 'pdf_page',
+        backgroundColor: '#ffffff',
         items: [
           {
             type: 'pdf_header',

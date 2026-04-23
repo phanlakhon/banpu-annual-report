@@ -163,7 +163,7 @@ function renderSection(
 
     if (section.type === "pdf_page") {
         return (
-            <div className="w-full">
+            <div className="w-full py-4" style={{ backgroundColor: section.backgroundColor }}>
                 {section.items.map((subSection, i) => (
                     <div key={i}>
                         {renderSection(subSection, locale, accentColor)}
@@ -175,7 +175,7 @@ function renderSection(
 
     if (section.type === "pdf_table") {
         return (
-            <div className="w-full px-4 sm:px-8 md:px-[6%] mb-10 md:mb-16">
+            <div className="w-full px-4 sm:px-8 md:px-[2%] mb-10 md:mb-16">
                 <div className="overflow-x-auto pb-4 custom-scrollbar">
                     <table className="w-full min-w-[600px] xl:min-w-full text-left border-collapse border-t-2 border-b-2 border-[#2a2e82]">
                         <thead>
