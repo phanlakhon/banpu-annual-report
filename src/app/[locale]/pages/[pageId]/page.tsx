@@ -335,9 +335,11 @@ function renderSection(
 
     if (section.type === "pdf_text_columns") {
         return (
-            <div className="px-8 sm:px-[6%] py-4 md:py-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div className={`px-8 sm:px-[6%] py-4 md:py-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ${
+                section.fontFamily === 'sarabun' ? 'font-sarabun' : ''
+            }`}>
                 {section.columns.map((col, i) => (
-                    <div key={i} className="text-xs sm:text-sm md:text-[13px] text-gray-800 leading-relaxed text-justify whitespace-pre-line">
+                    <div key={i} className="text-[13px] md:text-[14px] text-gray-800 leading-[1.6] text-justify whitespace-pre-line">
                         {t(col)}
                     </div>
                 ))}
