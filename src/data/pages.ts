@@ -9,6 +9,7 @@ export type TableRowData = {
 
 export type TableSectionData = {
   title?: BilingualText;
+  unit?: BilingualText;
   rows: TableRowData[];
 };
 
@@ -28,6 +29,7 @@ export type PageSection =
       headerTitle?: BilingualText; 
       columns: BilingualText[]; 
       sections: TableSectionData[];
+      highlightColumnIndex?: number;
     };
 
 export type PageData = {
@@ -175,6 +177,7 @@ export const pagesData: Record<string, PageData> = {
           {
             type: 'pdf_table',
             headerTitle: { th: 'สำหรับปีสิ้นสุดวันที่', en: 'For the year ended' },
+            highlightColumnIndex: 0,
             columns: [
               { th: '31 ธันวาคม 2568', en: '31 December 2025' },
               { th: '31 ธันวาคม 2567', en: '31 December 2024' },
@@ -257,7 +260,94 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'ผลการดำเนินงานในรอบปีที่ผ่านมา', en: 'Performance in the Past Year' },
     subtitle: { th: '', en: '' },
     accentColor: '#2a2e82',
-    sections: [],
+    sections: [
+      {
+        type: 'pdf_page',
+        items: [
+          {
+            type: 'pdf_header',
+            text: {
+              th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
+              en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
+            }
+          },
+          {
+            type: 'pdf_table',
+            headerTitle: { th: 'สิ้นสุด ณ ปี', en: 'As of Year' },
+            highlightColumnIndex: 0,
+            columns: [
+              { th: '2568', en: '2025' },
+              { th: '2567', en: '2024' },
+              { th: '2566', en: '2023' }
+            ],
+            sections: [
+              {
+                title: { th: 'ปริมาณการขายถ่านหิน', en: 'Coal Sales Volume' },
+                unit: { th: '(ล้านตัน)', en: '(Million Tonnes)' },
+                rows: [
+                  { label: { th: 'ปริมาณการขายถ่านหิน - อินโดนีเซีย', en: 'Coal Sales Volume - Indonesia' }, values: ['20.5', '19.6', '17.0'] },
+                  { label: { th: 'ปริมาณการขายถ่านหิน - แหล่งอื่น', en: 'Coal Sales Volume - Others' }, values: ['4.2', '4.4', '4.0'] },
+                  { label: { th: 'รวมปริมาณการขายถ่านหิน - อินโดนีเซีย', en: 'Total Coal Sales Volume - Indonesia' }, values: ['24.7', '24.0', '21.0'], isBold: true },
+                  { label: { th: 'ปริมาณการขายถ่านหิน - ออสเตรเลีย', en: 'Coal Sales Volume - Australia' }, values: ['7.2', '7.9', '7.0'] },
+                  { label: { th: 'ปริมาณการขายถ่านหิน - มองโกเลีย', en: 'Coal Sales Volume - Mongolia' }, values: ['1.6', '-', '-'] },
+                  { label: { th: 'ปริมาณการขายถ่านหิน - จีน (ซื้อขายถ่านหิน) และแหล่งอื่น', en: 'Coal Sales Volume - China (Trading) and Others' }, values: ['1.8', '0.9', '1.9'] },
+                  { label: { th: 'รวมปริมาณการขายถ่านหิน', en: 'Total Coal Sales Volume' }, values: ['35.3', '32.8', '29.9'], isBold: true },
+                ]
+              },
+              {
+                title: { th: 'ปริมาณการขายก๊าซธรรมชาติ', en: 'Natural Gas Sales Volume' },
+                unit: { th: '(พันล้านลูกบาศก์ฟุตเทียบเท่า)', en: '(BCFe)' },
+                rows: [
+                  { label: { th: 'ปริมาณการขายก๊าซธรรมชาติ - แหล่งมาร์เซลลัส', en: 'Natural Gas Sales Volume - Marcellus' }, values: ['34.2', '42.8', '51.4'] },
+                  { label: { th: 'ปริมาณการขายก๊าซธรรมชาติ - แหล่งบาร์เนตต์', en: 'Natural Gas Sales Volume - Barnett' }, values: ['270.8', '245.6', '262.3'] },
+                  { label: { th: 'รวมปริมาณการขายก๊าซธรรมชาติ', en: 'Total Natural Gas Sales Volume' }, values: ['305.0', '288.4', '313.7'], isBold: true },
+                  { label: { th: 'ปริมาณการกักเก็บคาร์บอน', en: 'Carbon Capture Volume' }, unit: { th: '(พันตันคาร์บอนไดออกไซด์เทียบเท่า)', en: '(MT CO2e)' }, values: ['138.3', '165.1', '8.2'], isBold: true },
+                ]
+              },
+              {
+                title: { th: 'รายได้รวม', en: 'Total Revenue' },
+                unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' },
+                rows: [
+                  { label: { th: 'รายได้ - อินโดนีเซีย', en: 'Revenue - Indonesia' }, values: ['1,879', '2,294', '2,398'] },
+                  { label: { th: 'รายได้ - ออสเตรเลีย', en: 'Revenue - Australia' }, values: ['712', '914', '805'] },
+                  { label: { th: 'รายได้ - มองโกเลีย', en: 'Revenue - Mongolia' }, values: ['51', '-', '-'] },
+                  { label: { th: 'รายได้ - จีน (ซื้อขายถ่านหิน) และแหล่งอื่น', en: 'Revenue - China (Trading) and Others' }, values: ['128', '82', '118'] },
+                  { label: { th: 'รวมรายได้ธุรกิจเหมืองยุคใหม่', en: 'Total Revenue from Modern Mining' }, values: ['2,770', '3,290', '3,321'], isBold: true },
+                  { label: { th: 'รายได้ธุรกิจก๊าซธรรมชาติครบวงจร', en: 'Revenue from Integrated Natural Gas' }, values: ['913', '726', '706'] },
+                  { label: { th: 'รายได้ธุรกิจไฟฟ้าและธุรกิจที่เกี่ยวเนื่อง', en: 'Revenue from Power and Related Business' }, values: ['888', '777', '860'] },
+                  { label: { th: 'รายได้ธุรกิจเทคโนโลยีแห่งอนาคต', en: 'Revenue from Future Energy Technology' }, values: ['699', '350', '191'] },
+                  { label: { th: 'รายได้ธุรกิจอื่น', en: 'Revenue from Others' }, values: ['8', '6', '5'] },
+                  { label: { th: 'รายได้รวม', en: 'Total Revenue' }, values: ['5,278', '5,149', '5,083'], isBold: true },
+                ]
+              },
+              {
+                title: { th: 'อัตรากำไรขั้นต้น', en: 'Gross Profit Margin' },
+                unit: { th: '(%)', en: '(%)' },
+                rows: [
+                  { label: { th: 'อัตรากำไรขั้นต้น - อินโดนีเซีย', en: 'Gross Profit Margin - Indonesia' }, values: ['37', '42', '46'] },
+                  { label: { th: 'อัตรากำไรขั้นต้น - ออสเตรเลีย', en: 'Gross Profit Margin - Australia' }, values: ['6', '5', '1'] },
+                  { label: { th: 'อัตรากำไรขั้นต้น - มองโกเลีย', en: 'Gross Profit Margin - Mongolia' }, values: ['59', '-', '-'] },
+                  { label: { th: 'อัตรากำไรขั้นต้น - จีน (ซื้อขายถ่านหิน) และแหล่งอื่น', en: 'Gross Profit Margin - China (Trading) and Others' }, values: ['8', '14', '13'] },
+                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจเหมืองยุคใหม่', en: 'Gross Profit Margin - Modern Mining' }, values: ['28', '31', '34'], isBold: true },
+                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจก๊าซธรรมชาติครบวงจร', en: 'Gross Profit Margin - Integrated Natural Gas' }, values: ['24', '17', '-1'] },
+                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจไฟฟ้าและธุรกิจที่เกี่ยวเนื่อง', en: 'Gross Profit Margin - Power and Related Business' }, values: ['18', '10', '31'] },
+                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจเทคโนโลยีแห่งอนาคต', en: 'Gross Profit Margin - Future Energy Technology' }, values: ['5', '27', '25'] },
+                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจอื่น', en: 'Gross Profit Margin - Others' }, values: ['70', '7', '8'] },
+                  { label: { th: 'อัตรากำไรขั้นต้นรวม', en: 'Total Gross Profit Margin' }, unit: { th: '(%)', en: '(%)' }, values: ['23', '24', '28'], isBold: true },
+                ]
+              }
+            ]
+          },
+          {
+            type: 'pdf_note',
+            text: {
+              th: 'รายงานฉบับนี้นำเสนอผลการดำเนินงานของปี 2568 ก่อนวันที่ 29 มกราคม 2569 ที่ประชุมวิสามัญผู้ถือหุ้นครั้งที่ 1/2569 ที่ได้มีมติอนุมัติการปรับโครงสร้างกลุ่มบริษัท โดยการควบรวม (Amalgamation) ระหว่างบริษัทฯ และ BPP เพื่อจัดตั้งบริษัทใหม่ (NewCo)',
+              en: 'This report presents the performance of 2025 prior to January 29, 2026, when the EGM No. 1/2026 approved the corporate restructuring through the amalgamation between the Company and BPP to form a new company (NewCo).'
+            }
+          }
+        ]
+      }
+    ],
     prevPage: '04',
     nextPage: '10',
   },

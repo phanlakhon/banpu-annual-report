@@ -196,7 +196,7 @@ function renderSection(
                                 {section.columns.map((col, idx) => (
                                     <th
                                         key={idx}
-                                        className="py-2 px-2 text-center text-[#2a2e82] text-[11px] md:text-[11px] font-bold whitespace-nowrap"
+                                        className={`py-2 px-2 text-center text-[#2a2e82] text-[11px] md:text-[11px] font-bold whitespace-nowrap ${section.highlightColumnIndex === idx ? 'bg-[#f0f7fb]' : ''}`}
                                     >
                                         {t(col)}
                                     </th>
@@ -209,11 +209,14 @@ function renderSection(
                                     {sec.title && (
                                         <tr className={secIdx > 0 ? "border-t border-[#b3e0f2]" : ""}>
                                             <td
-                                                colSpan={section.columns.length + 2}
                                                 className="pt-4 pb-2 px-2 text-[#3ab4e8] text-[11px] md:text-[11px] font-bold"
                                             >
                                                 {t(sec.title)}
                                             </td>
+                                            <td className="pt-4 pb-2 px-2 text-[#3ab4e8] text-[11px] md:text-[11px] font-bold text-center whitespace-nowrap">
+                                                {sec.unit ? t(sec.unit) : ''}
+                                            </td>
+                                            <td colSpan={section.columns.length}></td>
                                         </tr>
                                     )}
                                     {sec.rows.map((row, rowIdx) => (
@@ -227,7 +230,7 @@ function renderSection(
                                             {row.values.map((val, valIdx) => (
                                                 <td
                                                     key={valIdx}
-                                                    className={`py-1.5 px-2 text-[11px] md:text-[11px] text-gray-800 text-right whitespace-nowrap ${row.isBold ? 'font-bold' : ''}`}
+                                                    className={`py-1.5 px-2 text-[11px] md:text-[11px] text-gray-800 text-right whitespace-nowrap ${row.isBold ? 'font-bold' : ''} ${section.highlightColumnIndex === valIdx ? 'bg-[#f0f7fb]' : ''}`}
                                                 >
                                                     {val}
                                                 </td>
