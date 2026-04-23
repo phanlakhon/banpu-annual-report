@@ -145,7 +145,7 @@ function renderSection(
         const gapClasses = section.withGap ? "gap-6 sm:gap-[2%]" : "gap-6 sm:gap-0";
 
         return (
-            <div className={`flex flex-col sm:flex-row justify-center sm:justify-between items-center sm:items-start ${gapClasses} mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-8 sm:px-[6%]`}>
+            <div className={`flex flex-col sm:flex-row justify-center sm:justify-between items-center sm:items-start ${gapClasses} my-8 sm:my-12 md:my-16 lg:my-20 px-8 sm:px-[6%]`}>
                 {section.items.map((item, idx) => {
                     return (
                         /* eslint-disable-next-line @next/next/no-img-element */
@@ -164,7 +164,17 @@ function renderSection(
     if (section.type === "pdf_page") {
         return (
             <div className="w-full relative" style={{ backgroundColor: section.backgroundColor || '#f5f8ff' }}>
-                <div className="max-w-[1100px] mx-auto w-full">
+                {section.desktopFullImage && (
+                    <div className="hidden sm:block w-full">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={section.desktopFullImage}
+                            alt={section.pageNumber ? `Page ${section.pageNumber}` : "PDF Page"}
+                            className="w-full h-auto object-contain"
+                        />
+                    </div>
+                )}
+                <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-[1100px] mx-auto w-full`}>
                     {section.items.map((subSection, i) => (
                         <div key={i}>
                             {renderSection(subSection, locale, accentColor)}
@@ -172,7 +182,7 @@ function renderSection(
                     ))}
                 </div>
                 {section.pageNumber && (
-                    <div className="w-full px-4 pt-2 pb-4 flex items-center pointer-events-none">
+                    <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} w-full px-4 pt-2 pb-4 flex items-center pointer-events-none`}>
                         <div 
                             className={`text-xs md:text-sm font-bold ${
                                 section.pageNumberAlign 
