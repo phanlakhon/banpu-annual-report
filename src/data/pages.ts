@@ -21,7 +21,7 @@ export type PageSection =
   | { type: 'image'; src: string; alt?: string; caption?: BilingualText }
   | { type: 'pdf_banner'; src: string; mobileSrcs?: string[]; alt?: string }
   | { type: 'pdf_row'; items: Array<{ src: string; alt?: string; colSpan?: number }>; withGap?: boolean }
-  | { type: 'pdf_page'; items: PageSection[]; backgroundColor?: string; noPadding?: boolean; noMinHeight?: boolean; pageNumber?: string; pageNumberAlign?: 'left' | 'right'; pageNumberColor?: string }
+  | { type: 'pdf_page'; items: PageSection[]; backgroundColor?: string; noPadding?: boolean; noMinHeight?: boolean; pageNumber?: string; pageNumberAlign?: 'left' | 'right'; pageNumberColor?: string; desktopFullImage?: string }
   | { type: 'pdf_note'; text: BilingualText; hidePrefix?: boolean }
   | { type: 'pdf_header'; text: BilingualText }
   | { type: 'pdf_title'; text: BilingualText }
@@ -67,8 +67,8 @@ export const pagesData: Record<string, PageData> = {
         items: [
           {
             type: 'pdf_banner',
-            src: '/page-home/page-4.png',
-            mobileSrcs: ['/page-home/page-4-mobile-head.png', '/page-home/page-4-mobile.png']
+            src: '/page-intro/intro_p02_full.png',
+            mobileSrcs: ['/page-intro/page-4-mobile-head.png', '/page-intro/page-4-mobile.png']
           }
         ]
       },
@@ -77,8 +77,8 @@ export const pagesData: Record<string, PageData> = {
         items: [
           {
             type: 'pdf_banner',
-            src: '/page-home/page-5.png',
-            mobileSrcs: ['/page-home/page-5-mobile-head.png', '/page-home/page-5-mobile-1.png', '/page-home/page-5-mobile-2.png']
+            src: '/page-intro/intro_p03_full.png',
+            mobileSrcs: ['/page-intro/page-5-mobile-head.png', '/page-intro/page-5-mobile-1.png', '/page-intro/page-5-mobile-2.png']
           }
         ]
       }
@@ -98,6 +98,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#d0f5fe',
         pageNumber: '04',
         pageNumberAlign: 'left',
+        desktopFullImage: '/page-04/04_p04_full.png',
         items: [
           {
             type: 'pdf_banner',
@@ -118,6 +119,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#c4f6fd',
         pageNumber: '05',
         pageNumberAlign: 'right',
+        desktopFullImage: '/page-04/04_p05_full.png',
         items: [
           {
             type: 'pdf_banner',
@@ -138,6 +140,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#ddf7ff',
         pageNumber: '06',
         pageNumberAlign: 'left',
+        desktopFullImage: '/page-04/04_p06_full.png',
         items: [
           {
             type: 'pdf_header',
@@ -188,6 +191,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#ffffff',
         pageNumber: '07',
         pageNumberAlign: 'right',
+        desktopFullImage: '/page-04/04_p07_full.png',
         items: [
           {
             type: 'pdf_header',
@@ -289,6 +293,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#ffffff',
         pageNumber: '08',
         pageNumberAlign: 'left',
+        desktopFullImage: '/page-08/08_p08_full.png',
         items: [
           {
             type: 'pdf_header',
@@ -385,6 +390,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#e3f6fc',
         pageNumber: '09',
         pageNumberAlign: 'right',
+        desktopFullImage: '/page-08/08_p09_full.png',
         items: [
           {
             type: 'pdf_header',
@@ -440,6 +446,7 @@ export const pagesData: Record<string, PageData> = {
         noPadding: true,
         pageNumber: '10',
         pageNumberAlign: 'left',
+        desktopFullImage: '/page-10/10_p10_full.png',
         items: [
           {
             type: 'pdf_page',
@@ -452,10 +459,6 @@ export const pagesData: Record<string, PageData> = {
                   th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
                   en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
                 }
-              },
-              {
-                type: 'pdf_title',
-                text: { th: 'รายงานคณะกรรมการ', en: 'Board of Directors\' Report' }
               },
               {
                 type: 'pdf_banner',
@@ -491,6 +494,7 @@ export const pagesData: Record<string, PageData> = {
         noPadding: true,
         pageNumber: '11',
         pageNumberAlign: 'right',
+        desktopFullImage: '/page-10/10_p11_full.png',
         items: [
           {
             type: 'pdf_page',
