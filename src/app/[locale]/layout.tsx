@@ -3,6 +3,7 @@ import {getMessages} from 'next-intl/server';
 import {notFound} from 'next/navigation';
 import {routing} from '@/i18n/routing';
 import localFont from 'next/font/local';
+import { Sarabun } from 'next/font/google';
 import './globals.css';
 
 const banpuFont = localFont({
@@ -41,6 +42,13 @@ const banpuFont = localFont({
   display: 'swap',
 });
 
+const sarabun = Sarabun({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['thai', 'latin'],
+  display: 'swap',
+  variable: '--font-sarabun',
+});
+
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));
 }
@@ -62,7 +70,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={banpuFont.className} suppressHydrationWarning>
+      <body className={`${banpuFont.className} ${sarabun.variable}`} suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
           {children}
         </NextIntlClientProvider>
