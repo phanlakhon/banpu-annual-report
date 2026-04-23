@@ -101,6 +101,7 @@ export default function Sidebar() {
         <h2 className="text-[#1e40af] text-xl font-bold mb-4">สารบัญ</h2>
 
         <div className="space-y-3">
+          <NavLink href={p('00')} pageId="00" label={t('intro')} pathname={pathname} />
           <NavLink href={p('04')} pageId="04" label={t('highlight')} pathname={pathname} />
           <NavLink href={p('08')} pageId="08" label={t('performance')} pathname={pathname} />
           <NavLink href={p('10')} pageId="10" label={t('board_report')} pathname={pathname} />
