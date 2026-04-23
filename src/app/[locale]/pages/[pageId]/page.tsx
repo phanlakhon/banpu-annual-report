@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { pagesData, type PageSection } from "@/data/pages";
+import React from "react";
 
 type Props = {
     params: Promise<{ locale: string; pageId: string }>;
@@ -130,8 +131,12 @@ function renderSection(
                 <img
                     src={section.src}
                     alt={section.alt || "banner"}
-                    className="w-full h-auto object-contain"
+                    className={`w-full h-auto object-contain ${section.mobileSrcs?.length ? 'sm:block hidden' : ''}`}
                 />
+                {section.mobileSrcs?.map((src, i) => (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img key={`mob-${i}`} src={src} className="w-full h-auto object-contain sm:hidden block" />
+                ))}
             </div>
         );
     }
@@ -168,6 +173,78 @@ function renderSection(
         );
     }
 
+    if (section.type === "pdf_table") {
+        return (
+            <div className="w-full px-4 sm:px-8 md:px-[6%] mb-10 md:mb-16">
+                <div className="overflow-x-auto pb-4 custom-scrollbar">
+                    <table className="w-full min-w-[600px] xl:min-w-full text-left border-collapse border-t-2 border-b-2 border-[#2a2e82]">
+                        <thead>
+                            {section.headerTitle && (
+                                <tr>
+                                    <th colSpan={2}></th>
+                                    <th
+                                        colSpan={section.columns.length}
+                                        className="text-center text-[#2a2e82] text-[11px] md:text-[11px] font-bold pt-4 pb-2 border-b border-[#2a2e82]"
+                                    >
+                                        {t(section.headerTitle)}
+                                    </th>
+                                </tr>
+                            )}
+                            <tr className="border-b-2 border-[#2a2e82]">
+                                <th className="py-2 px-2 w-[45%] lg:w-[50%] min-w-[180px]"></th>
+                                <th className="py-2 px-2"></th>
+                                {section.columns.map((col, idx) => (
+                                    <th
+                                        key={idx}
+                                        className="py-2 px-2 text-center text-[#2a2e82] text-[11px] md:text-[11px] font-bold whitespace-nowrap"
+                                    >
+                                        {t(col)}
+                                    </th>
+                                ))}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {section.sections.map((sec, secIdx) => (
+                                <React.Fragment key={secIdx}>
+                                    {sec.title && (
+                                        <tr className={secIdx > 0 ? "border-t border-[#b3e0f2]" : ""}>
+                                            <td
+                                                colSpan={section.columns.length + 2}
+                                                className="pt-4 pb-2 px-2 text-[#3ab4e8] text-[11px] md:text-[11px] font-bold"
+                                            >
+                                                {t(sec.title)}
+                                            </td>
+                                        </tr>
+                                    )}
+                                    {sec.rows.map((row, rowIdx) => (
+                                        <tr key={rowIdx} className="hover:bg-[#f8fcfd] transition-colors">
+                                            <td className={`py-1.5 px-2 text-[11px] md:text-[11px] text-gray-800 leading-tight ${row.isBold ? 'font-bold' : ''}`}>
+                                                {t(row.label)}
+                                            </td>
+                                            <td className={`py-1.5 px-2 text-[11px] md:text-[11px] text-gray-800 text-center whitespace-nowrap ${row.isBold ? 'font-bold' : ''}`}>
+                                                {row.unit ? t(row.unit) : ''}
+                                            </td>
+                                            {row.values.map((val, valIdx) => (
+                                                <td
+                                                    key={valIdx}
+                                                    className={`py-1.5 px-2 text-[11px] md:text-[11px] text-gray-800 text-right whitespace-nowrap ${row.isBold ? 'font-bold' : ''}`}
+                                                >
+                                                    {val}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    ))}
+                                    {/* Add a tiny spacing row at the end of each section for breathing room */}
+                                    <tr><td colSpan={section.columns.length + 2} className="h-2"></td></tr>
+                                </React.Fragment>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        );
+    }
+
     if (section.type === "pdf_header") {
         return (
             <div className="px-8 sm:px-[6%] mt-6 mb-8 sm:mb-12 md:mb-14 flex items-center justify-start gap-3 text-[8px] sm:text-[9px] md:text-[10px] text-gray-500 font-light tracking-wider">
@@ -179,38 +256,13 @@ function renderSection(
 
     if (section.type === "pdf_note") {
         return (
-            <div className="px-8 sm:px-[6%] mt-8 sm:mt-12 md:mt-16 mb-10 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed">
-                <strong>{locale === 'th' ? 'หมายเหตุ :' : 'Note :'}</strong> {t(section.text)}
+            <div className="px-8 sm:px-[6%] mt-4 sm:mt-6 mb-6 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed whitespace-pre-line">
+                {!section.hidePrefix && <strong>{locale === 'th' ? 'หมายเหตุ :' : 'Note :'} </strong>}{t(section.text)}
             </div>
         );
     }
 
-    if (section.type === "pdf_spread") {
-        return (
-            <div className="grid grid-cols-1 xl:grid-cols-2 gap-2 w-full mx-auto">
-                <div className="">
-                    <Image
-                        src={section.leftSrc}
-                        alt={section.alt ? `${section.alt} Left` : "left page"}
-                        width={1240}
-                        height={1754}
-                        className="w-full h-auto mb-2"
-                        priority
-                    />
-                </div>
-                <div className="">
-                    <Image
-                        src={section.rightSrc}
-                        alt={section.alt ? `${section.alt} Right` : "right page"}
-                        width={1240}
-                        height={1754}
-                        className="w-full h-auto mb-2"
-                        priority
-                    />
-                </div>
-            </div>
-        );
-    }
+
 
     return null;
 }

@@ -10,18 +10,19 @@
     "social": "Social Responsibility"
   },
   "Menu": {
+    "intro": "Introduction",
     "highlight": "Highlight of the Year",
     "performance": "Performance in the past year",
     "board_report": "Board of Directors' Report",
     "ceo_message": "Message from the CEO",
-    "part1": "Part 1 Business Operation and Performance",
+    "part1": "Business Operation and Performance",
     "part1_1": "Policy and Overview",
     "part1_2": "Business Map",
     "part1_3": "Vision and Mission",
-    "part2": "Part 2 Corporate Governance",
+    "part2": "Corporate Governance",
     "part2_1": "Corporate Governance Policy",
     "part2_2": "Corporate Governance Structure",
-    "part3": "Part 3 Certification of Information Accuracy",
+    "part3": "Certification of Information Accuracy",
     "part3_1": "Attachment 1: Board Details",
     "part3_2": "Attachment 2: Executives Details"
   },
