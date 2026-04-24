@@ -92,7 +92,7 @@ export default function Sidebar() {
       <div className="p-6 shrink-0">
         <Link href={`/${locale}/`} className="flex justify-center mb-6">
           <div className="text-center">
-            <img src="/logo.png" alt="BANPU" className="h-14" />
+            <img src="/logo.webp" alt="BANPU" className="h-14" />
           </div>
         </Link>
       </div>

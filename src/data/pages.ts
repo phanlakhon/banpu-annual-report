@@ -67,8 +67,8 @@ export const pagesData: Record<string, PageData> = {
         items: [
           {
             type: 'pdf_banner',
-            src: '/page-intro/intro_p02_full.png',
-            mobileSrcs: ['/page-intro/page-4-mobile-head.png', '/page-intro/page-4-mobile.png']
+            src: '/page-intro/intro_p02_full.webp',
+            mobileSrcs: ['/page-intro/page-4-mobile-head.webp', '/page-intro/page-4-mobile.webp']
           }
         ]
       },
@@ -77,8 +77,8 @@ export const pagesData: Record<string, PageData> = {
         items: [
           {
             type: 'pdf_banner',
-            src: '/page-intro/intro_p03_full.png',
-            mobileSrcs: ['/page-intro/page-5-mobile-head.png', '/page-intro/page-5-mobile-1.png', '/page-intro/page-5-mobile-2.png']
+            src: '/page-intro/intro_p03_full.webp',
+            mobileSrcs: ['/page-intro/page-5-mobile-head.webp', '/page-intro/page-5-mobile-1.webp', '/page-intro/page-5-mobile-2.webp']
           }
         ]
       }
@@ -90,7 +90,7 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'จุดเด่นในรอบปี 2568', en: 'Highlights of 2025' },
     subtitle: { th: '', en: '' },
     accentColor: '#1e90e6',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f0f8ff',
     layout: 'pdf_composition',
     sections: [
       {
@@ -98,18 +98,18 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#d0f5fe',
         pageNumber: '04',
         pageNumberAlign: 'left',
-        desktopFullImage: '/page-04/04_p04_full.png',
+        desktopFullImage: '/page-04/04_p04_full.webp',
         items: [
           {
             type: 'pdf_banner',
-            src: '/page-04/04_p06_banner.png',
+            src: '/page-04/04_p06_banner.webp',
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-04/04_p06_col1.png' },
-              { src: '/page-04/04_p06_col2.png' },
-              { src: '/page-04/04_p06_col3.png' }
+              { src: '/page-04/04_p06_col1.webp' },
+              { src: '/page-04/04_p06_col2.webp' },
+              { src: '/page-04/04_p06_col3.webp' }
             ]
           }
         ]
@@ -119,18 +119,18 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#c4f6fd',
         pageNumber: '05',
         pageNumberAlign: 'right',
-        desktopFullImage: '/page-04/04_p05_full.png',
+        desktopFullImage: '/page-04/04_p05_full.webp',
         items: [
           {
             type: 'pdf_banner',
-            src: '/page-04/04_p07_banner.png',
+            src: '/page-04/04_p07_banner.webp',
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-04/04_p07_col1.png' },
-              { src: '/page-04/04_p07_col2.png' },
-              { src: '/page-04/04_p07_col3.png' }
+              { src: '/page-04/04_p07_col1.webp' },
+              { src: '/page-04/04_p07_col2.webp' },
+              { src: '/page-04/04_p07_col3.webp' }
             ]
           }
         ]
@@ -140,7 +140,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#ddf7ff',
         pageNumber: '06',
         pageNumberAlign: 'left',
-        desktopFullImage: '/page-04/04_p06_full.png',
+        desktopFullImage: '/page-04/04_p06_full.webp',
         items: [
           {
             type: 'pdf_header',
@@ -152,29 +152,29 @@ export const pagesData: Record<string, PageData> = {
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-04/04_p08_row1_left.png' },
-              { src: '/page-04/04_p08_row1_right.png' }
+              { src: '/page-04/04_p08_row1_left.webp' },
+              { src: '/page-04/04_p08_row1_right.webp' }
             ]
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-04/04_p08_row2_left.png' },
-              { src: '/page-04/04_p08_row2_right.png' }
+              { src: '/page-04/04_p08_row2_left.webp' },
+              { src: '/page-04/04_p08_row2_right.webp' }
             ]
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-04/04_p08_row3_left.png' },
-              { src: '/page-04/04_p08_row3_right.png' }
+              { src: '/page-04/04_p08_row3_left.webp' },
+              { src: '/page-04/04_p08_row3_right.webp' }
             ]
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-04/04_p08_row4_left.png' },
-              { src: '/page-04/04_p08_row4_right.png' }
+              { src: '/page-04/04_p08_row4_left.webp' },
+              { src: '/page-04/04_p08_row4_right.webp' }
             ]
           },
           {
@@ -191,7 +191,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#ffffff',
         pageNumber: '07',
         pageNumberAlign: 'right',
-        desktopFullImage: '/page-04/04_p07_full.png',
+        desktopFullImage: '/page-04/04_p07_full.webp',
         items: [
           {
             type: 'pdf_header',
@@ -286,6 +286,7 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'ผลการดำเนินงานในรอบปีที่ผ่านมา', en: 'Performance in the Past Year' },
     subtitle: { th: '', en: '' },
     accentColor: '#2a2e82',
+    backgroundColor: '#f0f8ff',
     layout: 'pdf_composition',
     sections: [
       {
@@ -293,7 +294,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#ffffff',
         pageNumber: '08',
         pageNumberAlign: 'left',
-        desktopFullImage: '/page-08/08_p08_full.png',
+        desktopFullImage: '/page-08/08_p08_full.webp',
         items: [
           {
             type: 'pdf_header',
@@ -390,7 +391,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#e3f6fc',
         pageNumber: '09',
         pageNumberAlign: 'right',
-        desktopFullImage: '/page-08/08_p09_full.png',
+        desktopFullImage: '/page-08/08_p09_full.webp',
         items: [
           {
             type: 'pdf_header',
@@ -402,16 +403,16 @@ export const pagesData: Record<string, PageData> = {
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-08/08_row1_col1.png' },
-              { src: '/page-08/08_row1_col2.png' },
-              { src: '/page-08/08_row1_col3.png' }
+              { src: '/page-08/08_row1_col1.webp' },
+              { src: '/page-08/08_row1_col2.webp' },
+              { src: '/page-08/08_row1_col3.webp' }
             ]
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-08/08_row2_col1.png' },
-              { src: '/page-08/08_row2_col2.png' }
+              { src: '/page-08/08_row2_col1.webp' },
+              { src: '/page-08/08_row2_col2.webp' }
             ]
           },
           {
@@ -421,9 +422,9 @@ export const pagesData: Record<string, PageData> = {
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-08/08_row3_col1.png' },
-              { src: '/page-08/08_row3_col2.png' },
-              { src: '/page-08/08_row3_col3.png' }
+              { src: '/page-08/08_row3_col1.webp' },
+              { src: '/page-08/08_row3_col2.webp' },
+              { src: '/page-08/08_row3_col3.webp' }
             ]
           }
         ]
@@ -437,7 +438,7 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'รายงานคณะกรรมการบริษัท', en: "Board of Directors' Report" },
     subtitle: { th: '', en: '' },
     accentColor: '#311b92',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f0f8ff',
     layout: 'pdf_composition',
     sections: [
       {
@@ -446,7 +447,7 @@ export const pagesData: Record<string, PageData> = {
         noPadding: true,
         pageNumber: '10',
         pageNumberAlign: 'left',
-        desktopFullImage: '/page-10/10_p10_full.png',
+        desktopFullImage: '/page-10/10_p10_full.webp',
         items: [
           {
             type: 'pdf_page',
@@ -462,7 +463,7 @@ export const pagesData: Record<string, PageData> = {
               },
               {
                 type: 'pdf_banner',
-                src: '/page-10/10_quote_message.png',
+                src: '/page-10/10_quote_message.webp',
               },
             ]
           },
@@ -495,7 +496,7 @@ export const pagesData: Record<string, PageData> = {
         noPadding: true,
         pageNumber: '11',
         pageNumberAlign: 'right',
-        desktopFullImage: '/page-10/10_p11_full.png',
+        desktopFullImage: '/page-10/10_p11_full.webp',
         items: [
           {
             type: 'pdf_page',
@@ -511,7 +512,7 @@ export const pagesData: Record<string, PageData> = {
               },
               {
                 type: 'pdf_banner',
-                src: '/page-10/10_chairman_photo.png',
+                src: '/page-10/10_chairman_photo.webp',
               },
             ]
           },
@@ -547,6 +548,7 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'สารจากประธานเจ้าหน้าที่บริหาร', en: 'Message from the CEO' },
     subtitle: { th: '', en: '' },
     accentColor: '#1565c0',
+    backgroundColor: '#f0f8ff',
     sections: [],
     prevPage: '10',
     nextPage: '18',
@@ -556,6 +558,7 @@ export const pagesData: Record<string, PageData> = {
     title: { th: 'นโยบายและภาพรวมการประกอบธุรกิจ', en: 'Business Policy and Overview' },
     subtitle: { th: '', en: '' },
     accentColor: '#1e90e6',
+    backgroundColor: '#f0f8ff',
     sections: [],
     prevPage: '12',
     nextPage: '22',
