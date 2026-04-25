@@ -52,16 +52,18 @@ messages/
 └── en.json                        # English translations
 
 public/
-├── logo.png                       # BANPU logo
-├── page_1.png                     # Annual report cover (used on homepage)
-├── banpu-background.png           # Background asset
-├── homepage-bg.jpg                # Homepage background
+├── logo.webp                      # BANPU logo
+├── page_1.webp                    # Annual report cover (used on homepage)
+├── homepage-bg.webp               # Homepage background
+├── convert_webp.py                # Script: convert PNG → WebP (run locally as needed)
 ├── fonts/                         # Local font files
-├── page-intro/                    # Images for page 00 (intro)
+├── page-intro/                    # Images for page 00 (intro PDF pages 02–03)
 ├── page-04/                       # Images for page 04 (highlights, PDF pages 04–07)
 ├── page-08/                       # Images for page 08 (performance, PDF pages 08–09)
 └── page-10/                       # Images for page 10 (board report, PDF pages 10–11)
 ```
+
+> **All image assets must be `.webp`** — the project uses WebP throughout for smaller file sizes. Use `public/convert_webp.py` to batch-convert PNG/JPG exports from PDF.
 
 > **Key architecture note:** The homepage (`/th`, `/en`) has NO sidebar or header — it's a standalone full-screen page. Only routes under `/pages/*` show the sidebar and language switcher. This is achieved through Next.js **nested layouts**.
 
@@ -71,12 +73,12 @@ public/
 
 | Color | Hex | Usage |
 |-------|-----|-------|
-| Deep Navy | `#2a2e82` | Headings, primary text |
-| Royal Purple | `#311b92` | Active nav, accent |
+| Deep Navy | `#2a2e82` | Headings, primary text, table borders |
+| Royal Purple | `#311b92` | Active nav, page number color |
 | Brand Blue | `#1e90e6` | CTA buttons, links |
-| Medium Purple | `#4b3fa7` | Secondary headings |
-| Active Purple | `#5b3e96` | Language switcher active state |
-| Light Blue BG | `#eaf6fb` | Page backgrounds |
+| Sky Blue | `#3ab4e8` | Table section headers, quote marks |
+| Active Purple | `#5b3e96` | Language switcher active state, sidebar page numbers |
+| Light Blue BG | `#e3f6fc` | Section backgrounds in PDF pages |
 | Sidebar BG | `#f0f8ff` | Sidebar background |
 
 ---
@@ -88,9 +90,9 @@ public/
 /th                  → Thai homepage (full-screen, no sidebar)
 /en                  → English homepage
 /th/pages/00         → บทนำ / Introduction
-/th/pages/04         → จุดเด่นในรอบปี (Highlights)        ← PDF pages 04–07
-/th/pages/08         → ผลการดำเนินงาน (Performance)        ← PDF pages 08–09
-/th/pages/10         → รายงานคณะกรรมการ (Board Report)     ← PDF pages 10–11
+/th/pages/04         → จุดเด่นในรอบปี (Highlights)            ← PDF pages 04–07
+/th/pages/08         → ผลการดำเนินงาน (Performance)            ← PDF pages 08–09
+/th/pages/10         → รายงานคณะกรรมการ (Board Report)         ← PDF pages 10–11
 /th/pages/12         → สารจากประธาน (CEO Message)
 /th/pages/18         → นโยบายและภาพรวมธุรกิจ (Policy & Overview)
 /th/pages/22         → แผนที่ธุรกิจ (Business Map)
@@ -103,20 +105,47 @@ Replace `/th/` with `/en/` for English versions.
 
 ---
 
-## Current Status (as of 2026-04-23)
+## Sidebar Menu Structure
+
+The sidebar (`src/components/Sidebar.tsx`) is wired to translation keys in `messages/th.json` and `messages/en.json` under the `"Menu"` namespace.
+
+```
+สารบัญ
+  00  intro          ← NavLink (flat)
+  04  highlight      ← NavLink (flat)
+  08  performance    ← NavLink (flat)
+  10  board_report   ← NavLink (flat)
+  12  ceo_message    ← NavLink (flat)
+  ─────────────────
+  [1] part1          ← AccordionItem
+      18  part1_1
+      22  part1_2
+      24  part1_3
+  [2] part2          ← AccordionItem
+      254 part2_1
+      282 part2_2
+  [3] part3          ← AccordionItem
+      342 part3_1
+      354 part3_2    ← ⚠ href currently points to /342 (placeholder, page 354 not yet added)
+```
+
+---
+
+## Current Status (as of 2026-04-25)
 
 ### ✅ Done
 - [x] Project setup (Next.js + next-intl + Tailwind v4)
 - [x] Full-screen homepage (no sidebar/header)
 - [x] Nested layout: sidebar appears only under `/pages/*`
-- [x] Sidebar with accordion sections + active state detection
+- [x] Sidebar with accordion + active state detection
 - [x] Mobile responsive: hamburger menu, sidebar overlay, auto-close on nav
 - [x] Thai/English language switcher
-- [x] Prev/Next navigation between pages
-- [x] Page `00` — บทนำ/Introduction (image-based)
+- [x] Prev/Next navigation bar (shows actual page title, not just page number)
+- [x] All image assets converted to WebP
+- [x] Page `00` — บทนำ/Introduction (image-based, desktop + mobile variants)
 - [x] Page `04` — จุดเด่นในรอบปี (PDF pages 04–07: images + financial table)
-- [x] Page `08` — ผลการดำเนินงาน (PDF pages 08–09: table + chart images)
-- [x] Page `10` — รายงานคณะกรรมการ (PDF pages 10–11: photo + two-column text)
+- [x] Page `08` — ผลการดำเนินงาน (PDF pages 08–09: data table + chart images)
+- [x] Page `10` — รายงานคณะกรรมการ (PDF pages 10–11: quote photo + two-column text)
 
 ### 🚧 Pending — awaiting content from client
 - [ ] Page `12` — สารจากประธาน (CEO Message)
@@ -126,44 +155,45 @@ Replace `/th/` with `/en/` for English versions.
 - [ ] Page `254` — นโยบายการกำกับดูแล
 - [ ] Page `282` — โครงสร้างการกำกับดูแล
 - [ ] Page `342` — เอกสารแนบ 1
+- [ ] Page `354` — เอกสารแนบ 2 (sidebar link exists, page entry not yet added)
 
 ---
 
 ## Section Types (`src/data/pages.ts`)
 
-Each page entry in `pagesData` has a `layout` field and a `sections` array.
+Each page entry has a `layout` field and a `sections` array.
 
 ### `layout` options
 
 | Value | Description |
 |-------|-------------|
-| `'article'` | Simple article layout (white card, max-w-4xl) |
-| `'pdf_composition'` | Compose multiple PDF pages, each as a `pdf_page` block |
-| `'pdf_single_full'` | Single full-width PDF image (not yet used) |
+| `'pdf_composition'` | Multiple PDF pages composed in a 2-column grid (1 col on mobile, 2 cols on `xl`+). Each direct child must be a `pdf_page` block. |
+| `'article'` | White card, max-w-4xl, simple article layout. |
+| `'pdf_single_full'` | Single full-width image (max-w-660px). Not yet used. |
 
 ### Section types
 
 | Type | Description |
 |------|-------------|
-| `pdf_page` | Container for one PDF page. Has `backgroundColor`, `pageNumber`, `pageNumberAlign`, `desktopFullImage` (shows this image on lg+ instead of rendering children). Children are any other section types. |
-| `pdf_banner` | Full-width image. `mobileSrcs` overrides on mobile. |
-| `pdf_row` | Row of images (equal columns). `withGap` adds gap between items. |
-| `pdf_header` | Small breadcrumb-style header text (bilingual). |
-| `pdf_title` | Large section title text (bilingual). |
-| `pdf_sub_title` | Smaller subtitle text (bilingual). |
-| `pdf_quote_block` | Quote with signature image + name + position. |
-| `pdf_text_columns` | Two-column flowing text layout. `fontFamily: 'sarabun'` for serif Thai. |
-| `pdf_table` | Data table with columns + sections of rows. Supports `highlightColumnIndex` to bold one column. |
-| `pdf_note` | Footnote text. `hidePrefix` hides the "หมายเหตุ:" prefix. |
-| `text` | Simple paragraph with optional title (article layout). |
-| `highlights` | KPI cards grid (article layout). |
-| `quote` | Blockquote with attribution (article layout). |
-| `list` | Bullet list (article layout). |
-| `image` | Standalone image with optional caption (article layout). |
+| `pdf_page` | Container for one PDF page. `backgroundColor`, `pageNumber`, `pageNumberAlign` (`'left'`/`'right'`), `pageNumberColor`. When `desktopFullImage` is set, shows that image on `sm+` screens and renders child `items` only on mobile. |
+| `pdf_banner` | Full-width image. Optional `mobileSrcs[]` — if provided, the main `src` is hidden on mobile and replaced with the mobile array. |
+| `pdf_row` | Row of images in equal columns. On mobile stacks vertically. `withGap` adds spacing between columns. |
+| `pdf_header` | Breadcrumb-style header text (bilingual). **Currently renders `null` — hidden.** |
+| `pdf_title` | Large gradient heading (bilingual). |
+| `pdf_sub_title` | Centered subtitle (bilingual). |
+| `pdf_quote_block` | Quote in a light-blue box with opening/closing quote marks and a signature (image + name + position). |
+| `pdf_text_columns` | Two-column flowing text. `fontFamily: 'sarabun'` applies serif Thai via `font-sarabun` class. |
+| `pdf_table` | Financial data table. `columns[]` are year headers. `sections[]` each have a `title`, optional `unit`, and `rows[]`. `highlightColumnIndex` highlights one column. `rows` support `isBold` and per-row `unit` override. |
+| `pdf_note` | Footnote text. `hidePrefix: true` hides the "หมายเหตุ:" / "Note:" label. Supports `\n` for line breaks. |
+| `text` | Simple paragraph with optional title (article layout only). |
+| `highlights` | KPI cards grid, 2 cols on mobile / 3 cols on desktop (article layout only). |
+| `quote` | Blockquote with attribution (article layout only). |
+| `list` | Bullet list (article layout only). |
+| `image` | Standalone image with optional caption (article layout only). |
 
 ### `desktopFullImage` pattern
 
-For `pdf_page` blocks, set `desktopFullImage` to a full-resolution PNG of the PDF page. On `lg+` screens this image is shown instead of rendering the child items. On mobile the child items render normally. This avoids re-slicing images for large screens.
+Set on a `pdf_page` to show a full-res image on `sm+` screens while rendering child items on mobile. This avoids slicing images for desktop.
 
 ```ts
 {
@@ -171,12 +201,13 @@ For `pdf_page` blocks, set `desktopFullImage` to a full-resolution PNG of the PD
   backgroundColor: '#d0f5fe',
   pageNumber: '04',
   pageNumberAlign: 'left',
-  desktopFullImage: '/page-04/04_p04_full.png',  // ← shown on desktop
+  desktopFullImage: '/page-04/04_p04_full.webp',  // shown on sm+ screens
   items: [
-    { type: 'pdf_banner', src: '/page-04/04_p04_banner.png' },
+    // rendered on mobile only
+    { type: 'pdf_banner', src: '/page-04/04_p04_banner.webp' },
     { type: 'pdf_row', items: [
-      { src: '/page-04/04_p04_col1.png' },
-      { src: '/page-04/04_p04_col2.png' },
+      { src: '/page-04/04_p04_col1.webp' },
+      { src: '/page-04/04_p04_col2.webp' },
     ]},
   ]
 }
@@ -186,15 +217,22 @@ For `pdf_page` blocks, set `desktopFullImage` to a full-resolution PNG of the PD
 
 ## How to Add a New Page
 
-### Step 1 — Prepare images
+### Step 1 — Export and convert images
 
-Export each PDF page as PNG. Naming convention:
+Export each PDF page as PNG from Acrobat/Preview, then convert to WebP:
+
+```bash
+cd public
+python3 convert_webp.py   # converts all PNG/JPG in current folder tree to .webp
+```
+
+Naming convention:
 ```
 public/page-{pageId}/
-  {pageId}_p{pdfPageNum}_full.png      ← full desktop image
-  {pageId}_p{pdfPageNum}_banner.png    ← top banner strip
-  {pageId}_p{pdfPageNum}_col1.png      ← column slices (if needed)
-  {pageId}_p{pdfPageNum}_col2.png
+  {pageId}_p{pdfPageNum}_full.webp      ← full desktop image (used in desktopFullImage)
+  {pageId}_p{pdfPageNum}_banner.webp    ← top banner strip (for mobile pdf_banner)
+  {pageId}_p{pdfPageNum}_col1.webp      ← column slices (for mobile pdf_row)
+  {pageId}_p{pdfPageNum}_col2.webp
   ...
 ```
 
@@ -213,10 +251,10 @@ public/page-{pageId}/
       backgroundColor: '#e3f6fc',
       pageNumber: '12',
       pageNumberAlign: 'left',
-      desktopFullImage: '/page-12/12_p12_full.png',
+      desktopFullImage: '/page-12/12_p12_full.webp',
       items: [
-        { type: 'pdf_banner', src: '/page-12/12_p12_banner.png' },
-        // ...
+        { type: 'pdf_banner', src: '/page-12/12_p12_banner.webp' },
+        // add more section types as needed
       ]
     }
   ],
@@ -225,13 +263,49 @@ public/page-{pageId}/
 },
 ```
 
-### Step 3 — Update Sidebar (if new menu item needed)
+### Step 3 — Update Sidebar if needed
 
-In `src/components/Sidebar.tsx`, add to the relevant `<AccordionItem>` items array or as a `<NavLink>`.
+In `src/components/Sidebar.tsx`, add a `<NavLink>` or add an item to an existing `<AccordionItem>`.
 
-### Step 4 — Update messages (if Sidebar label needed)
+### Step 4 — Update messages if needed
 
-Add translation key to `messages/th.json` and `messages/en.json`.
+Add the translation key to both `messages/th.json` and `messages/en.json` under `"Menu"`.
+
+---
+
+## Adapting for a New Report (same logo/colors, different content)
+
+> Use this checklist after copying the project folder to a new directory.
+
+### 1. `src/app/[locale]/page.tsx` — Homepage text + cover image
+
+Change heading, subheading, and description (both TH and EN inline in the file). Change the cover image:
+```
+public/page_1.webp   ← replace with the new report's cover
+```
+
+### 2. `messages/th.json` + `messages/en.json` — Menu labels
+
+Edit all keys under `"Menu"` to match the new report's section names.
+
+### 3. `src/components/Sidebar.tsx` — Page numbers + menu structure
+
+Change the `pageId` values in `<NavLink>` and `<AccordionItem>` to match the new report's page numbers. Add or remove `<AccordionItem>` blocks to match the number of parts.
+
+### 4. `src/data/pages.ts` — All page content
+
+- Change `pageId`, `title`, `prevPage`, `nextPage` for every entry
+- Set `sections: []` initially (shows "กำลังเตรียมเนื้อหา" placeholder)
+- Update `pageOrder` array at the bottom of the file
+
+### 5. `public/` — Images
+
+Delete old `page-XX/` folders, create new ones following the naming convention above.  
+Files shared between reports (`logo.webp`, `fonts/`) don't need to change.
+
+### 6. `PROJECT.md` — Update this file
+
+Update the company name, URL structure, Current Status, and any other changed details.
 
 ---
 
@@ -250,7 +324,10 @@ npm run dev
 - **`params` are async in Next.js 16**: always `await params` before destructuring `locale` or `pageId`
 - **`'use client'`** components: `PagesShell`, `Sidebar`, `LanguageSwitcher`
 - **Server components**: all `layout.tsx` and `page.tsx` files
-- **Tailwind v4 canonical classes**: use `shrink-0` (not `flex-shrink-0`), `-mt-1.25` (not `mt-[-5px]`), `min-w-7.5` (not `min-w-[30px]`), `mt-px` (not `mt-[1px]`)
-- **Do not define components inside render functions** — causes "Cannot create components during render" error. Define them at module scope.
+- **Tailwind v4 canonical classes**: `shrink-0` (not `flex-shrink-0`), `-mt-1.25` (not `mt-[-5px]`), `min-w-7.5` (not `min-w-[30px]`), `mt-px` (not `mt-[1px]`)
+- **Never define components inside render functions** — causes "Cannot create components during render". Always define at module scope.
+- **Images must be `.webp`** — use `convert_webp.py` to convert exports before adding to `public/`
 - **i18n routing**: `src/middleware.ts` handles locale detection; root `/` redirects to `/th`
 - **Locale list**: `['en', 'th']`, default `'th'` — defined in `src/i18n/routing.ts`
+- **`pdf_header` is hidden**: `renderSection` returns `null` for `pdf_header` type (intentional, can be un-hidden by removing the `return null`)
+- **`pdf_page` desktop breakpoint is `sm`**, not `lg` — the full image shows from 640px up
