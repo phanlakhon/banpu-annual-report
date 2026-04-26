@@ -20,7 +20,7 @@ export type PageSection =
   | { type: 'quote'; content: BilingualText; attribution?: BilingualText }
   | { type: 'list'; title?: BilingualText; items: BilingualText[] }
   | { type: 'image'; src: BilingualSrc; alt?: string; caption?: BilingualText }
-  | { type: 'pdf_banner'; src: BilingualSrc; mobileSrcs?: BilingualSrc[]; alt?: string }
+  | { type: 'pdf_banner'; src: BilingualSrc; mobileSrcs?: BilingualSrc[]; alt?: string; minWidth?: number }
   | { type: 'pdf_row'; items: Array<{ src: BilingualSrc; alt?: string; colSpan?: number }>; withGap?: boolean }
   | { type: 'pdf_page'; items: PageSection[]; backgroundColor?: string; noPadding?: boolean; noMinHeight?: boolean; pageNumber?: string; pageNumberAlign?: 'left' | 'right'; pageNumberColor?: string; desktopFullImage?: BilingualSrc }
   | { type: 'pdf_note'; text: BilingualText; hidePrefix?: boolean }
@@ -136,88 +136,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#ffffff',
         desktopFullImage: { th: '/page_001/001_p04_full_th.webp', en: '/page_001/001_p04_full_en.webp' },
         items: [
-          {
-            type: 'pdf_header',
-            text: {
-              th: 'รายงานประจำปี 2568 แบบแสดงรายการข้อมูลประจำปี (แบบ 56-1 One Report) บริษัท บ้านปู จำกัด (มหาชน)',
-              en: 'Annual Report 2025 (Form 56-1 One Report) Banpu Public Company Limited'
-            }
-          },
-          {
-            type: 'pdf_table',
-            headerTitle: { th: 'สำหรับปีสิ้นสุดวันที่', en: 'For the Year Ended' },
-            highlightColumnIndex: 0,
-            columns: [
-              { th: '31 ธันวาคม 2568', en: '31 Dec 2025' },
-              { th: '31 ธันวาคม 2567', en: '31 Dec 2024' },
-              { th: '31 ธันวาคม 2566', en: '31 Dec 2023' }
-            ],
-            sections: [
-              {
-                title: { th: 'ฐานะการเงิน', en: 'Financial Position' },
-                rows: [
-                  { label: { th: 'สินทรัพย์รวม', en: 'Total Assets' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['13,941', '12,399', '13,000'] },
-                  { label: { th: 'หนี้สินรวม', en: 'Total Liabilities' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['9,048', '7,698', '8,172'] },
-                  { label: { th: 'ส่วนของผู้ถือหุ้น', en: "Total Shareholders' Equity" }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['4,893', '4,701', '4,828'] },
-                  { label: { th: 'ทุนที่ออกและเรียกชำระแล้ว', en: 'Issued and Paid-up Share Capital' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['285', '285', '285'] },
-                ]
-              },
-              {
-                title: { th: 'ผลการดำเนินงาน', en: 'Operational Results' },
-                rows: [
-                  { label: { th: 'รายได้จากการขายรวม', en: 'Sale Revenues' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['5,278', '5,148', '5,083'] },
-                  { label: { th: 'ต้นทุนขาย', en: 'Cost of Sales' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(4,080)', '(3,900)', '(3,665)'] },
-                  { label: { th: 'กำไรขั้นต้น', en: 'Gross Profit' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['1,198', '1,248', '1,418'], isBold: true },
-                  { label: { th: 'ค่าใช้จ่ายในการขายและบริหาร', en: 'Selling and Administration Expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(688)', '(615)', '(556)'] },
-                  { label: { th: 'ค่าภาคหลวง', en: 'Royalty Fee' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(290)', '(329)', '(379)'] },
-                  { label: { th: 'รายได้อื่น', en: 'Other Revenues' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['189', '245', '219'] },
-                  { label: { th: 'ค่าใช้จ่ายอื่น', en: 'Other Expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(151)', '(136)', '(96)'] },
-                  { label: { th: 'กำไรจากการดำเนินงาน', en: 'Profit from Operation' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['258', '413', '606'] },
-                  { label: { th: 'ส่วนแบ่งกำไรจากกิจการร่วมค้า', en: 'Share of Profit from Joint Ventures' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['126', '196', '268'] },
-                  { label: { th: 'ดอกเบี้ยจ่าย', en: 'Interest Expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(341)', '(377)', '(374)'] },
-                  { label: { th: 'ค่าใช้จ่ายทางการเงิน', en: 'Financial Expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(20)', '(24)', '(10)'] },
-                  { label: { th: 'ภาษีเงินได้', en: 'Corporate Income Tax' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['7', '(97)', '(119)'] },
-                  { label: { th: 'ส่วนที่เป็นของส่วนได้เสียที่ไม่มีอำนาจควบคุม', en: 'Non-controlling Interests' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(92)', '(135)', '(212)'] },
-                  { label: { th: 'กำไร (ขาดทุน) สุทธิ', en: 'Net (Loss) Profit' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(61)', '(24)', '160'], isBold: true },
-                  { label: { th: 'กำไรจากการดำเนินงานก่อนดอกเบี้ย ภาษี ค่าเสื่อมราคา และค่าใช้จ่ายตัดจ่าย', en: 'EBITDA' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['1,191', '1,326', '1,487'], isBold: true },
-                ]
-              },
-              {
-                title: { th: 'อัตราส่วนทางการเงิน', en: 'Financial Ratios' },
-                rows: [
-                  { label: { th: 'อัตรากำไรขั้นต้น', en: 'Gross Profit Margin' }, unit: { th: '(%)', en: '(%)' }, values: ['22.7', '24.2', '27.9'] },
-                  { label: { th: 'อัตรากำไร (ขาดทุน) สุทธิต่อรายได้รวม', en: 'Net (Loss) Profits to Total Revenues' }, unit: { th: '(%)', en: '(%)' }, values: ['0.55', '1.99', '6.67'] },
-                  { label: { th: 'อัตราผลตอบแทนจากสินทรัพย์', en: 'Returns on Assets' }, unit: { th: '(%)', en: '(%)' }, values: ['0.23', '0.88', '2.90'] },
-                  { label: { th: 'อัตราผลตอบแทนผู้ถือหุ้น', en: 'Returns on Equity' }, unit: { th: '(%)', en: '(%)' }, values: ['(1.80)', '(0.66)', '4.42'] },
-                  { label: { th: 'อัตราส่วนความสามารถในการชำระดอกเบี้ย', en: 'Interest Coverage Ratio' }, unit: { th: '(เท่า)', en: '(Times)' }, values: ['3.49', '3.53', '3.98'] },
-                  { label: { th: 'อัตราส่วนหนี้สินสุทธิต่อส่วนของผู้ถือหุ้น', en: 'Net Debt to Equity' }, unit: { th: '(เท่า)', en: '(Times)' }, values: ['0.98', '0.79', '0.90'] },
-                ]
-              },
-              {
-                title: { th: 'ข้อมูลต่อหุ้น', en: 'Data per Share' },
-                rows: [
-                  { label: { th: 'กำไรสุทธิต่อหุ้น', en: 'Earnings per Share' }, unit: { th: '(เหรียญสหรัฐ)', en: '(USD)' }, values: ['(0.006)', '(0.002)', '0.018'] },
-                  { label: { th: 'มูลค่าตามบัญชีต่อหุ้น', en: 'Book Value per Share' }, unit: { th: '(เหรียญสหรัฐ)', en: '(USD)' }, values: ['0.49', '0.47', '0.48'] },
-                  { label: { th: 'เงินปันผลต่อหุ้น', en: 'Dividend per Share' }, unit: { th: '(บาท)', en: '(THB)' }, values: ['0.30*', '0.30', '0.45'] },
-                ]
-              }
-            ]
-          },
-          {
-            type: 'pdf_note',
-            hidePrefix: true,
-            text: {
-              th: '* บริษัทฯ กำหนดการจ่ายเงินปันผลสำหรับผลการดำเนินงานประจำปี 2568 งวดวันที่ 1 มกราคม 2568 ถึงวันที่ 31 ธันวาคม 2568 ในอัตราหุ้นละ 0.30 บาท ซึ่งได้จ่ายเป็นเงินปันผลระหว่างกาลในอัตราหุ้นละ 0.12 บาท เมื่อวันที่ 25 กันยายน 2568 คงเหลือจ่ายเงินปันผลสำหรับผลการดำเนินงานประจำปี 2568 อีกหุ้นละ 0.18 บาท และบริษัทฯ กำหนดจ่ายเงินปันผลในวันที่ 29 เมษายน 2569',
-              en: '* The Company announced a total dividend of THB 0.30 per share arising from its performance for the period from 1 January 2025 to 31 December 2025, of which THB 0.12 was paid on 25 September 2025. The remaining dividend of THB 0.18 per share for the 2025 performance will be paid on 29 April 2026.'
-            }
-          },
-          {
-            type: 'pdf_note',
-            text: {
-              th: 'ข้อมูลทางการเงินและอัตราส่วนทางการเงินเป็นข้อมูลจากงบการเงินรวม\nรายงานฉบับนี้นำเสนอผลการดำเนินงานของปี 2568 ก่อนวันที่ 29 มกราคม 2569 ที่ประชุมวิสามัญผู้ถือหุ้นครั้งที่ 1/2569 ที่ได้มีมติอนุมัติการปรับโครงสร้างกลุ่มบริษัท โดยการควบรวม (Amalgamation) ระหว่างบริษัทฯ และ BPP เพื่อจัดตั้งบริษัทใหม่ (NewCo)',
-              en: 'Financial figures are based on the consolidated financial statements.\nThis report presents the operating results for FY2025 prior to 29 January 2026, on which date the Extraordinary General Meeting of Shareholders No. 1/2026 approved the group restructuring through an amalgamation between the Company and BPP to establish a new company (NewCo).'
-            }
-          }
+          { type: 'pdf_banner', src: { th: '/page_001/001_p04_mobile_table_th.webp', en: '/page_001/001_p04_mobile_table_en.webp' }, minWidth: 560 },
         ]
       },
     ],
@@ -233,141 +152,21 @@ export const pagesData: Record<string, PageData> = {
       {
         type: 'pdf_page',
         backgroundColor: '#ffffff',
-        pageNumber: '08',
-        pageNumberAlign: 'left',
-        desktopFullImage: { th: '/page-08/08_p08_full_th.webp', en: '/page-08/08_p08_full_en.webp' },
+        // pageNumber: '08',
+        // pageNumberAlign: 'left',
+        desktopFullImage: { th: '/page_002/002_p01_full_th.webp', en: '/page_002/002_p01_full_en.webp' },
         items: [
-          {
-            type: 'pdf_header',
-            text: {
-              th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
-              en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
-            }
-          },
-          {
-            type: 'pdf_title',
-            text: {
-              th: 'ผลการดำเนินงานในรอบปีที่ผ่านมา',
-              en: 'Operational Results'
-            }
-          },
-          {
-            type: 'pdf_table',
-            headerTitle: { th: 'สิ้นสุด ณ ปี', en: 'As of Year' },
-            highlightColumnIndex: 0,
-            columns: [
-              { th: '2568', en: '2025' },
-              { th: '2567', en: '2024' },
-              { th: '2566', en: '2023' }
-            ],
-            sections: [
-              {
-                title: { th: 'ปริมาณการขายถ่านหิน', en: 'Coal Sales Volume' },
-                unit: { th: '(ล้านตัน)', en: '(Million Tonnes)' },
-                rows: [
-                  { label: { th: 'ปริมาณการขายถ่านหิน - อินโดนีเซีย', en: 'Coal Sales Volume - Indonesia' }, values: ['20.5', '19.6', '17.0'] },
-                  { label: { th: 'ปริมาณการขายถ่านหิน - แหล่งอื่น', en: 'Coal Sales Volume - Others' }, values: ['4.2', '4.4', '4.0'] },
-                  { label: { th: 'รวมปริมาณการขายถ่านหิน - อินโดนีเซีย', en: 'Total Coal Sales Volume - Indonesia' }, values: ['24.7', '24.0', '21.0'], isBold: true },
-                  { label: { th: 'ปริมาณการขายถ่านหิน - ออสเตรเลีย', en: 'Coal Sales Volume - Australia' }, values: ['7.2', '7.9', '7.0'] },
-                  { label: { th: 'ปริมาณการขายถ่านหิน - มองโกเลีย', en: 'Coal Sales Volume - Mongolia' }, values: ['1.6', '-', '-'] },
-                  { label: { th: 'ปริมาณการขายถ่านหิน - จีน (ซื้อขายถ่านหิน) และแหล่งอื่น', en: 'Coal Sales Volume - China (Trading) and Others' }, values: ['1.8', '0.9', '1.9'] },
-                  { label: { th: 'รวมปริมาณการขายถ่านหิน', en: 'Total Coal Sales Volume' }, values: ['35.3', '32.8', '29.9'], isBold: true },
-                ]
-              },
-              {
-                title: { th: 'ปริมาณการขายก๊าซธรรมชาติ', en: 'Natural Gas Sales Volume' },
-                unit: { th: '(พันล้านลูกบาศก์ฟุตเทียบเท่า)', en: '(BCFe)' },
-                rows: [
-                  { label: { th: 'ปริมาณการขายก๊าซธรรมชาติ - แหล่งมาร์เซลลัส', en: 'Natural Gas Sales Volume - Marcellus' }, values: ['34.2', '42.8', '51.4'] },
-                  { label: { th: 'ปริมาณการขายก๊าซธรรมชาติ - แหล่งบาร์เนตต์', en: 'Natural Gas Sales Volume - Barnett' }, values: ['270.8', '245.6', '262.3'] },
-                  { label: { th: 'รวมปริมาณการขายก๊าซธรรมชาติ', en: 'Total Natural Gas Sales Volume' }, values: ['305.0', '288.4', '313.7'], isBold: true },
-                  { label: { th: 'ปริมาณการกักเก็บคาร์บอน', en: 'Carbon Capture Volume' }, unit: { th: '(พันตันคาร์บอนไดออกไซด์เทียบเท่า)', en: '(MT CO2e)' }, values: ['138.3', '165.1', '8.2'], isBold: true },
-                ]
-              },
-              {
-                title: { th: 'รายได้รวม', en: 'Total Revenue' },
-                unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' },
-                rows: [
-                  { label: { th: 'รายได้ - อินโดนีเซีย', en: 'Revenue - Indonesia' }, values: ['1,879', '2,294', '2,398'] },
-                  { label: { th: 'รายได้ - ออสเตรเลีย', en: 'Revenue - Australia' }, values: ['712', '914', '805'] },
-                  { label: { th: 'รายได้ - มองโกเลีย', en: 'Revenue - Mongolia' }, values: ['51', '-', '-'] },
-                  { label: { th: 'รายได้ - จีน (ซื้อขายถ่านหิน) และแหล่งอื่น', en: 'Revenue - China (Trading) and Others' }, values: ['128', '82', '118'] },
-                  { label: { th: 'รวมรายได้ธุรกิจเหมืองยุคใหม่', en: 'Total Revenue from Modern Mining' }, values: ['2,770', '3,290', '3,321'], isBold: true },
-                  { label: { th: 'รายได้ธุรกิจก๊าซธรรมชาติครบวงจร', en: 'Revenue from Integrated Natural Gas' }, values: ['913', '726', '706'] },
-                  { label: { th: 'รายได้ธุรกิจไฟฟ้าและธุรกิจที่เกี่ยวเนื่อง', en: 'Revenue from Power and Related Business' }, values: ['888', '777', '860'] },
-                  { label: { th: 'รายได้ธุรกิจเทคโนโลยีแห่งอนาคต', en: 'Revenue from Future Energy Technology' }, values: ['699', '350', '191'] },
-                  { label: { th: 'รายได้ธุรกิจอื่น', en: 'Revenue from Others' }, values: ['8', '6', '5'] },
-                  { label: { th: 'รายได้รวม', en: 'Total Revenue' }, values: ['5,278', '5,149', '5,083'], isBold: true },
-                ]
-              },
-              {
-                title: { th: 'อัตรากำไรขั้นต้น', en: 'Gross Profit Margin' },
-                unit: { th: '(%)', en: '(%)' },
-                rows: [
-                  { label: { th: 'อัตรากำไรขั้นต้น - อินโดนีเซีย', en: 'Gross Profit Margin - Indonesia' }, values: ['37', '42', '46'] },
-                  { label: { th: 'อัตรากำไรขั้นต้น - ออสเตรเลีย', en: 'Gross Profit Margin - Australia' }, values: ['6', '5', '1'] },
-                  { label: { th: 'อัตรากำไรขั้นต้น - มองโกเลีย', en: 'Gross Profit Margin - Mongolia' }, values: ['59', '-', '-'] },
-                  { label: { th: 'อัตรากำไรขั้นต้น - จีน (ซื้อขายถ่านหิน) และแหล่งอื่น', en: 'Gross Profit Margin - China (Trading) and Others' }, values: ['8', '14', '13'] },
-                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจเหมืองยุคใหม่', en: 'Gross Profit Margin - Modern Mining' }, values: ['28', '31', '34'], isBold: true },
-                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจก๊าซธรรมชาติครบวงจร', en: 'Gross Profit Margin - Integrated Natural Gas' }, values: ['24', '17', '-1'] },
-                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจไฟฟ้าและธุรกิจที่เกี่ยวเนื่อง', en: 'Gross Profit Margin - Power and Related Business' }, values: ['18', '10', '31'] },
-                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจเทคโนโลยีแห่งอนาคต', en: 'Gross Profit Margin - Future Energy Technology' }, values: ['5', '27', '25'] },
-                  { label: { th: 'อัตรากำไรขั้นต้น - ธุรกิจอื่น', en: 'Gross Profit Margin - Others' }, values: ['70', '7', '8'] },
-                  { label: { th: 'อัตรากำไรขั้นต้นรวม', en: 'Total Gross Profit Margin' }, unit: { th: '(%)', en: '(%)' }, values: ['23', '24', '28'], isBold: true },
-                ]
-              }
-            ]
-          },
-          {
-            type: 'pdf_note',
-            text: {
-              th: 'รายงานฉบับนี้นำเสนอผลการดำเนินงานของปี 2568 ก่อนวันที่ 29 มกราคม 2569 ที่ประชุมวิสามัญผู้ถือหุ้นครั้งที่ 1/2569 ที่ได้มีมติอนุมัติการปรับโครงสร้างกลุ่มบริษัท โดยการควบรวม (Amalgamation) ระหว่างบริษัทฯ และ BPP เพื่อจัดตั้งบริษัทใหม่ (NewCo)',
-              en: 'This report presents the performance of 2025 prior to January 29, 2026, when the EGM No. 1/2026 approved the corporate restructuring through the amalgamation between the Company and BPP to form a new company (NewCo).'
-            }
-          }
+          { type: 'pdf_banner', src: { th: '/page_002/002_p01_table_th.webp', en: '/page_002/002_p01_table_en.webp' }, minWidth: 560 },
         ]
       },
       {
         type: 'pdf_page',
         backgroundColor: '#e3f6fc',
-        pageNumber: '09',
-        pageNumberAlign: 'right',
-        desktopFullImage: { th: '/page-08/08_p09_full_th.webp', en: '/page-08/08_p09_full_en.webp' },
+        // pageNumber: '09',
+        // pageNumberAlign: 'right',
+        desktopFullImage: { th: '/page_002/002_p02_full_th.webp', en: '/page_002/002_p02_full_en.webp' },
         items: [
-          {
-            type: 'pdf_header',
-            text: {
-              th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
-              en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
-            }
-          },
-          {
-            type: 'pdf_row',
-            items: [
-              { src: { th: '/page-08/08_row1_col1_th.webp', en: '/page-08/08_row1_col1_en.webp' } },
-              { src: { th: '/page-08/08_row1_col2_th.webp', en: '/page-08/08_row1_col2_en.webp' } },
-              { src: { th: '/page-08/08_row1_col3_th.webp', en: '/page-08/08_row1_col3_en.webp' } }
-            ]
-          },
-          {
-            type: 'pdf_row',
-            items: [
-              { src: { th: '/page-08/08_row2_col1_th.webp', en: '/page-08/08_row2_col1_en.webp' } },
-              { src: { th: '/page-08/08_row2_col2_th.webp', en: '/page-08/08_row2_col2_en.webp' } }
-            ]
-          },
-          {
-            type: 'pdf_sub_title',
-            text: { th: 'รายได้รวม', en: 'Total Revenue' }
-          },
-          {
-            type: 'pdf_row',
-            items: [
-              { src: { th: '/page-08/08_row3_col1_th.webp', en: '/page-08/08_row3_col1_en.webp' } },
-              { src: { th: '/page-08/08_row3_col2_th.webp', en: '/page-08/08_row3_col2_en.webp' } },
-              { src: { th: '/page-08/08_row3_col3_th.webp', en: '/page-08/08_row3_col3_en.webp' } }
-            ]
-          }
+          { type: 'pdf_banner', src: { th: '/page_002/002_p02_mobile_th.webp', en: '/page_002/002_p02_mobile_en.webp' } },
         ]
       }
     ],
@@ -378,53 +177,52 @@ export const pagesData: Record<string, PageData> = {
     pageId: '003',
     title: { th: 'รายงานคณะกรรมการ', en: "The Board of Directors' Review" },
     accentColor: '#311b92',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#f0f8ff',
     layout: 'pdf_composition',
     sections: [
       {
         type: 'pdf_page',
         backgroundColor: '#ffffff',
-        noPadding: true,
-        pageNumber: '10',
-        pageNumberAlign: 'left',
-        desktopFullImage: { th: '/page-10/10_p10_full_th.webp', en: '/page-10/10_p10_full_en.webp' },
+        desktopFullImage: { th: '/page_003/003_p01_full_th.webp', en: '/page_003/003_p01_full_en.webp' },
         items: [
+          { type: 'pdf_banner', src: { th: '/page_003/003_p01_mobile_1_th.webp', en: '/page_003/003_p01_mobile_1_en.webp' } },
+          { type: 'pdf_banner', src: { th: '/page_003/003_p01_mobile_2_th.webp', en: '/page_003/003_p01_mobile_2_en.webp' } },
+        ]
+      },
+      {
+        type: 'pdf_page',
+        backgroundColor: '#ffffff',
+        desktopFullImage: { th: '/page_003/003_p02_full_th.webp', en: '/page_003/003_p02_full_en.webp' },
+        items: [
+          { type: 'pdf_banner', src: '/page_003/003_p02_mobile_1.webp' },
+          { type: 'pdf_banner', src: { th: '/page_003/003_p02_mobile_2_th.webp', en: '/page_003/003_p02_mobile_2_en.webp' } },
+        ]
+      }
+    ],
+    prevPage: '002',
+    nextPage: '004',
+  },
+  '004': {
+    pageId: '004',
+    title: { th: 'สารจากประธานเจ้าหน้าที่บริหาร', en: "Chief Executive Officer's Review" },
+    accentColor: '#1565c0',
+    backgroundColor: '#f0f8ff',
+    layout: 'pdf_composition',
+    sections: [
+      {
+        type: 'pdf_page',
+        backgroundColor: '#ffffff',
+        desktopFullImage: { th: '/page_004/004_p01_full_th.webp', en: '/page_004/004_p01_full_en.webp' },
+        items: [
+          { type: 'pdf_banner', src: { th: '/page_004/004_p01_mobile_th.webp', en: '/page_004/004_p01_mobile_en.webp' } },
+          { type: 'pdf_sub_title', text: { th: 'ความท้าทายและโอกาส', en: 'Challenges and Opportunities' } },
           {
-            type: 'pdf_page',
-            backgroundColor: '#e3f6fc',
-            noMinHeight: true,
-            items: [
+            type: 'pdf_text_columns',
+            fontFamily: 'sarabun',
+            columns: [
               {
-                type: 'pdf_header',
-                text: {
-                  th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
-                  en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
-                }
-              },
-              {
-                type: 'pdf_banner',
-                src: { th: '/page-10/10_quote_message_th.webp', en: '/page-10/10_quote_message_en.webp' },
-              },
-            ]
-          },
-          {
-            type: 'pdf_page',
-            backgroundColor: '#ffffff',
-            noMinHeight: true,
-            items: [
-              {
-                type: 'pdf_text_columns',
-                fontFamily: 'sarabun',
-                columns: [
-                  {
-                    th: 'ในปี 2568 คณะกรรมการบริษัทได้กำกับดูแลการดำเนินงานของบ้านปูภายใต้บริบทที่มีความท้าทายเพิ่มขึ้น จากทั้งการเปลี่ยนแปลงด้านภูมิรัฐศาสตร์ สภาพแวดล้อมทางธุรกิจและเทคโนโลยีที่มีความซับซ้อนมากขึ้น โดยคณะกรรมการยังคงยึดมั่นในหลักธรรมาภิบาล ความโปร่งใส และความรับผิดชอบต่อผู้มีส่วนได้เสียทุกฝ่าย เพื่อเสริมสร้างรากฐานของการดำเนินงานที่มั่นคงและยั่งยืนในระยะยาว\n\nสำหรับประเด็นเชิงยุทธศาสตร์ขององค์กร คณะกรรมการได้กำกับดูแลในประเด็นสำคัญที่ฝ่ายบริหารนำเสนอภายใต้ยุทธศาสตร์ Energy Symphonics ที่สะท้อนทิศทางหลักในการขับเคลื่อนธุรกิจของบ้านปู รวมถึงกำกับดูแลการลงทุนของบริษัทฯ และบริษัทย่อยให้เป็นไปตามแผนกลยุทธ์ การควบรวมระหว่างบ้านปู และบ้านปู เพาเวอร์ เพื่อสนับสนุนการปรับโครงสร้างองค์กรให้มีความคล่องตัว และประสิทธิภาพด้านเงินทุนมากยิ่งขึ้น โดยคณะกรรมการให้ความสำคัญกับบทบาทกำกับดูแล (Oversight) ในด้านความโปร่งใส การปฏิบัติตามกฎหมาย และการประเมินความเสี่ยง เพื่อให้กระบวนการดังกล่าวเป็นไปอย่างรัดกุมและสอดคล้องกับหลักธรรมาภิบาล',
-                    en: 'In 2025, the Board of Directors oversaw Banpu\'s operations within an increasingly challenging context, driven by geopolitical shifts and more complex business and technological environments. The Board remains committed to corporate governance, transparency, and accountability to all stakeholders to strengthen the foundation for stable and sustainable long-term operations.\n\nRegarding corporate strategic issues, the Board oversaw key matters presented by the management under the "Energy Symphonics" strategy, reflecting the core direction of Banpu\'s business. This included overseeing investments of the Company and its subsidiaries in accordance with the strategic plan, and the amalgamation between Banpu and Banpu Power to support corporate restructuring for greater agility and capital efficiency. The Board prioritized its oversight role in transparency, legal compliance, and risk assessment to ensure these processes were rigorous and aligned with corporate governance principles.'
-                  },
-                  {
-                    th: 'คณะกรรมการให้ความสำคัญกับการนำเทคโนโลยีและปัญญาประดิษฐ์ (AI) มาเพิ่มประสิทธิภาพการดำเนินธุรกิจ ที่ผ่านมาบริษัทฯ ได้นำ AI มาใช้ในธุรกิจหลัก ทั้งในด้านแผนการผลิต การตลาด และการจัดการห่วงโซ่อุปทาน เพื่อช่วยวิเคราะห์ข้อมูลเชิงลึก ควบคุมคุณภาพสินค้า และช่วยให้ลูกค้าสามารถสร้างมูลค่าเพิ่มเสริมความได้เปรียบในการแข่งขัน ในขณะเดียวกันด้านการกำกับดูแล ได้ส่งเสริมการนำเทคโนโลยีดิจิทัลและ AI มาประยุกต์ใช้ในการวิเคราะห์และการตรวจสอบ เพื่อเพิ่มประสิทธิภาพการตรวจสอบและติดตามผลอันนำไปสู่การปกป้ององค์กรจากความเสียหายและการสร้างมูลค่าเพิ่ม\n\nด้านการขับเคลื่อนด้านความยั่งยืน คณะกรรมการได้ทบทวนและปรับปรุงนโยบายด้าน ESG ที่สำคัญในปี 2568 ได้แก่ นโยบายสิทธิมนุษยชน นโยบายด้านการเปลี่ยนแปลง',
-                    en: 'The Board places high importance on leveraging technology and Artificial Intelligence (AI) to enhance business efficiency. The Company has integrated AI into its core businesses, including production planning, marketing, and supply chain management, to facilitate in-depth data analysis, quality control, and enable customers to create added value and competitive advantages. Concurrently, in terms of governance, the Board promoted the application of digital technology and AI in analysis and auditing to improve monitoring efficiency, leading to organizational protection and value creation.\n\nIn driving sustainability, the Board reviewed and updated key ESG policies in 2025, including the Human Rights Policy and Climate Change Policy.'
-                  }
-                ]
+                "th": "ปี 2568 เป็นปีที่โลกต้องเผชิญกับการเปลี่ยนแปลงเชิงโครงสร้างครั้งสำคัญ ทั้งจากความต้องการใช้ไฟฟ้าที่เพิ่มสูงขึ้นอย่างมาก การปรับเปลี่ยนสู่โลกดิจิทัลที่รวดเร็ว ตลอดจนระบบพลังงานทั่วโลกที่กำลังพลิกโฉมเพื่อตอบสนองต่อความคาดหวังที่เพิ่มขึ้นในด้านความรับผิดชอบด้านสภาพภูมิอากาศ ขณะเดียวกัน ความผันผวนทางภูมิรัฐศาสตร์และการเปลี่ยนแปลงของห่วงโซ่อุปทานยังคงเป็นบททดสอบสำคัญต่อความแข็งแกร่งของโครงสร้างพื้นฐานด้านพลังงานระดับโลก และความสามารถในการส่งมอบพลังงานที่มั่นคงและต่อเนื่องในระดับมหภาค\n\nจากความไม่แน่นอนที่เกิดขึ้น เห็นได้ชัดว่า การจัดหาพลังงานที่มีความเสถียร เข้าถึงได้ในราคาที่เหมาะสม และเป็นมิตรต่อสิ่งแวดล้อมมากยิ่งขึ้น ยังคงเป็นความท้าทายหลักของอุตสาหกรรมพลังงาน",
+                "en": "The year 2025 unfolded against a backdrop of profound global transformation. Accelerating electrification, rapid digitalization, and heightened expectations around climate responsibility continue to reshape energy systems, while geopolitical volatility and evolving supply chains test the resilience of global energy infrastructure and its ability to deliver reliable energy at scale.\n\nAmid such uncertainty, the central challenge faced by the energy sector remains clear and constant: how to deliver energy that is reliable, affordable, and more environmentally responsible."
               }
             ]
           }
@@ -433,57 +231,41 @@ export const pagesData: Record<string, PageData> = {
       {
         type: 'pdf_page',
         backgroundColor: '#ffffff',
-        noPadding: true,
-        pageNumber: '11',
-        pageNumberAlign: 'right',
-        desktopFullImage: { th: '/page-10/10_p11_full_th.webp', en: '/page-10/10_p11_full_en.webp' },
+        desktopFullImage: { th: '/page_004/004_p02_full_th.webp', en: '/page_004/004_p02_full_en.webp' },
         items: [
+          { type: 'pdf_banner', src: { th: '/page_004/004_p02_mobile_th.webp', en: '/page_004/004_p02_mobile_en.webp' } },
           {
-            type: 'pdf_page',
-            backgroundColor: '#e3f6fc',
-            noMinHeight: true,
-            items: [
+            type: 'pdf_text_columns',
+            fontFamily: 'sarabun',
+            columns: [
               {
-                type: 'pdf_header',
-                text: {
-                  th: 'รายงานประจำปี 2568 แบบแสดงรายการข้อมูลประจำปี (แบบ 56-1 One Report) บริษัท บ้านปู จำกัด (มหาชน)',
-                  en: 'Annual Report 2025 (Form 56-1 One Report) Banpu Public Company Limited'
-                }
-              },
-              {
-                type: 'pdf_banner',
-                src: { th: '/page-10/10_chairman_photo_th.webp', en: '/page-10/10_chairman_photo_en.webp' },
-              },
-            ]
-          },
-          {
-            type: 'pdf_page',
-            backgroundColor: '#ffffff',
-            noMinHeight: true,
-            items: [
-              {
-                type: 'pdf_text_columns',
-                fontFamily: 'sarabun',
-                columns: [
-                  {
-                    th: 'สภาพภูมิอากาศ นโยบายด้านความหลากหลายทางชีวภาพ และหลักจรรยาบรรณคู่ค้า รวมถึงได้ตั้งเป้าหมายระยะ 5 ปี สำหรับรอบปี 2569 - 2573 โดยหัวข้อที่ได้มีการตั้งเป้าหมาย เช่น การใช้น้ำ คุณภาพอากาศ และอาชีวอนามัย และความปลอดภัย เป็นต้น พร้อมทั้งติดตามประเด็นความเสี่ยงด้าน ESG เพื่อให้การดำเนินงานด้านความยั่งยืนมีความครบถ้วน\n\nสำหรับการควบคุมภายในและบริหารความเสี่ยง คณะกรรมการได้ติดตามความมีประสิทธิภาพของระบบควบคุมภายใน การจัดการความเสี่ยง และการปฏิบัติตามกฎหมาย พร้อมสนับสนุนแผนการตรวจสอบประจำปีให้เป็นไปตามมาตรฐานการตรวจสอบภายในสากล (Global Internal Audit Standards) และมุ่งเน้นการตรวจสอบตามระดับความเสี่ยงที่มีนัยสำคัญ (Risk-based Approach) เพื่อให้บริษัทฯ มีความพร้อมต่อความเสี่ยงด้านไซเบอร์ เทคโนโลยี และความท้าทายที่เพิ่มขึ้นในสภาวะแวดล้อมทางธุรกิจปัจจุบัน',
-                    en: 'Climate Change, Biodiversity Policy, and Supplier Code of Conduct. The Board also established 5-year targets for 2026-2030, covering areas such as water usage, air quality, and occupational health and safety, while monitoring ESG risk issues to ensure comprehensive sustainability operations.\n\nFor internal control and risk management, the Board monitored the effectiveness of internal control systems, risk management, and legal compliance. The Board supported the annual audit plan in alignment with Global Internal Audit Standards, focusing on a risk-based approach to ensure the Company\'s preparedness for cyber risks, technology shifts, and increasing challenges in the current business environment.'
-                  },
-                  {
-                    th: 'ในปี 2568 คณะกรรมการยังคงติดตามและประเมินประสิทธิภาพในการนำนโยบายบรรษัทภิบาลและคู่มือจริยธรรมธุรกิจไปปฏิบัติในองค์กร ซึ่งผลสำรวจที่ได้อยู่ในระดับที่น่าพอใจ นอกจากนี้ยังได้พิจารณาปรับปรุงแบบประเมินผลการปฏิบัติงานของคณะกรรมการประจำปี 2568 ทั้งรายคณะและรายบุคคล เพื่อพัฒนาเกณฑ์การประเมินดังกล่าวให้สอดรับกับบริบทขององค์กรในปัจจุบัน และสะท้อนความคิดเห็นของกรรมการได้อย่างมีประสิทธิภาพยิ่งขึ้น\n\nคณะกรรมการขอขอบคุณผู้ถือหุ้น ลูกค้า คู่ค้า ชุมชน พนักงานและผู้มีส่วนได้เสียทุกกลุ่มที่ให้การสนับสนุนอย่างต่อเนื่อง คณะกรรมการบริษัทเชื่อมั่นว่าความมุ่งมั่นในการกำกับดูแลด้วยความโปร่งใส ซื่อสัตย์ และรับผิดชอบ เพื่อให้กลุ่มบริษัทฯ เติบโตอย่างมั่นคง ท่ามกลางสถานการณ์โลกที่ท้าทายดังเช่นในปี 2568 จะเสริมสร้างรากฐานที่มั่นคงให้แก่บ้านปู และสนับสนุนให้บริษัทฯ มีความพร้อมในการรับมือกับความท้าทายและโอกาสในอนาคต',
-                    en: 'In 2025, the Board continued to monitor and assess the effectiveness of corporate governance policy and business ethics manual implementation, with satisfactory survey results. Additionally, the Board refined the performance evaluation forms for the Board and individual directors for 2025 to better align with the current organizational context and more effectively reflect directors\' feedback.\n\nThe Board expresses its gratitude to shareholders, customers, partners, communities, employees, and all stakeholders for their ongoing support. The Board of Directors remains confident that our commitment to governance with transparency, integrity, and responsibility—ensuring stable growth amidst global challenges as seen in 2025—will strengthen Banpu\'s foundation and ensure the Company\'s readiness for future challenges and opportunities.'
-                  }
-                ]
+                "th": "ในฐานะประธานเจ้าหน้าที่บริหาร ผมเชื่อมั่นว่าความท้าทายเหล่านี้ไม่ใช่ข้อจำกัด แต่คือโอกาสครั้งสำคัญในการยกระดับบทบาทของบ้านปูเพื่อขับเคลื่อนการเปลี่ยนผ่านพลังงานอย่างมีความรับผิดชอบ ในปีที่ผ่านมา เราได้ดำเนินธุรกิจบนแนวทางที่สร้างสมดุลระหว่างการรักษาความมั่นคงทางพลังงานในปัจจุบัน ควบคู่ไปกับการวางรากฐานสู่อนาคตที่มีคาร์บอนต่ำอย่างเป็นรูปธรรม ภายใต้กลยุทธ์ Energy Symphonics ที่มุ่งผสานทั้งการเติบโต ความยืดหยุ่น และความยั่งยืน ให้ขับเคลื่อนไปพร้อมกันได้อย่างลงตัว",
+                "en": "As CEO, I see this challenge not as a constraint, but as an opportunity to strengthen our commitment to lead a responsible energy transition. Over the past year, Banpu’s growth has been guided by a balanced approach that recognizes the ongoing need for supply reliability while actively shaping a lower-carbon future. This philosophy lies at the core of our business strategy, Energy Symphonics, a strategy that harmonizes growth with resilience and sustainability."
               }
             ]
           }
         ]
+      },
+      {
+        type: 'pdf_page',
+        backgroundColor: '#e8f4fd',
+        desktopFullImage: { th: '/page_004/004_p03_full_th.webp', en: '/page_004/004_p03_full_en.webp' },
+        items: [
+          { type: 'pdf_banner', src: { th: '/page_004/004_p03_mobile_th.webp', en: '/page_004/004_p03_mobile_en.webp' } }
+        ]
+      },
+      {
+        type: 'pdf_page',
+        backgroundColor: '#e8f4fd',
+        desktopFullImage: { th: '/page_004/004_p04_full_th.webp', en: '/page_004/004_p04_full_en.webp' },
+        items: [
+          { type: 'pdf_banner', src: { th: '/page_004/004_p04_mobile_th.webp', en: '/page_004/004_p04_mobile_en.webp' } }
+        ]
       }
     ],
-    prevPage: '002',
-    nextPage: '004',
+    prevPage: '003',
+    nextPage: '005',
   },
-  '004': { pageId: '004', title: { th: 'สารจากประธานเจ้าหน้าที่บริหาร', en: "Chief Executive Officer's Review" }, accentColor: '#1565c0', sections: [], prevPage: '003', nextPage: '005' },
   '005': { pageId: '005', title: { th: 'นโยบายและภาพรวมการประกอบธุรกิจ', en: 'Policy and Business Overview' }, accentColor: '#1e90e6', sections: [], prevPage: '004', nextPage: '006' },
   '006': { pageId: '006', title: { th: 'แผนที่แสดงธุรกิจของกลุ่มบ้านปู', en: "Banpu Group's Map of Operations" }, accentColor: '#00838f', sections: [], prevPage: '005', nextPage: '007' },
   '007': { pageId: '007', title: { th: 'วิสัยทัศน์และพันธกิจ', en: 'Vision & Mission' }, accentColor: '#4b3fa7', sections: [], prevPage: '006', nextPage: '008' },

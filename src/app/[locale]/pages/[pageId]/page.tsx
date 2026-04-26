@@ -128,14 +128,12 @@ function renderSection(
     }
 
     if (section.type === "pdf_banner") {
+        const imgClass = `h-auto object-contain ${section.mobileSrcs?.length ? 'sm:block hidden' : ''} ${section.minWidth ? '' : 'w-full'}`;
+        const imgStyle = section.minWidth ? { minWidth: section.minWidth, width: '100%' } : undefined;
         return (
-            <div className="w-full">
+            <div className={section.minWidth ? 'w-full overflow-x-auto custom-scrollbar' : 'w-full'}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                    src={src(section.src)}
-                    alt={section.alt || "banner"}
-                    className={`w-full h-auto object-contain ${section.mobileSrcs?.length ? 'sm:block hidden' : ''}`}
-                />
+                <img src={src(section.src)} alt={section.alt || "banner"} className={imgClass} style={imgStyle} />
                 {section.mobileSrcs?.map((mobileSrc, i) => (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img key={`mob-${i}`} src={src(mobileSrc)} className="w-full h-auto object-contain sm:hidden block" />
@@ -288,8 +286,8 @@ function renderSection(
 
     if (section.type === "pdf_sub_title") {
         return (
-            <div className="w-full text-center mt-8 mb-4">
-                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800">
+            <div className="w-full mt-6 mb-3 px-8 sm:px-[6%]">
+                <h3 className="text-base sm:text-lg font-bold text-banpu-cyan-vivid">
                     {t(section.text)}
                 </h3>
             </div>
@@ -340,7 +338,7 @@ function renderSection(
             <div className={`px-8 sm:px-[6%] py-4 md:py-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ${section.fontFamily === 'sarabun' ? 'font-sarabun' : ''
                 }`}>
                 {section.columns.map((col, i) => (
-                    <div key={i} className="text-[13px] md:text-[14px] text-gray-800 leading-[1.6] text-justify whitespace-pre-line">
+                    <div key={i} className="text-[13px] md:text-[14px] text-gray-800 leading-[1.6] text-left whitespace-pre-line">
                         {t(col)}
                     </div>
                 ))}
