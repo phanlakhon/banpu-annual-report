@@ -57,10 +57,10 @@ public/
 ├── homepage-bg.webp               # Homepage background
 ├── convert_webp.py                # Script: convert PNG → WebP (run locally as needed)
 ├── fonts/                         # Local font files
-├── page-intro/                    # Images for page 00 (intro PDF pages 02–03)
-├── page-04/                       # Images for page 04 (highlights, PDF pages 04–07)
-├── page-08/                       # Images for page 08 (performance, PDF pages 08–09)
-└── page-10/                       # Images for page 10 (board report, PDF pages 10–11)
+├── page-intro/                    # Images for page 000 (intro)
+├── page-001/                      # Images for page 001 (financial highlights)
+├── page-002/                      # Images for page 002 (operational results)
+└── page-003/                      # Images for page 003 (board report)
 ```
 
 > **All image assets must be `.webp`** — the project uses WebP throughout for smaller file sizes. Use `public/convert_webp.py` to batch-convert PNG/JPG exports from PDF.
@@ -85,48 +85,83 @@ public/
 
 ## URL Structure
 
+Page IDs are **sequential numbers (000–040)**, independent of actual PDF page numbers. This avoids TH/EN page number mismatches (e.g., the same section is p.282 in the Thai PDF but p.284 in the English PDF).
+
 ```
-/                    → redirect to /th
-/th                  → Thai homepage (full-screen, no sidebar)
-/en                  → English homepage
-/th/pages/00         → บทนำ / Introduction
-/th/pages/04         → จุดเด่นในรอบปี (Highlights)            ← PDF pages 04–07
-/th/pages/08         → ผลการดำเนินงาน (Performance)            ← PDF pages 08–09
-/th/pages/10         → รายงานคณะกรรมการ (Board Report)         ← PDF pages 10–11
-/th/pages/12         → สารจากประธาน (CEO Message)
-/th/pages/18         → นโยบายและภาพรวมธุรกิจ (Policy & Overview)
-/th/pages/22         → แผนที่ธุรกิจ (Business Map)
-/th/pages/24         → วิสัยทัศน์และพันธกิจ (Vision & Mission)
-/th/pages/254        → นโยบายการกำกับดูแล (Corporate Governance Policy)
-/th/pages/282        → โครงสร้างการกำกับดูแล (Governance Structure)
-/th/pages/342        → เอกสารแนบ 1 รายละเอียดคณะกรรมการ (Attachment 1)
+/                     → redirect to /th
+/th                   → Thai homepage (full-screen, no sidebar)
+/en                   → English homepage
+/th/pages/000         → บทนำ / Introduction
+/th/pages/001         → จุดเด่นในรอบปี / Financial Highlights
+/th/pages/002         → ผลการดำเนินงาน / Operational Results
+/th/pages/003         → รายงานคณะกรรมการ / Board of Directors' Review
+/th/pages/004         → สารจากประธานฯ / CEO Review
+/th/pages/005         → นโยบายและภาพรวมฯ / Policy & Business Overview
+/th/pages/006         → แผนที่ธุรกิจ / Group Map of Operations
+/th/pages/007         → วิสัยทัศน์และพันธกิจ / Vision & Mission
+...
+/th/pages/030         → คดีความที่สำคัญ / Significant Litigation
+/th/pages/031         → นโยบายการกำกับดูแล / Corporate Governance Policy
+...
+/th/pages/038         → การควบคุมภายใน / Internal Control
+/th/pages/039         → เอกสารแนบ 1 / Attachment 1
+/th/pages/040         → เอกสารแนบ 2 / Attachment 2
 ```
-Replace `/th/` with `/en/` for English versions.
+Replace `/th/` with `/en/` for English versions. The page ID in the URL is always the same for both languages.
 
 ---
 
 ## Sidebar Menu Structure
 
-The sidebar (`src/components/Sidebar.tsx`) is wired to translation keys in `messages/th.json` and `messages/en.json` under the `"Menu"` namespace.
+The sidebar (`src/components/Sidebar.tsx`) is wired to translation keys in `messages/th.json` and `messages/en.json` under the `"Menu"` namespace. Keys are `m000`–`m040` plus `part1`, `part2`, `part3` for section titles.
 
 ```
 สารบัญ
-  00  intro          ← NavLink (flat)
-  04  highlight      ← NavLink (flat)
-  08  performance    ← NavLink (flat)
-  10  board_report   ← NavLink (flat)
-  12  ceo_message    ← NavLink (flat)
-  ─────────────────
-  [1] part1          ← AccordionItem
-      18  part1_1
-      22  part1_2
-      24  part1_3
-  [2] part2          ← AccordionItem
-      254 part2_1
-      282 part2_2
-  [3] part3          ← AccordionItem
-      342 part3_1
-      354 part3_2    ← ⚠ href currently points to /342 (placeholder, page 354 not yet added)
+  000  m000  บทนำ                              ← NavLink (flat)
+  001  m001  จุดเด่นในรอบปี                     ← NavLink (flat)
+  002  m002  ผลการดำเนินงานในรอบปีที่ผ่านมา    ← NavLink (flat)
+  003  m003  รายงานคณะกรรมการ                  ← NavLink (flat)
+  004  m004  สารจากประธานเจ้าหน้าที่บริหาร     ← NavLink (flat)
+  ──────────────────────────────────────────
+  [1] part1  การประกอบธุรกิจและผลการดำเนินงาน  ← AccordionItem (26 items)
+      005  m005  นโยบายและภาพรวมการประกอบธุรกิจ
+      006  m006  แผนที่แสดงธุรกิจของกลุ่มบ้านปู
+      007  m007  วิสัยทัศน์และพันธกิจ
+      008  m008  สรุปการเปลี่ยนแปลงและพัฒนาการที่สำคัญ
+      009  m009  ข้อมูลทั่วไปของบริษัท
+      010  m010  โครงสร้างรายได้
+      011  m011  ข้อมูลกลุ่มธุรกิจ
+      012  m012  ภาวะตลาดและการแข่งขัน
+      013  m013  ทรัพย์สินที่ใช้ในการประกอบธุรกิจ
+      014  m014  ปริมาณสำรองถ่านหินและก๊าซธรรมชาติ
+      015  m015  โครงสร้างกลุ่มบริษัทฯ
+      016  m016  รายชื่อบริษัทย่อยและบริษัทร่วม
+      017  m017  ผู้ถือหุ้น
+      018  m018  ข้อมูลหลักทรัพย์
+      019  m019  หุ้นกู้
+      020  m020  นโยบายการจ่ายเงินปันผล
+      021  m021  การบริหารจัดการความเสี่ยง
+      022  m022  การขับเคลื่อนธุรกิจเพื่อความยั่งยืน
+      023  m023  การจัดการผลกระทบต่อผู้มีส่วนได้เสียฯ
+      024  m024  การจัดการด้านความยั่งยืน (สิ่งแวดล้อม)
+      025  m025  การจัดการด้านความยั่งยืน (สังคม)
+      026  m026  ความรับผิดชอบต่อสังคม
+      027  m027  คำอธิบายและการวิเคราะห์ของฝ่ายจัดการ
+      028  m028  อัตราส่วนทางการเงิน
+      029  m029  บุคคลอ้างอิงอื่น ๆ
+      030  m030  คดีความที่สำคัญในระหว่างปี
+  [2] part2  การกำกับดูแลกิจการ                ← AccordionItem (8 items)
+      031  m031  นโยบายการกำกับดูแลกิจการ
+      032  m032  โครงสร้างการกำกับดูแลกิจการ
+      033  m033  ผลการดำเนินงานด้านการกำกับดูแลกิจการ
+      034  m034  รายงานคณะกรรมการบรรษัทภิบาลและสรรหา
+      035  m035  รายงานคณะกรรมการกำหนดค่าตอบแทน
+      036  m036  รายงานคณะกรรมการตรวจสอบต่อผู้ถือหุ้น
+      037  m037  รายงานคณะกรรมการ ESG
+      038  m038  การควบคุมภายในและรายการระหว่างกัน
+  [3] part3  การรับรองความถูกต้องของข้อมูล     ← AccordionItem (2 items)
+      039  m039  เอกสารแนบ 1 : รายละเอียดเกี่ยวกับคณะกรรมการ
+      040  m040  เอกสารแนบ 2 : รายละเอียดการดำรงตำแหน่งของผู้บริหาร
 ```
 
 ---
@@ -137,25 +172,23 @@ The sidebar (`src/components/Sidebar.tsx`) is wired to translation keys in `mess
 - [x] Project setup (Next.js + next-intl + Tailwind v4)
 - [x] Full-screen homepage (no sidebar/header)
 - [x] Nested layout: sidebar appears only under `/pages/*`
-- [x] Sidebar with accordion + active state detection
+- [x] Sidebar with accordion + active state detection (41 items, 000–040)
 - [x] Mobile responsive: hamburger menu, sidebar overlay, auto-close on nav
 - [x] Thai/English language switcher
 - [x] Prev/Next navigation bar (shows actual page title, not just page number)
 - [x] All image assets converted to WebP
-- [x] Page `00` — บทนำ/Introduction (image-based, desktop + mobile variants)
-- [x] Page `04` — จุดเด่นในรอบปี (PDF pages 04–07: images + financial table)
-- [x] Page `08` — ผลการดำเนินงาน (PDF pages 08–09: data table + chart images)
-- [x] Page `10` — รายงานคณะกรรมการ (PDF pages 10–11: quote photo + two-column text)
+- [x] Sequential page ID system (000–040) — language-agnostic, not tied to PDF page numbers
+- [x] Complete sidebar menu (all 41 items, exact text from PDF)
+- [x] Page `000` — บทนำ/Introduction (image-based, desktop + mobile variants)
+- [x] Page `001` — จุดเด่นในรอบปี (images + financial table)
+- [x] Page `002` — ผลการดำเนินงาน (data table + chart images)
+- [x] Page `003` — รายงานคณะกรรมการ (quote photo + two-column text)
 
 ### 🚧 Pending — awaiting content from client
-- [ ] Page `12` — สารจากประธาน (CEO Message)
-- [ ] Page `18` — นโยบายและภาพรวมธุรกิจ
-- [ ] Page `22` — แผนที่ธุรกิจ
-- [ ] Page `24` — วิสัยทัศน์และพันธกิจ
-- [ ] Page `254` — นโยบายการกำกับดูแล
-- [ ] Page `282` — โครงสร้างการกำกับดูแล
-- [ ] Page `342` — เอกสารแนบ 1
-- [ ] Page `354` — เอกสารแนบ 2 (sidebar link exists, page entry not yet added)
+- [ ] Page `004` — สารจากประธานเจ้าหน้าที่บริหาร
+- [ ] Pages `005`–`030` — Section 1 (26 items)
+- [ ] Pages `031`–`038` — Section 2 (8 items)
+- [ ] Pages `039`–`040` — Section 3 / Attachments
 
 ---
 
@@ -238,10 +271,12 @@ public/page-{pageId}/
 
 ### Step 2 — Add entry to `src/data/pages.ts`
 
+The `pageId` is the sequential ID (e.g. `'004'`). The `pageNumber` inside each `pdf_page` section is the actual PDF page number (display only — can differ between TH and EN PDFs).
+
 ```ts
-'12': {
-  pageId: '12',
-  title: { th: 'สารจากประธาน', en: 'Message from the CEO' },
+'004': {
+  pageId: '004',
+  title: { th: 'สารจากประธานเจ้าหน้าที่บริหาร', en: "Chief Executive Officer's Review" },
   accentColor: '#1565c0',
   backgroundColor: '#ffffff',
   layout: 'pdf_composition',
@@ -249,17 +284,17 @@ public/page-{pageId}/
     {
       type: 'pdf_page',
       backgroundColor: '#e3f6fc',
-      pageNumber: '12',
+      pageNumber: '12',          // ← actual PDF page number (TH), display only
       pageNumberAlign: 'left',
-      desktopFullImage: '/page-12/12_p12_full.webp',
+      desktopFullImage: '/page-004/004_p12_full.webp',
       items: [
-        { type: 'pdf_banner', src: '/page-12/12_p12_banner.webp' },
+        { type: 'pdf_banner', src: '/page-004/004_p12_banner.webp' },
         // add more section types as needed
       ]
     }
   ],
-  prevPage: '10',
-  nextPage: '18',
+  prevPage: '003',
+  nextPage: '005',
 },
 ```
 

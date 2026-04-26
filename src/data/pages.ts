@@ -55,8 +55,8 @@ export type PageData = {
 };
 
 export const pagesData: Record<string, PageData> = {
-  '00': {
-    pageId: '00',
+  '000': {
+    pageId: '000',
     title: { th: 'บทนำ', en: 'Introduction' },
     accentColor: '#1e90e6',
     backgroundColor: '#f0f8ff',
@@ -83,14 +83,14 @@ export const pagesData: Record<string, PageData> = {
         ]
       }
     ],
-    nextPage: '04'
+    prevPage: undefined,
+    nextPage: '001',
   },
-  '04': {
-    pageId: '04',
-    title: { th: 'จุดเด่นในรอบปี 2568', en: 'Highlights of 2025' },
-    subtitle: { th: '', en: '' },
+  '001': {
+    pageId: '001',
+    title: { th: 'จุดเด่นในรอบปี', en: 'Financial Highlights' },
     accentColor: '#1e90e6',
-    backgroundColor: '#f0f8ff',
+    backgroundColor: '#ffffff',
     layout: 'pdf_composition',
     sections: [
       {
@@ -278,15 +278,13 @@ export const pagesData: Record<string, PageData> = {
         ]
       }
     ],
-    prevPage: undefined,
-    nextPage: '08',
+    prevPage: '000',
+    nextPage: '002',
   },
-  '08': {
-    pageId: '08',
-    title: { th: 'ผลการดำเนินงานในรอบปีที่ผ่านมา', en: 'Performance in the Past Year' },
-    subtitle: { th: '', en: '' },
+  '002': {
+    pageId: '002',
+    title: { th: 'ผลการดำเนินงานในรอบปีที่ผ่านมา', en: 'Operational Results' },
     accentColor: '#2a2e82',
-    backgroundColor: '#f0f8ff',
     layout: 'pdf_composition',
     sections: [
       {
@@ -307,7 +305,7 @@ export const pagesData: Record<string, PageData> = {
             type: 'pdf_title',
             text: {
               th: 'ผลการดำเนินงานในรอบปีที่ผ่านมา',
-              en: 'Performance in the Past Year'
+              en: 'Operational Results'
             }
           },
           {
@@ -430,15 +428,14 @@ export const pagesData: Record<string, PageData> = {
         ]
       }
     ],
-    prevPage: '04',
-    nextPage: '10',
+    prevPage: '001',
+    nextPage: '003',
   },
-  '10': {
-    pageId: '10',
-    title: { th: 'รายงานคณะกรรมการบริษัท', en: "Board of Directors' Report" },
-    subtitle: { th: '', en: '' },
+  '003': {
+    pageId: '003',
+    title: { th: 'รายงานคณะกรรมการ', en: "The Board of Directors' Review" },
     accentColor: '#311b92',
-    backgroundColor: '#f0f8ff',
+    backgroundColor: '#ffffff',
     layout: 'pdf_composition',
     sections: [
       {
@@ -540,74 +537,53 @@ export const pagesData: Record<string, PageData> = {
         ]
       }
     ],
-    prevPage: '08',
-    nextPage: '12',
+    prevPage: '002',
+    nextPage: '004',
   },
-  '12': {
-    pageId: '12',
-    title: { th: 'สารจากประธานเจ้าหน้าที่บริหาร', en: 'Message from the CEO' },
-    subtitle: { th: '', en: '' },
-    accentColor: '#1565c0',
-    backgroundColor: '#f0f8ff',
-    sections: [],
-    prevPage: '10',
-    nextPage: '18',
-  },
-  '18': {
-    pageId: '18',
-    title: { th: 'นโยบายและภาพรวมการประกอบธุรกิจ', en: 'Business Policy and Overview' },
-    subtitle: { th: '', en: '' },
-    accentColor: '#1e90e6',
-    backgroundColor: '#f0f8ff',
-    sections: [],
-    prevPage: '12',
-    nextPage: '22',
-  },
-  '22': {
-    pageId: '22',
-    title: { th: 'แผนที่แสดงธุรกิจของกลุ่มบ้านปู', en: 'Banpu Group Business Map' },
-    subtitle: { th: '', en: '' },
-    accentColor: '#00838f',
-    sections: [],
-    prevPage: '18',
-    nextPage: '24',
-  },
-  '24': {
-    pageId: '24',
-    title: { th: 'วิสัยทัศน์และพันธกิจ', en: 'Vision and Mission' },
-    subtitle: { th: '', en: '' },
-    accentColor: '#4b3fa7',
-    sections: [],
-    prevPage: '22',
-    nextPage: '254',
-  },
-  '254': {
-    pageId: '254',
-    title: { th: 'นโยบายการกำกับดูแลกิจการ', en: 'Corporate Governance Policy' },
-    subtitle: { th: '', en: '' },
-    accentColor: '#2a2e82',
-    sections: [],
-    prevPage: '24',
-    nextPage: '282',
-  },
-  '282': {
-    pageId: '282',
-    title: { th: 'โครงสร้างการกำกับดูแลกิจการ', en: 'Corporate Governance Structure' },
-    subtitle: { th: '', en: '' },
-    accentColor: '#311b92',
-    sections: [],
-    prevPage: '254',
-    nextPage: '342',
-  },
-  '342': {
-    pageId: '342',
-    title: { th: 'เอกสารแนบ 1: รายละเอียดเกี่ยวกับกรรมการ', en: 'Attachment 1: Director Details' },
-    subtitle: { th: '', en: '' },
-    accentColor: '#1e90e6',
-    sections: [],
-    prevPage: '282',
-    nextPage: undefined,
-  },
+  '004': { pageId: '004', title: { th: 'สารจากประธานเจ้าหน้าที่บริหาร', en: "Chief Executive Officer's Review" }, accentColor: '#1565c0', sections: [], prevPage: '003', nextPage: '005' },
+  '005': { pageId: '005', title: { th: 'นโยบายและภาพรวมการประกอบธุรกิจ', en: 'Policy and Business Overview' }, accentColor: '#1e90e6', sections: [], prevPage: '004', nextPage: '006' },
+  '006': { pageId: '006', title: { th: 'แผนที่แสดงธุรกิจของกลุ่มบ้านปู', en: "Banpu Group's Map of Operations" }, accentColor: '#00838f', sections: [], prevPage: '005', nextPage: '007' },
+  '007': { pageId: '007', title: { th: 'วิสัยทัศน์และพันธกิจ', en: 'Vision & Mission' }, accentColor: '#4b3fa7', sections: [], prevPage: '006', nextPage: '008' },
+  '008': { pageId: '008', title: { th: 'สรุปการเปลี่ยนแปลงและพัฒนาการที่สำคัญในรอบปี 2568 รวมทั้งเหตุการณ์ปัจจุบัน', en: 'Summary of Major Changes and Development in 2025 and Current Events' }, accentColor: '#1e90e6', sections: [], prevPage: '007', nextPage: '009' },
+  '009': { pageId: '009', title: { th: 'ข้อมูลทั่วไปของบริษัท', en: 'Banpu Information' }, accentColor: '#1e90e6', sections: [], prevPage: '008', nextPage: '010' },
+  '010': { pageId: '010', title: { th: 'โครงสร้างรายได้', en: 'Revenue Structure' }, accentColor: '#1e90e6', sections: [], prevPage: '009', nextPage: '011' },
+  '011': { pageId: '011', title: { th: 'ข้อมูลกลุ่มธุรกิจ', en: 'Products and Services' }, accentColor: '#1e90e6', sections: [], prevPage: '010', nextPage: '012' },
+  '012': { pageId: '012', title: { th: 'ภาวะตลาดและการแข่งขัน', en: 'Market and Competition' }, accentColor: '#1e90e6', sections: [], prevPage: '011', nextPage: '013' },
+  '013': { pageId: '013', title: { th: 'ทรัพย์สินที่ใช้ในการประกอบธุรกิจ', en: 'Business Assets' }, accentColor: '#1e90e6', sections: [], prevPage: '012', nextPage: '014' },
+  '014': { pageId: '014', title: { th: 'ปริมาณสำรองถ่านหินและก๊าซธรรมชาติ', en: 'Coal and Natural Gas Reserves' }, accentColor: '#1e90e6', sections: [], prevPage: '013', nextPage: '015' },
+  '015': { pageId: '015', title: { th: 'โครงสร้างกลุ่มบริษัทฯ', en: 'Banpu Group Structure' }, accentColor: '#1e90e6', sections: [], prevPage: '014', nextPage: '016' },
+  '016': { pageId: '016', title: { th: 'รายชื่อบริษัทย่อยและบริษัทร่วมและกิจการร่วมค้าและการลงทุนอื่นของบริษัท บ้านปู จำกัด (มหาชน)', en: 'Detail of The Company, Its Subsidiaries and Associated Companies and Joint Ventures and Other Investment of Banpu Public Company Limited' }, accentColor: '#1e90e6', sections: [], prevPage: '015', nextPage: '017' },
+  '017': { pageId: '017', title: { th: 'ผู้ถือหุ้น', en: 'Shareholders' }, accentColor: '#1e90e6', sections: [], prevPage: '016', nextPage: '018' },
+  '018': { pageId: '018', title: { th: 'ข้อมูลหลักทรัพย์', en: 'Security' }, accentColor: '#1e90e6', sections: [], prevPage: '017', nextPage: '019' },
+  '019': { pageId: '019', title: { th: 'หุ้นกู้', en: 'Debentures' }, accentColor: '#1e90e6', sections: [], prevPage: '018', nextPage: '020' },
+  '020': { pageId: '020', title: { th: 'นโยบายการจ่ายเงินปันผล', en: 'Dividend Policy' }, accentColor: '#1e90e6', sections: [], prevPage: '019', nextPage: '021' },
+  '021': { pageId: '021', title: { th: 'การบริหารจัดการความเสี่ยง', en: 'Risk Management' }, accentColor: '#1e90e6', sections: [], prevPage: '020', nextPage: '022' },
+  '022': { pageId: '022', title: { th: 'การขับเคลื่อนธุรกิจเพื่อความยั่งยืน', en: 'Driving Business for Sustainability' }, accentColor: '#1e90e6', sections: [], prevPage: '021', nextPage: '023' },
+  '023': { pageId: '023', title: { th: 'การจัดการผลกระทบต่อผู้มีส่วนได้เสียในห่วงโซ่คุณค่าของธุรกิจ', en: 'Management of Stakeholder Impacts in Business Value Chain' }, accentColor: '#1e90e6', sections: [], prevPage: '022', nextPage: '024' },
+  '024': { pageId: '024', title: { th: 'การจัดการด้านความยั่งยืนในมิติสิ่งแวดล้อม', en: 'Sustainability Management – Environmental Aspect' }, accentColor: '#1e90e6', sections: [], prevPage: '023', nextPage: '025' },
+  '025': { pageId: '025', title: { th: 'การจัดการด้านความยั่งยืนในมิติสังคม', en: 'Sustainability Management – Society Aspect' }, accentColor: '#1e90e6', sections: [], prevPage: '024', nextPage: '026' },
+  '026': { pageId: '026', title: { th: 'ความรับผิดชอบต่อสังคม', en: 'Corporate Social Responsibility (CSR)' }, accentColor: '#1e90e6', sections: [], prevPage: '025', nextPage: '027' },
+  '027': { pageId: '027', title: { th: 'คำอธิบายและการวิเคราะห์ของฝ่ายจัดการ', en: "Management's Discussion and Analysis" }, accentColor: '#1e90e6', sections: [], prevPage: '026', nextPage: '028' },
+  '028': { pageId: '028', title: { th: 'อัตราส่วนทางการเงิน', en: 'Financial Ratio' }, accentColor: '#1e90e6', sections: [], prevPage: '027', nextPage: '029' },
+  '029': { pageId: '029', title: { th: 'บุคคลอ้างอิงอื่น ๆ', en: 'Other References' }, accentColor: '#1e90e6', sections: [], prevPage: '028', nextPage: '030' },
+  '030': { pageId: '030', title: { th: 'คดีความที่สำคัญในระหว่างปี', en: 'Significant Litigation During the Year' }, accentColor: '#1e90e6', sections: [], prevPage: '029', nextPage: '031' },
+  '031': { pageId: '031', title: { th: 'นโยบายการกำกับดูแลกิจการ', en: 'Corporate Governance Policy' }, accentColor: '#2a2e82', sections: [], prevPage: '030', nextPage: '032' },
+  '032': { pageId: '032', title: { th: 'โครงสร้างการกำกับดูแลกิจการ', en: 'Corporate Governance Structure' }, accentColor: '#2a2e82', sections: [], prevPage: '031', nextPage: '033' },
+  '033': { pageId: '033', title: { th: 'ผลการดำเนินงานด้านการกำกับดูแลกิจการ', en: 'Corporate Governance Performance' }, accentColor: '#2a2e82', sections: [], prevPage: '032', nextPage: '034' },
+  '034': { pageId: '034', title: { th: 'รายงานคณะกรรมการบรรษัทภิบาลและสรรหา', en: 'Report of the Corporate Governance and Nomination Committee' }, accentColor: '#2a2e82', sections: [], prevPage: '033', nextPage: '035' },
+  '035': { pageId: '035', title: { th: 'รายงานคณะกรรมการกำหนดค่าตอบแทน', en: 'Report of the Compensation Committee' }, accentColor: '#2a2e82', sections: [], prevPage: '034', nextPage: '036' },
+  '036': { pageId: '036', title: { th: 'รายงานคณะกรรมการตรวจสอบต่อผู้ถือหุ้น', en: 'Audit Committee Report to Shareholders' }, accentColor: '#2a2e82', sections: [], prevPage: '035', nextPage: '037' },
+  '037': { pageId: '037', title: { th: 'รายงานคณะกรรมการสิ่งแวดล้อม สังคม และการกำกับดูแลกิจการ (คณะกรรมการ ESG)', en: 'Environment, Social and Governance (ESG) Committee Report' }, accentColor: '#2a2e82', sections: [], prevPage: '036', nextPage: '038' },
+  '038': { pageId: '038', title: { th: 'การควบคุมภายในและรายการระหว่างกัน', en: 'Internal Control and Connected Transactions' }, accentColor: '#2a2e82', sections: [], prevPage: '037', nextPage: '039' },
+  '039': { pageId: '039', title: { th: 'เอกสารแนบ 1 : รายละเอียดเกี่ยวกับคณะกรรมการบริษัทและผู้บริหาร', en: 'Attachment 1: Details of the Board of Directors and Management' }, accentColor: '#1e90e6', sections: [], prevPage: '038', nextPage: '040' },
+  '040': { pageId: '040', title: { th: 'เอกสารแนบ 2 : รายละเอียดการดำรงตำแหน่งของผู้บริหารและผู้มีอำนาจควบคุมในบริษัทย่อยและบริษัทร่วม กิจการร่วมค้าและเงินลงทุนอื่น', en: 'Attachment 2: Details of the Management and Controlling Parties of Banpu and Its Subsidiaries' }, accentColor: '#1e90e6', sections: [], prevPage: '039', nextPage: undefined },
 };
 
-export const pageOrder = ['04', '08', '10', '12', '18', '22', '24', '254', '282', '342'];
+export const pageOrder = [
+  '000', '001', '002', '003', '004',
+  '005', '006', '007', '008', '009', '010', '011', '012', '013', '014',
+  '015', '016', '017', '018', '019', '020', '021', '022', '023', '024',
+  '025', '026', '027', '028', '029', '030',
+  '031', '032', '033', '034', '035', '036', '037', '038',
+  '039', '040',
+];
