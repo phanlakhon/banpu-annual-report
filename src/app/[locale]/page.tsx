@@ -9,50 +9,15 @@ export default async function HomePage({ params }: Props) {
     const isEn = locale === "en";
 
     return (
-        <div
-            className="relative w-full min-h-screen flex items-center overflow-hidden"
-            style={{
-                background:
-                    "linear-gradient(145deg, #a8d8f0 0%, #c2e5f5 22%, #d8eef8 50%, #e6f4fa 75%, #daeef8 100%)",
-            }}
-        >
-            {/* Top-left diagonal decoration */}
-            <div className="absolute top-0 left-0 pointer-events-none overflow-hidden w-40 h-40 sm:w-64 sm:h-64 md:w-80 md:h-80">
-                <div
-                    className="absolute bg-white/30 rounded-3xl"
-                    style={{
-                        width: 160,
-                        height: 340,
-                        top: -80,
-                        left: -40,
-                        transform: "rotate(-30deg)",
-                    }}
-                />
-                <div
-                    className="absolute bg-white/20 rounded-2xl hidden sm:block"
-                    style={{
-                        width: 100,
-                        height: 260,
-                        top: -60,
-                        left: 80,
-                        transform: "rotate(-30deg)",
-                    }}
-                />
-            </div>
-
-            {/* Bottom-right decoration */}
-            <div className="absolute bottom-0 right-0 pointer-events-none overflow-hidden w-40 h-28 md:w-80 md:h-48">
-                <div
-                    className="absolute bg-white/15 rounded-3xl"
-                    style={{
-                        width: 260,
-                        height: 130,
-                        bottom: -50,
-                        right: -50,
-                        transform: "rotate(-18deg)",
-                    }}
-                />
-            </div>
+        <div className="relative w-full min-h-screen flex items-center overflow-hidden">
+            <Image
+                src="/homepage-bg.webp"
+                alt="Background"
+                fill
+                className="object-cover pointer-events-none"
+                priority
+            />
+            <div className="absolute inset-0 bg-white/10 z-0" />
 
             {/* Main content */}
             <div
@@ -67,7 +32,7 @@ export default async function HomePage({ params }: Props) {
                     {/* Logo */}
                     <div className="mb-1">
                         <Image
-                            src="/logo.png"
+                            src="/logo.webp"
                             alt="BANPU"
                             width={200}
                             height={56}
@@ -99,20 +64,22 @@ export default async function HomePage({ params }: Props) {
                     {/* CTAs */}
                     <div className="flex flex-wrap gap-3 mt-2">
                         <Link
-                            href={`/${locale}/pages/00`}
+                            href={`/${locale}/pages/000`}
                             className="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm text-white shadow-md hover:opacity-90 transition-opacity"
                             style={{ background: "#3ab4e8" }}
                         >
-                            {isEn ? "Business Overview" : "ดูภาพรวมธุรกิจ"}
-                            <ArrowRight size={15} />
+                            {isEn ? "Banpu Business" : "ธุรกิจบ้านปู"}
+                            <span className="w-5 h-5 rounded-full border-2 border-white/50 flex items-center justify-center">
+                                <ExternalLink size={9} />
+                            </span>
                         </Link>
                         <a
-                            href="#"
+                            href={`/${locale}/pages/001`}
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm text-white shadow-md hover:opacity-90 transition-opacity"
                             style={{ background: "#2a2e82" }}
                         >
-                            {isEn ? "Latest Financials" : "งบการเงินล่าสุด"}
+                            {isEn ? "Highlights of the Year" : "จุดเด่นในรอบปี"}
                             <span className="w-5 h-5 rounded-full border-2 border-white/50 flex items-center justify-center">
                                 <ExternalLink size={9} />
                             </span>
@@ -124,7 +91,7 @@ export default async function HomePage({ params }: Props) {
                 <div className="shrink-0 flex items-center justify-center">
                     <div className="w-full max-w-sm mx-auto">
                         <Image
-                            src="/page_1.png"
+                            src="/page_1.webp"
                             alt="page-1"
                             width={1240}
                             height={1754}

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { pagesData, type PageSection } from "@/data/pages";
+import { pagesData, type PageSection, type BilingualSrc } from "@/data/pages";
 import React from "react";
 
 type Props = {
@@ -20,6 +20,9 @@ function renderSection(
 ) {
     const t = (text: { th: string; en: string }) =>
         locale === "th" ? text.th : text.en;
+
+    const src = (s: BilingualSrc) =>
+        typeof s === "string" ? s : locale === "th" ? s.th : s.en;
 
     if (section.type === "text") {
         return (
@@ -125,17 +128,15 @@ function renderSection(
     }
 
     if (section.type === "pdf_banner") {
+        const imgClass = `h-auto object-contain ${section.mobileSrcs?.length ? 'sm:block hidden' : ''} ${section.minWidth ? '' : 'w-full'}`;
+        const imgStyle = section.minWidth ? { minWidth: section.minWidth, width: '100%' } : undefined;
         return (
-            <div className="w-full">
+            <div className={section.minWidth ? 'w-full overflow-x-auto custom-scrollbar' : 'w-full'}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                    src={section.src}
-                    alt={section.alt || "banner"}
-                    className={`w-full h-auto object-contain ${section.mobileSrcs?.length ? 'sm:block hidden' : ''}`}
-                />
-                {section.mobileSrcs?.map((src, i) => (
+                <img src={src(section.src)} alt={section.alt || "banner"} className={imgClass} style={imgStyle} />
+                {section.mobileSrcs?.map((mobileSrc, i) => (
                     /* eslint-disable-next-line @next/next/no-img-element */
-                    <img key={`mob-${i}`} src={src} className="w-full h-auto object-contain sm:hidden block" />
+                    <img key={`mob-${i}`} src={src(mobileSrc)} className="w-full h-auto object-contain sm:hidden block" />
                 ))}
             </div>
         );
@@ -145,13 +146,13 @@ function renderSection(
         const gapClasses = section.withGap ? "gap-6 sm:gap-[2%]" : "gap-6 sm:gap-0";
 
         return (
-            <div className={`flex flex-col sm:flex-row justify-center sm:justify-between items-center sm:items-start ${gapClasses} mb-8 sm:mb-12 md:mb-16 lg:mb-20 px-8 sm:px-[6%]`}>
+            <div className={`flex flex-col sm:flex-row justify-center sm:justify-between items-center sm:items-start ${gapClasses} my-8 sm:my-12 md:my-16 lg:my-20 px-8 sm:px-[6%]`}>
                 {section.items.map((item, idx) => {
                     return (
                         /* eslint-disable-next-line @next/next/no-img-element */
                         <img
                             key={idx}
-                            src={item.src}
+                            src={src(item.src)}
                             alt={item.alt || `column-${idx}`}
                             className="w-full max-w-[300px] sm:max-w-none sm:w-auto h-auto object-contain min-w-0 shrink"
                         />
@@ -164,7 +165,17 @@ function renderSection(
     if (section.type === "pdf_page") {
         return (
             <div className="w-full relative" style={{ backgroundColor: section.backgroundColor || '#f5f8ff' }}>
-                <div className="max-w-[1100px] mx-auto w-full">
+                {section.desktopFullImage && (
+                    <div className="hidden sm:block w-full">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src={src(section.desktopFullImage)}
+                            alt={section.pageNumber ? `Page ${section.pageNumber}` : "PDF Page"}
+                            className="w-full h-auto object-contain"
+                        />
+                    </div>
+                )}
+                <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-[1100px] mx-auto w-full`}>
                     {section.items.map((subSection, i) => (
                         <div key={i}>
                             {renderSection(subSection, locale, accentColor)}
@@ -172,13 +183,12 @@ function renderSection(
                     ))}
                 </div>
                 {section.pageNumber && (
-                    <div className="w-full px-4 pt-2 pb-4 flex items-center pointer-events-none">
-                        <div 
-                            className={`text-xs md:text-sm font-bold ${
-                                section.pageNumberAlign 
+                    <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} w-full px-4 pt-2 pb-4 flex items-center pointer-events-none`}>
+                        <div
+                            className={`text-xs md:text-sm font-bold ${section.pageNumberAlign
                                     ? (section.pageNumberAlign === 'left' ? 'mr-auto' : 'ml-auto')
                                     : (parseInt(section.pageNumber) % 2 === 0 ? 'mr-auto' : 'ml-auto')
-                            }`} 
+                                }`}
                             style={{ color: section.pageNumberColor || '#311b92' }}
                         >
                             {section.pageNumber}
@@ -193,20 +203,20 @@ function renderSection(
         return (
             <div className="w-full px-4 sm:px-8 md:px-[2%] mb-10 md:mb-16">
                 <div className="overflow-x-auto pb-4 custom-scrollbar">
-                    <table className="w-full min-w-[600px] xl:min-w-full text-left border-collapse border-t-2 border-b-2 border-[#2a2e82]">
+                    <table className="w-full min-w-[600px] xl:min-w-full text-left border-collapse border-t-2 border-b-2 border-[#3ab4e8]">
                         <thead>
                             {section.headerTitle && (
                                 <tr>
                                     <th colSpan={2}></th>
                                     <th
                                         colSpan={section.columns.length}
-                                        className="text-center text-[#2a2e82] text-[11px] md:text-[11px] font-bold pt-4 pb-2 border-b border-[#2a2e82]"
+                                        className="text-center text-[#2a2e82] text-[11px] md:text-[11px] font-bold pt-4 pb-2 border-b border-[#3ab4e8]"
                                     >
                                         {t(section.headerTitle)}
                                     </th>
                                 </tr>
                             )}
-                            <tr className="border-b-2 border-[#2a2e82]">
+                            <tr className="border-b-2 border-[#3ab4e8]">
                                 <th className="py-2 px-2 w-[45%] lg:w-[50%] min-w-[180px]"></th>
                                 <th className="py-2 px-2"></th>
                                 {section.columns.map((col, idx) => (
@@ -276,8 +286,8 @@ function renderSection(
 
     if (section.type === "pdf_sub_title") {
         return (
-            <div className="w-full text-center mt-8 mb-4">
-                <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-800">
+            <div className="w-full mt-6 mb-3 px-8 sm:px-[6%]">
+                <h3 className="text-base sm:text-lg font-bold text-banpu-cyan-vivid">
                     {t(section.text)}
                 </h3>
             </div>
@@ -289,7 +299,7 @@ function renderSection(
             <div className="w-full px-8 sm:px-[10%] py-8 md:py-12 flex flex-col items-center text-center relative mt-2 mb-6">
                 {/* Solid light blue container with rounded feel */}
                 <div className="absolute inset-0 bg-[#e3f6fc] -z-10 rounded-2xl mx-4 sm:mx-8 md:mx-[2%]"></div>
-                
+
                 {/* Opening Quote */}
                 <div className="text-[#3ab4e8] opacity-60 mb-4">
                     <svg width="36" height="28" viewBox="0 0 40 30" fill="currentColor">
@@ -311,7 +321,7 @@ function renderSection(
                 {/* Signature area */}
                 <div className="mt-8 md:mt-10 self-end mr-10 md:mr-20 flex flex-col items-center gap-0.5">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={section.signatureSrc} alt="Signature" className="h-10 md:h-12 object-contain" />
+                    <img src={src(section.signatureSrc)} alt="Signature" className="h-10 md:h-12 object-contain" />
                     <div className="text-sm md:text-base font-bold text-[#2a2e82] mt-2">
                         {t(section.signatureName)}
                     </div>
@@ -325,9 +335,10 @@ function renderSection(
 
     if (section.type === "pdf_text_columns") {
         return (
-            <div className="px-8 sm:px-[6%] py-4 md:py-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div className={`px-8 sm:px-[6%] py-4 md:py-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ${section.fontFamily === 'sarabun' ? 'font-sarabun' : ''
+                }`}>
                 {section.columns.map((col, i) => (
-                    <div key={i} className="text-xs sm:text-sm md:text-[13px] text-gray-800 leading-relaxed text-justify whitespace-pre-line">
+                    <div key={i} className="text-[13px] md:text-[14px] text-gray-800 leading-[1.6] text-left whitespace-pre-line">
                         {t(col)}
                     </div>
                 ))}
@@ -341,8 +352,8 @@ function renderSection(
 
     if (section.type === "pdf_note") {
         return (
-            <div className="px-4 sm:px-8 md:px-[2%] mt-4 sm:mt-6 mb-6 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed whitespace-pre-line">
-                {!section.hidePrefix && <strong>{locale === 'th' ? 'หมายเหตุ :' : 'Note :'} </strong>}{t(section.text)}
+            <div className="font-sarabun px-4 sm:px-8 md:px-[2%] py-4 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed whitespace-pre-line">
+                {!section.hidePrefix && <strong>{locale === 'th' ? 'หมายเหตุ :' : 'Remarks :'} </strong>}{t(section.text)}
             </div>
         );
     }
@@ -363,7 +374,7 @@ export default async function PageDetail({ params }: Props) {
     return (
         <div className="min-h-screen flex flex-col transition-colors duration-300" style={{ backgroundColor: page.backgroundColor || '#f5f8ff' }}>
             {/* Page content */}
-            <div className={page.layout === 'pdf_composition' ? "w-full mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}>
+            <div className={page.layout === 'pdf_composition' ? "w-full max-w-[1320px] mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-[660px] mx-auto" : "px-4 sm:px-6 md:px-10 py-4 md:py-6" + " flex-grow"}>
                 <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-4 sm:p-5 md:p-6 lg:p-8"}>
                     {page.sections.length > 0 ? (
                         page.sections.map((section, i) => (
@@ -389,7 +400,7 @@ export default async function PageDetail({ params }: Props) {
                                 </span>
                             </div>
                             <p className="text-gray-400 text-sm">
-                                        {locale === "th"
+                                {locale === "th"
                                     ? "กำลังเตรียมเนื้อหา"
                                     : "Content in preparation"}
                             </p>
