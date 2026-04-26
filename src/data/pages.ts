@@ -1,4 +1,5 @@
 export type BilingualText = { th: string; en: string };
+export type BilingualSrc = string | { th: string; en: string };
 
 export type TableRowData = {
   label: BilingualText;
@@ -18,10 +19,10 @@ export type PageSection =
   | { type: 'highlights'; title?: BilingualText; content: BilingualText; items: Array<{ label: BilingualText; value: string }> }
   | { type: 'quote'; content: BilingualText; attribution?: BilingualText }
   | { type: 'list'; title?: BilingualText; items: BilingualText[] }
-  | { type: 'image'; src: string; alt?: string; caption?: BilingualText }
-  | { type: 'pdf_banner'; src: string; mobileSrcs?: string[]; alt?: string }
-  | { type: 'pdf_row'; items: Array<{ src: string; alt?: string; colSpan?: number }>; withGap?: boolean }
-  | { type: 'pdf_page'; items: PageSection[]; backgroundColor?: string; noPadding?: boolean; noMinHeight?: boolean; pageNumber?: string; pageNumberAlign?: 'left' | 'right'; pageNumberColor?: string; desktopFullImage?: string }
+  | { type: 'image'; src: BilingualSrc; alt?: string; caption?: BilingualText }
+  | { type: 'pdf_banner'; src: BilingualSrc; mobileSrcs?: BilingualSrc[]; alt?: string }
+  | { type: 'pdf_row'; items: Array<{ src: BilingualSrc; alt?: string; colSpan?: number }>; withGap?: boolean }
+  | { type: 'pdf_page'; items: PageSection[]; backgroundColor?: string; noPadding?: boolean; noMinHeight?: boolean; pageNumber?: string; pageNumberAlign?: 'left' | 'right'; pageNumberColor?: string; desktopFullImage?: BilingualSrc }
   | { type: 'pdf_note'; text: BilingualText; hidePrefix?: boolean }
   | { type: 'pdf_header'; text: BilingualText }
   | { type: 'pdf_title'; text: BilingualText }
@@ -29,7 +30,7 @@ export type PageSection =
   | {
     type: 'pdf_quote_block';
     text: BilingualText;
-    signatureSrc: string;
+    signatureSrc: BilingualSrc;
     signatureName: BilingualText;
     signaturePosition: BilingualText
   }
@@ -67,8 +68,10 @@ export const pagesData: Record<string, PageData> = {
         items: [
           {
             type: 'pdf_banner',
-            src: '/page-intro/intro_p02_full.webp',
-            mobileSrcs: ['/page-intro/page-4-mobile-head.webp', '/page-intro/page-4-mobile.webp']
+            src: { th: '/page_intro/intro_p01_full_th.webp', en: '/page_intro/intro_p01_full_en.webp' },
+            mobileSrcs: [
+              { th: '/page_intro/intro_p01_mobile_th.webp', en: '/page_intro/intro_p01_mobile_en.webp' },
+            ]
           }
         ]
       },
@@ -77,8 +80,11 @@ export const pagesData: Record<string, PageData> = {
         items: [
           {
             type: 'pdf_banner',
-            src: '/page-intro/intro_p03_full.webp',
-            mobileSrcs: ['/page-intro/page-5-mobile-head.webp', '/page-intro/page-5-mobile-1.webp', '/page-intro/page-5-mobile-2.webp']
+            src: { th: '/page_intro/intro_p02_full_th.webp', en: '/page_intro/intro_p02_full_en.webp' },
+            mobileSrcs: [
+              { th: '/page_intro/intro_p02_mobile_mobile_1_th.webp', en: '/page_intro/intro_p02_mobile_mobile_1_en.webp' },
+              { th: '/page_intro/intro_p02_mobile_mobile_2_th.webp', en: '/page_intro/intro_p02_mobile_mobile_2_en.webp' },
+            ]
           }
         ]
       }
@@ -96,102 +102,39 @@ export const pagesData: Record<string, PageData> = {
       {
         type: 'pdf_page',
         backgroundColor: '#d0f5fe',
-        pageNumber: '04',
-        pageNumberAlign: 'left',
-        desktopFullImage: '/page-04/04_p04_full.webp',
+        desktopFullImage: { th: '/page_001/001_p01_full_th.webp', en: '/page_001/001_p01_full_en.webp' },
         items: [
-          {
-            type: 'pdf_banner',
-            src: '/page-04/04_p06_banner.webp',
-          },
-          {
-            type: 'pdf_row',
-            items: [
-              { src: '/page-04/04_p06_col1.webp' },
-              { src: '/page-04/04_p06_col2.webp' },
-              { src: '/page-04/04_p06_col3.webp' }
-            ]
-          }
+          { type: 'pdf_banner', src: { th: '/page_001/001_p01_mobile_1_th.webp', en: '/page_001/001_p01_mobile_1_en.webp' } },
+          { type: 'pdf_banner', src: { th: '/page_001/001_p01_mobile_2_th.webp', en: '/page_001/001_p01_mobile_2_en.webp' } },
         ]
       },
       {
         type: 'pdf_page',
         backgroundColor: '#c4f6fd',
-        pageNumber: '05',
-        pageNumberAlign: 'right',
-        desktopFullImage: '/page-04/04_p05_full.webp',
+        desktopFullImage: { th: '/page_001/001_p02_full_th.webp', en: '/page_001/001_p02_full_en.webp' },
         items: [
           {
-            type: 'pdf_banner',
-            src: '/page-04/04_p07_banner.webp',
-          },
-          {
-            type: 'pdf_row',
-            items: [
-              { src: '/page-04/04_p07_col1.webp' },
-              { src: '/page-04/04_p07_col2.webp' },
-              { src: '/page-04/04_p07_col3.webp' }
-            ]
+            type: 'pdf_note',
+            text: {
+              "th": "รายงานฉบับนี้นำเสนอผลการดำเนินงานของปี 2568 ก่อนวันที่ 29 มกราคม 2569 ที่ประชุมวิสามัญผู้ถือหุ้นครั้งที่ 1/2569 ที่ได้มีมติอนุมัติการปรับโครงสร้างกลุ่มบริษัท โดยการควบรวม (Amalgamation) ระหว่างบริษัทฯ และ BPP เพื่อจัดตั้งบริษัทใหม่ (NewCo)",
+              "en": "This report presents the operating results for FY2025 prior to 29 January 2026, on which date the Extraordinary General Meeting of Shareholders No. 1/2026 approved the group restructuring through an amalgamation between the Company and BPP to establish a new company (NewCo)."
+            }
           }
-        ]
+        ],
+        
       },
       {
         type: 'pdf_page',
         backgroundColor: '#ddf7ff',
-        pageNumber: '06',
-        pageNumberAlign: 'left',
-        desktopFullImage: '/page-04/04_p06_full.webp',
+        desktopFullImage: { th: '/page_001/001_p03_full_th.webp', en: '/page_001/001_p03_full_en.webp' },
         items: [
-          {
-            type: 'pdf_header',
-            text: {
-              th: 'การประกอบธุรกิจและผลการดำเนินงาน | การกำกับดูแลกิจการ | การรับรองความถูกต้องของข้อมูล',
-              en: 'Business and Operational Performance | Corporate Governance | Certification of Information Accuracy'
-            }
-          },
-          {
-            type: 'pdf_row',
-            items: [
-              { src: '/page-04/04_p08_row1_left.webp' },
-              { src: '/page-04/04_p08_row1_right.webp' }
-            ]
-          },
-          {
-            type: 'pdf_row',
-            items: [
-              { src: '/page-04/04_p08_row2_left.webp' },
-              { src: '/page-04/04_p08_row2_right.webp' }
-            ]
-          },
-          {
-            type: 'pdf_row',
-            items: [
-              { src: '/page-04/04_p08_row3_left.webp' },
-              { src: '/page-04/04_p08_row3_right.webp' }
-            ]
-          },
-          {
-            type: 'pdf_row',
-            items: [
-              { src: '/page-04/04_p08_row4_left.webp' },
-              { src: '/page-04/04_p08_row4_right.webp' }
-            ]
-          },
-          {
-            type: 'pdf_note',
-            text: {
-              th: 'รายงานฉบับนี้นำเสนอผลการดำเนินงานของปี 2568 ก่อนวันที่ 29 มกราคม 2569 ที่ประชุมวิสามัญผู้ถือหุ้นครั้งที่ 1/2569 ที่ได้มีมติอนุมัติการปรับโครงสร้างกลุ่มบริษัท โดยการควบรวม (Amalgamation) ระหว่างบริษัทฯ และ BPP เพื่อจัดตั้งบริษัทใหม่ (NewCo)',
-              en: 'This report presents the performance of 2025 prior to January 29, 2026, when the EGM No. 1/2026 approved the corporate restructuring through the amalgamation between the Company and BPP to form a new company (NewCo).'
-            }
-          }
+          { type: 'pdf_banner', src: { th: '/page_001/001_p03_mobile_th.webp', en: '/page_001/001_p03_mobile_en.webp' } },
         ]
       },
       {
         type: 'pdf_page',
         backgroundColor: '#ffffff',
-        pageNumber: '07',
-        pageNumberAlign: 'right',
-        desktopFullImage: '/page-04/04_p07_full.webp',
+        desktopFullImage: { th: '/page_001/001_p04_full_th.webp', en: '/page_001/001_p04_full_en.webp' },
         items: [
           {
             type: 'pdf_header',
@@ -202,60 +145,60 @@ export const pagesData: Record<string, PageData> = {
           },
           {
             type: 'pdf_table',
-            headerTitle: { th: 'สำหรับปีสิ้นสุดวันที่', en: 'For the year ended' },
+            headerTitle: { th: 'สำหรับปีสิ้นสุดวันที่', en: 'For the Year Ended' },
             highlightColumnIndex: 0,
             columns: [
-              { th: '31 ธันวาคม 2568', en: '31 December 2025' },
-              { th: '31 ธันวาคม 2567', en: '31 December 2024' },
-              { th: '31 ธันวาคม 2566', en: '31 December 2023' }
+              { th: '31 ธันวาคม 2568', en: '31 Dec 2025' },
+              { th: '31 ธันวาคม 2567', en: '31 Dec 2024' },
+              { th: '31 ธันวาคม 2566', en: '31 Dec 2023' }
             ],
             sections: [
               {
                 title: { th: 'ฐานะการเงิน', en: 'Financial Position' },
                 rows: [
-                  { label: { th: 'สินทรัพย์รวม', en: 'Total Assets' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['13,941', '12,399', '13,000'] },
-                  { label: { th: 'หนี้สินรวม', en: 'Total Liabilities' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['9,048', '7,698', '8,172'] },
-                  { label: { th: 'ส่วนของผู้ถือหุ้น', en: 'Shareholders\' Equity' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['4,893', '4,701', '4,828'] },
-                  { label: { th: 'ทุนที่ออกและเรียกชำระแล้ว', en: 'Issued and paid-up share capital' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['285', '285', '285'] },
+                  { label: { th: 'สินทรัพย์รวม', en: 'Total Assets' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['13,941', '12,399', '13,000'] },
+                  { label: { th: 'หนี้สินรวม', en: 'Total Liabilities' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['9,048', '7,698', '8,172'] },
+                  { label: { th: 'ส่วนของผู้ถือหุ้น', en: "Total Shareholders' Equity" }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['4,893', '4,701', '4,828'] },
+                  { label: { th: 'ทุนที่ออกและเรียกชำระแล้ว', en: 'Issued and Paid-up Share Capital' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['285', '285', '285'] },
                 ]
               },
               {
-                title: { th: 'ผลการดำเนินงาน', en: 'Operating Results' },
+                title: { th: 'ผลการดำเนินงาน', en: 'Operational Results' },
                 rows: [
-                  { label: { th: 'รายได้จากการขายรวม', en: 'Sales Revenue' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['5,278', '5,148', '5,083'] },
-                  { label: { th: 'ต้นทุนขาย', en: 'Cost of Sales' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['(4,080)', '(3,900)', '(3,665)'] },
-                  { label: { th: 'กำไรขั้นต้น', en: 'Gross Profit' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['1,198', '1,248', '1,418'], isBold: true },
-                  { label: { th: 'ค่าใช้จ่ายในการขายและบริหาร', en: 'Selling and administrative expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['(688)', '(615)', '(556)'] },
-                  { label: { th: 'ค่าภาคหลวง', en: 'Royalties' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['(290)', '(329)', '(379)'] },
-                  { label: { th: 'รายได้อื่น', en: 'Other income' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['189', '245', '219'] },
-                  { label: { th: 'ค่าใช้จ่ายอื่น', en: 'Other expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['(151)', '(136)', '(96)'] },
-                  { label: { th: 'กำไรจากการดำเนินงาน', en: 'Operating Profit' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['258', '413', '606'] },
-                  { label: { th: 'ส่วนแบ่งกำไรจากกิจการร่วมค้า', en: 'Share of profit from joint ventures' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['126', '196', '268'] },
-                  { label: { th: 'ดอกเบี้ยจ่าย', en: 'Interest expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['(341)', '(377)', '(374)'] },
-                  { label: { th: 'ค่าใช้จ่ายทางการเงิน', en: 'Financial expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['(20)', '(24)', '(10)'] },
-                  { label: { th: 'ภาษีเงินได้', en: 'Income taxes' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['7', '(97)', '(119)'] },
-                  { label: { th: 'ส่วนที่เป็นของส่วนได้เสียที่ไม่มีอำนาจควบคุม', en: 'Non-controlling interests' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['(92)', '(135)', '(212)'] },
-                  { label: { th: 'กำไร (ขาดทุน) สุทธิ', en: 'Net Profit (Loss)' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['(61)', '(24)', '160'], isBold: true },
-                  { label: { th: 'กำไรจากการดำเนินงานก่อนดอกเบี้ย ภาษี ค่าเสื่อมราคา และค่าใช้จ่ายตัดจ่าย', en: 'EBITDA' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(USD Million)' }, values: ['1,191', '1,326', '1,487'], isBold: true },
+                  { label: { th: 'รายได้จากการขายรวม', en: 'Sale Revenues' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['5,278', '5,148', '5,083'] },
+                  { label: { th: 'ต้นทุนขาย', en: 'Cost of Sales' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(4,080)', '(3,900)', '(3,665)'] },
+                  { label: { th: 'กำไรขั้นต้น', en: 'Gross Profit' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['1,198', '1,248', '1,418'], isBold: true },
+                  { label: { th: 'ค่าใช้จ่ายในการขายและบริหาร', en: 'Selling and Administration Expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(688)', '(615)', '(556)'] },
+                  { label: { th: 'ค่าภาคหลวง', en: 'Royalty Fee' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(290)', '(329)', '(379)'] },
+                  { label: { th: 'รายได้อื่น', en: 'Other Revenues' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['189', '245', '219'] },
+                  { label: { th: 'ค่าใช้จ่ายอื่น', en: 'Other Expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(151)', '(136)', '(96)'] },
+                  { label: { th: 'กำไรจากการดำเนินงาน', en: 'Profit from Operation' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['258', '413', '606'] },
+                  { label: { th: 'ส่วนแบ่งกำไรจากกิจการร่วมค้า', en: 'Share of Profit from Joint Ventures' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['126', '196', '268'] },
+                  { label: { th: 'ดอกเบี้ยจ่าย', en: 'Interest Expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(341)', '(377)', '(374)'] },
+                  { label: { th: 'ค่าใช้จ่ายทางการเงิน', en: 'Financial Expenses' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(20)', '(24)', '(10)'] },
+                  { label: { th: 'ภาษีเงินได้', en: 'Corporate Income Tax' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['7', '(97)', '(119)'] },
+                  { label: { th: 'ส่วนที่เป็นของส่วนได้เสียที่ไม่มีอำนาจควบคุม', en: 'Non-controlling Interests' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(92)', '(135)', '(212)'] },
+                  { label: { th: 'กำไร (ขาดทุน) สุทธิ', en: 'Net (Loss) Profit' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['(61)', '(24)', '160'], isBold: true },
+                  { label: { th: 'กำไรจากการดำเนินงานก่อนดอกเบี้ย ภาษี ค่าเสื่อมราคา และค่าใช้จ่ายตัดจ่าย', en: 'EBITDA' }, unit: { th: '(ล้านเหรียญสหรัฐ)', en: '(Million USD)' }, values: ['1,191', '1,326', '1,487'], isBold: true },
                 ]
               },
               {
                 title: { th: 'อัตราส่วนทางการเงิน', en: 'Financial Ratios' },
                 rows: [
-                  { label: { th: 'อัตรากำไรขั้นต้น', en: 'Gross profit margin' }, unit: { th: '(%)', en: '(%)' }, values: ['22.7', '24.2', '27.9'] },
-                  { label: { th: 'อัตรากำไร (ขาดทุน) สุทธิต่อรายได้รวม', en: 'Net profit (loss) margin' }, unit: { th: '(%)', en: '(%)' }, values: ['0.55', '1.99', '6.67'] },
-                  { label: { th: 'อัตราผลตอบแทนจากสินทรัพย์', en: 'Return on assets' }, unit: { th: '(%)', en: '(%)' }, values: ['0.23', '0.88', '2.90'] },
-                  { label: { th: 'อัตราผลตอบแทนผู้ถือหุ้น', en: 'Return on equity' }, unit: { th: '(%)', en: '(%)' }, values: ['(1.80)', '(0.66)', '4.42'] },
-                  { label: { th: 'อัตราส่วนความสามารถในการชำระดอกเบี้ย', en: 'Interest coverage ratio' }, unit: { th: '(เท่า)', en: '(times)' }, values: ['3.49', '3.53', '3.98'] },
-                  { label: { th: 'อัตราส่วนหนี้สินสุทธิต่อส่วนของผู้ถือหุ้น', en: 'Net debt to equity ratio' }, unit: { th: '(เท่า)', en: '(times)' }, values: ['0.98', '0.79', '0.90'] },
+                  { label: { th: 'อัตรากำไรขั้นต้น', en: 'Gross Profit Margin' }, unit: { th: '(%)', en: '(%)' }, values: ['22.7', '24.2', '27.9'] },
+                  { label: { th: 'อัตรากำไร (ขาดทุน) สุทธิต่อรายได้รวม', en: 'Net (Loss) Profits to Total Revenues' }, unit: { th: '(%)', en: '(%)' }, values: ['0.55', '1.99', '6.67'] },
+                  { label: { th: 'อัตราผลตอบแทนจากสินทรัพย์', en: 'Returns on Assets' }, unit: { th: '(%)', en: '(%)' }, values: ['0.23', '0.88', '2.90'] },
+                  { label: { th: 'อัตราผลตอบแทนผู้ถือหุ้น', en: 'Returns on Equity' }, unit: { th: '(%)', en: '(%)' }, values: ['(1.80)', '(0.66)', '4.42'] },
+                  { label: { th: 'อัตราส่วนความสามารถในการชำระดอกเบี้ย', en: 'Interest Coverage Ratio' }, unit: { th: '(เท่า)', en: '(Times)' }, values: ['3.49', '3.53', '3.98'] },
+                  { label: { th: 'อัตราส่วนหนี้สินสุทธิต่อส่วนของผู้ถือหุ้น', en: 'Net Debt to Equity' }, unit: { th: '(เท่า)', en: '(Times)' }, values: ['0.98', '0.79', '0.90'] },
                 ]
               },
               {
-                title: { th: 'ข้อมูลต่อหุ้น', en: 'Share Data' },
+                title: { th: 'ข้อมูลต่อหุ้น', en: 'Data per Share' },
                 rows: [
-                  { label: { th: 'กำไรสุทธิต่อหุ้น', en: 'Earnings per share' }, unit: { th: '(เหรียญสหรัฐ)', en: '(USD)' }, values: ['(0.006)', '(0.002)', '0.018'] },
-                  { label: { th: 'มูลค่าตามบัญชีต่อหุ้น', en: 'Book value per share' }, unit: { th: '(เหรียญสหรัฐ)', en: '(USD)' }, values: ['0.49', '0.47', '0.48'] },
-                  { label: { th: 'เงินปันผลต่อหุ้น', en: 'Dividend per share' }, unit: { th: '(บาท)', en: '(THB)' }, values: ['0.30*', '0.30', '0.45'] },
+                  { label: { th: 'กำไรสุทธิต่อหุ้น', en: 'Earnings per Share' }, unit: { th: '(เหรียญสหรัฐ)', en: '(USD)' }, values: ['(0.006)', '(0.002)', '0.018'] },
+                  { label: { th: 'มูลค่าตามบัญชีต่อหุ้น', en: 'Book Value per Share' }, unit: { th: '(เหรียญสหรัฐ)', en: '(USD)' }, values: ['0.49', '0.47', '0.48'] },
+                  { label: { th: 'เงินปันผลต่อหุ้น', en: 'Dividend per Share' }, unit: { th: '(บาท)', en: '(THB)' }, values: ['0.30*', '0.30', '0.45'] },
                 ]
               }
             ]
@@ -265,18 +208,18 @@ export const pagesData: Record<string, PageData> = {
             hidePrefix: true,
             text: {
               th: '* บริษัทฯ กำหนดการจ่ายเงินปันผลสำหรับผลการดำเนินงานประจำปี 2568 งวดวันที่ 1 มกราคม 2568 ถึงวันที่ 31 ธันวาคม 2568 ในอัตราหุ้นละ 0.30 บาท ซึ่งได้จ่ายเป็นเงินปันผลระหว่างกาลในอัตราหุ้นละ 0.12 บาท เมื่อวันที่ 25 กันยายน 2568 คงเหลือจ่ายเงินปันผลสำหรับผลการดำเนินงานประจำปี 2568 อีกหุ้นละ 0.18 บาท และบริษัทฯ กำหนดจ่ายเงินปันผลในวันที่ 29 เมษายน 2569',
-              en: '* The Company scheduled the dividend payment for the 2025 operational results from 1 Jan 2025 to 31 Dec 2025 at THB 0.30 per share. An interim dividend of THB 0.12 per share was paid on 25 Sep 2025. The remaining THB 0.18 per share will be paid on 29 Apr 2026.'
+              en: '* The Company announced a total dividend of THB 0.30 per share arising from its performance for the period from 1 January 2025 to 31 December 2025, of which THB 0.12 was paid on 25 September 2025. The remaining dividend of THB 0.18 per share for the 2025 performance will be paid on 29 April 2026.'
             }
           },
           {
             type: 'pdf_note',
             text: {
               th: 'ข้อมูลทางการเงินและอัตราส่วนทางการเงินเป็นข้อมูลจากงบการเงินรวม\nรายงานฉบับนี้นำเสนอผลการดำเนินงานของปี 2568 ก่อนวันที่ 29 มกราคม 2569 ที่ประชุมวิสามัญผู้ถือหุ้นครั้งที่ 1/2569 ที่ได้มีมติอนุมัติการปรับโครงสร้างกลุ่มบริษัท โดยการควบรวม (Amalgamation) ระหว่างบริษัทฯ และ BPP เพื่อจัดตั้งบริษัทใหม่ (NewCo)',
-              en: 'Financial data and ratios are based on consolidated financial statements.\nThis report presents the performance of 2025 prior to January 29, 2026, when the EGM No. 1/2026 approved the corporate restructuring through the amalgamation between the Company and BPP to form a new company (NewCo).'
+              en: 'Financial figures are based on the consolidated financial statements.\nThis report presents the operating results for FY2025 prior to 29 January 2026, on which date the Extraordinary General Meeting of Shareholders No. 1/2026 approved the group restructuring through an amalgamation between the Company and BPP to establish a new company (NewCo).'
             }
           }
         ]
-      }
+      },
     ],
     prevPage: '000',
     nextPage: '002',
@@ -292,7 +235,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#ffffff',
         pageNumber: '08',
         pageNumberAlign: 'left',
-        desktopFullImage: '/page-08/08_p08_full.webp',
+        desktopFullImage: { th: '/page-08/08_p08_full_th.webp', en: '/page-08/08_p08_full_en.webp' },
         items: [
           {
             type: 'pdf_header',
@@ -389,7 +332,7 @@ export const pagesData: Record<string, PageData> = {
         backgroundColor: '#e3f6fc',
         pageNumber: '09',
         pageNumberAlign: 'right',
-        desktopFullImage: '/page-08/08_p09_full.webp',
+        desktopFullImage: { th: '/page-08/08_p09_full_th.webp', en: '/page-08/08_p09_full_en.webp' },
         items: [
           {
             type: 'pdf_header',
@@ -401,16 +344,16 @@ export const pagesData: Record<string, PageData> = {
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-08/08_row1_col1.webp' },
-              { src: '/page-08/08_row1_col2.webp' },
-              { src: '/page-08/08_row1_col3.webp' }
+              { src: { th: '/page-08/08_row1_col1_th.webp', en: '/page-08/08_row1_col1_en.webp' } },
+              { src: { th: '/page-08/08_row1_col2_th.webp', en: '/page-08/08_row1_col2_en.webp' } },
+              { src: { th: '/page-08/08_row1_col3_th.webp', en: '/page-08/08_row1_col3_en.webp' } }
             ]
           },
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-08/08_row2_col1.webp' },
-              { src: '/page-08/08_row2_col2.webp' }
+              { src: { th: '/page-08/08_row2_col1_th.webp', en: '/page-08/08_row2_col1_en.webp' } },
+              { src: { th: '/page-08/08_row2_col2_th.webp', en: '/page-08/08_row2_col2_en.webp' } }
             ]
           },
           {
@@ -420,9 +363,9 @@ export const pagesData: Record<string, PageData> = {
           {
             type: 'pdf_row',
             items: [
-              { src: '/page-08/08_row3_col1.webp' },
-              { src: '/page-08/08_row3_col2.webp' },
-              { src: '/page-08/08_row3_col3.webp' }
+              { src: { th: '/page-08/08_row3_col1_th.webp', en: '/page-08/08_row3_col1_en.webp' } },
+              { src: { th: '/page-08/08_row3_col2_th.webp', en: '/page-08/08_row3_col2_en.webp' } },
+              { src: { th: '/page-08/08_row3_col3_th.webp', en: '/page-08/08_row3_col3_en.webp' } }
             ]
           }
         ]
@@ -444,7 +387,7 @@ export const pagesData: Record<string, PageData> = {
         noPadding: true,
         pageNumber: '10',
         pageNumberAlign: 'left',
-        desktopFullImage: '/page-10/10_p10_full.webp',
+        desktopFullImage: { th: '/page-10/10_p10_full_th.webp', en: '/page-10/10_p10_full_en.webp' },
         items: [
           {
             type: 'pdf_page',
@@ -460,7 +403,7 @@ export const pagesData: Record<string, PageData> = {
               },
               {
                 type: 'pdf_banner',
-                src: '/page-10/10_quote_message.webp',
+                src: { th: '/page-10/10_quote_message_th.webp', en: '/page-10/10_quote_message_en.webp' },
               },
             ]
           },
@@ -493,7 +436,7 @@ export const pagesData: Record<string, PageData> = {
         noPadding: true,
         pageNumber: '11',
         pageNumberAlign: 'right',
-        desktopFullImage: '/page-10/10_p11_full.webp',
+        desktopFullImage: { th: '/page-10/10_p11_full_th.webp', en: '/page-10/10_p11_full_en.webp' },
         items: [
           {
             type: 'pdf_page',
@@ -509,7 +452,7 @@ export const pagesData: Record<string, PageData> = {
               },
               {
                 type: 'pdf_banner',
-                src: '/page-10/10_chairman_photo.webp',
+                src: { th: '/page-10/10_chairman_photo_th.webp', en: '/page-10/10_chairman_photo_en.webp' },
               },
             ]
           },

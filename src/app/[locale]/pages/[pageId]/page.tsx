@@ -2,7 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { pagesData, type PageSection } from "@/data/pages";
+import { pagesData, type PageSection, type BilingualSrc } from "@/data/pages";
 import React from "react";
 
 type Props = {
@@ -20,6 +20,9 @@ function renderSection(
 ) {
     const t = (text: { th: string; en: string }) =>
         locale === "th" ? text.th : text.en;
+
+    const src = (s: BilingualSrc) =>
+        typeof s === "string" ? s : locale === "th" ? s.th : s.en;
 
     if (section.type === "text") {
         return (
@@ -129,13 +132,13 @@ function renderSection(
             <div className="w-full">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                    src={section.src}
+                    src={src(section.src)}
                     alt={section.alt || "banner"}
                     className={`w-full h-auto object-contain ${section.mobileSrcs?.length ? 'sm:block hidden' : ''}`}
                 />
-                {section.mobileSrcs?.map((src, i) => (
+                {section.mobileSrcs?.map((mobileSrc, i) => (
                     /* eslint-disable-next-line @next/next/no-img-element */
-                    <img key={`mob-${i}`} src={src} className="w-full h-auto object-contain sm:hidden block" />
+                    <img key={`mob-${i}`} src={src(mobileSrc)} className="w-full h-auto object-contain sm:hidden block" />
                 ))}
             </div>
         );
@@ -151,7 +154,7 @@ function renderSection(
                         /* eslint-disable-next-line @next/next/no-img-element */
                         <img
                             key={idx}
-                            src={item.src}
+                            src={src(item.src)}
                             alt={item.alt || `column-${idx}`}
                             className="w-full max-w-[300px] sm:max-w-none sm:w-auto h-auto object-contain min-w-0 shrink"
                         />
@@ -168,7 +171,7 @@ function renderSection(
                     <div className="hidden sm:block w-full">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
-                            src={section.desktopFullImage}
+                            src={src(section.desktopFullImage)}
                             alt={section.pageNumber ? `Page ${section.pageNumber}` : "PDF Page"}
                             className="w-full h-auto object-contain"
                         />
@@ -202,20 +205,20 @@ function renderSection(
         return (
             <div className="w-full px-4 sm:px-8 md:px-[2%] mb-10 md:mb-16">
                 <div className="overflow-x-auto pb-4 custom-scrollbar">
-                    <table className="w-full min-w-[600px] xl:min-w-full text-left border-collapse border-t-2 border-b-2 border-[#2a2e82]">
+                    <table className="w-full min-w-[600px] xl:min-w-full text-left border-collapse border-t-2 border-b-2 border-[#3ab4e8]">
                         <thead>
                             {section.headerTitle && (
                                 <tr>
                                     <th colSpan={2}></th>
                                     <th
                                         colSpan={section.columns.length}
-                                        className="text-center text-[#2a2e82] text-[11px] md:text-[11px] font-bold pt-4 pb-2 border-b border-[#2a2e82]"
+                                        className="text-center text-[#2a2e82] text-[11px] md:text-[11px] font-bold pt-4 pb-2 border-b border-[#3ab4e8]"
                                     >
                                         {t(section.headerTitle)}
                                     </th>
                                 </tr>
                             )}
-                            <tr className="border-b-2 border-[#2a2e82]">
+                            <tr className="border-b-2 border-[#3ab4e8]">
                                 <th className="py-2 px-2 w-[45%] lg:w-[50%] min-w-[180px]"></th>
                                 <th className="py-2 px-2"></th>
                                 {section.columns.map((col, idx) => (
@@ -320,7 +323,7 @@ function renderSection(
                 {/* Signature area */}
                 <div className="mt-8 md:mt-10 self-end mr-10 md:mr-20 flex flex-col items-center gap-0.5">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={section.signatureSrc} alt="Signature" className="h-10 md:h-12 object-contain" />
+                    <img src={src(section.signatureSrc)} alt="Signature" className="h-10 md:h-12 object-contain" />
                     <div className="text-sm md:text-base font-bold text-[#2a2e82] mt-2">
                         {t(section.signatureName)}
                     </div>
@@ -351,8 +354,8 @@ function renderSection(
 
     if (section.type === "pdf_note") {
         return (
-            <div className="px-4 sm:px-8 md:px-[2%] mt-4 sm:mt-6 mb-6 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed whitespace-pre-line">
-                {!section.hidePrefix && <strong>{locale === 'th' ? 'หมายเหตุ :' : 'Note :'} </strong>}{t(section.text)}
+            <div className="font-sarabun px-4 sm:px-8 md:px-[2%] py-4 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed whitespace-pre-line">
+                {!section.hidePrefix && <strong>{locale === 'th' ? 'หมายเหตุ :' : 'Remarks :'} </strong>}{t(section.text)}
             </div>
         );
     }

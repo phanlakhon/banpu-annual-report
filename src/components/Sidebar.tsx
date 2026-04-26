@@ -6,6 +6,8 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const isDev = process.env.NODE_ENV === 'development';
+
 type NavLinkProps = {
   href: string;
   pageId: string;
@@ -17,9 +19,11 @@ function NavLink({ href, pageId, label, pathname }: NavLinkProps) {
   const isActive = pathname === href;
   return (
     <Link href={href} className="flex gap-3 group items-start">
-      <span className={`text-sm min-w-7.5 transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold'}`}>
-        {pageId}
-      </span>
+      {isDev && (
+        <span className={`text-sm min-w-7.5 transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold'}`}>
+          {pageId}
+        </span>
+      )}
       <span className={`text-sm transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-gray-800 group-hover:text-sky-500'}`}>
         {label}
       </span>
@@ -65,9 +69,11 @@ function AccordionItem({ title, number, items, defaultOpen = false }: AccordionI
             const isActive = pathname === item.href;
             return (
               <Link key={idx} href={item.href} className="flex gap-3 group/item items-start">
-                <span className={`text-xs min-w-7.5 mt-px transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold group-hover/item:text-sky-500'}`}>
-                  {item.page}
-                </span>
+                {isDev && (
+                  <span className={`text-xs min-w-7.5 mt-px transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold group-hover/item:text-sky-500'}`}>
+                    {item.page}
+                  </span>
+                )}
                 <span className={`text-xs leading-tight transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-gray-700 group-hover/item:text-sky-500'}`}>
                   {item.label}
                 </span>
