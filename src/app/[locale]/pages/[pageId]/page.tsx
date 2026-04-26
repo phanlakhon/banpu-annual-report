@@ -133,10 +133,10 @@ function renderSection(
         return (
             <div className={section.minWidth ? 'w-full overflow-x-auto custom-scrollbar' : 'w-full'}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src(section.src)} alt={section.alt || "banner"} className={imgClass} style={imgStyle} />
+                <img src={src(section.src)} alt={section.alt || "banner"} className={imgClass} style={imgStyle} decoding="async" />
                 {section.mobileSrcs?.map((mobileSrc, i) => (
                     /* eslint-disable-next-line @next/next/no-img-element */
-                    <img key={`mob-${i}`} src={src(mobileSrc)} className="w-full h-auto object-contain sm:hidden block" />
+                    <img key={`mob-${i}`} src={src(mobileSrc)} className="w-full h-auto object-contain sm:hidden block" decoding="async" />
                 ))}
             </div>
         );
@@ -155,6 +155,7 @@ function renderSection(
                             src={src(item.src)}
                             alt={item.alt || `column-${idx}`}
                             className="w-full max-w-[300px] sm:max-w-none sm:w-auto h-auto object-contain min-w-0 shrink"
+                            decoding="async"
                         />
                     );
                 })}
@@ -166,12 +167,13 @@ function renderSection(
         return (
             <div className="w-full relative" style={{ backgroundColor: section.backgroundColor || '#f5f8ff' }}>
                 {section.desktopFullImage && (
-                    <div className="hidden sm:block w-full">
+                    <div className="hidden sm:block w-full" style={{ aspectRatio: '1 / 1.4142' }}>
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                             src={src(section.desktopFullImage)}
                             alt={section.pageNumber ? `Page ${section.pageNumber}` : "PDF Page"}
-                            className="w-full h-auto object-contain"
+                            className="w-full h-full object-contain"
+                            decoding="async"
                         />
                     </div>
                 )}
