@@ -6,6 +6,8 @@ import { ChevronDown, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+const isDev = process.env.NODE_ENV === 'development';
+
 type NavLinkProps = {
   href: string;
   pageId: string;
@@ -17,9 +19,11 @@ function NavLink({ href, pageId, label, pathname }: NavLinkProps) {
   const isActive = pathname === href;
   return (
     <Link href={href} className="flex gap-3 group items-start">
-      <span className={`text-sm min-w-7.5 transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold'}`}>
-        {pageId}
-      </span>
+      {isDev && (
+        <span className={`text-sm min-w-7.5 transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold'}`}>
+          {pageId}
+        </span>
+      )}
       <span className={`text-sm transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-gray-800 group-hover:text-sky-500'}`}>
         {label}
       </span>
@@ -34,7 +38,7 @@ type AccordionItemProps = {
   defaultOpen?: boolean;
 };
 
-function AccordionItem({ title, number, items, defaultOpen = true }: AccordionItemProps) {
+function AccordionItem({ title, number, items, defaultOpen = false }: AccordionItemProps) {
   const pathname = usePathname();
   const hasActiveItem = items.some(item => pathname === item.href);
   const [isOpen, setIsOpen] = useState(defaultOpen || hasActiveItem);
@@ -65,9 +69,11 @@ function AccordionItem({ title, number, items, defaultOpen = true }: AccordionIt
             const isActive = pathname === item.href;
             return (
               <Link key={idx} href={item.href} className="flex gap-3 group/item items-start">
-                <span className={`text-xs min-w-7.5 mt-px transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold group-hover/item:text-sky-500'}`}>
-                  {item.page}
-                </span>
+                {isDev && (
+                  <span className={`text-xs min-w-7.5 mt-px transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold group-hover/item:text-sky-500'}`}>
+                    {item.page}
+                  </span>
+                )}
                 <span className={`text-xs leading-tight transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-gray-700 group-hover/item:text-sky-500'}`}>
                   {item.label}
                 </span>
@@ -101,11 +107,11 @@ export default function Sidebar() {
         <h2 className="text-[#1e40af] text-xl font-bold mb-4">สารบัญ</h2>
 
         <div className="space-y-3">
-          <NavLink href={p('00')} pageId="00" label={t('intro')} pathname={pathname} />
-          <NavLink href={p('04')} pageId="04" label={t('highlight')} pathname={pathname} />
-          <NavLink href={p('08')} pageId="08" label={t('performance')} pathname={pathname} />
-          <NavLink href={p('10')} pageId="10" label={t('board_report')} pathname={pathname} />
-          <NavLink href={p('12')} pageId="12" label={t('ceo_message')} pathname={pathname} />
+          <NavLink href={p('000')} pageId="000" label={t('m000')} pathname={pathname} />
+          <NavLink href={p('001')} pageId="001" label={t('m001')} pathname={pathname} />
+          <NavLink href={p('002')} pageId="002" label={t('m002')} pathname={pathname} />
+          <NavLink href={p('003')} pageId="003" label={t('m003')} pathname={pathname} />
+          <NavLink href={p('004')} pageId="004" label={t('m004')} pathname={pathname} />
         </div>
 
         <div className="my-4 border-t border-blue-100" />
@@ -114,9 +120,32 @@ export default function Sidebar() {
           number="1"
           title={t('part1').replace('ส่วนที่ 1 ', '')}
           items={[
-            { page: '18', label: t('part1_1'), href: p('18') },
-            { page: '22', label: t('part1_2'), href: p('22') },
-            { page: '24', label: t('part1_3'), href: p('24') },
+            { page: '005', label: t('m005'), href: p('005') },
+            { page: '006', label: t('m006'), href: p('006') },
+            { page: '007', label: t('m007'), href: p('007') },
+            { page: '008', label: t('m008'), href: p('008') },
+            { page: '009', label: t('m009'), href: p('009') },
+            { page: '010', label: t('m010'), href: p('010') },
+            { page: '011', label: t('m011'), href: p('011') },
+            { page: '012', label: t('m012'), href: p('012') },
+            { page: '013', label: t('m013'), href: p('013') },
+            { page: '014', label: t('m014'), href: p('014') },
+            { page: '015', label: t('m015'), href: p('015') },
+            { page: '016', label: t('m016'), href: p('016') },
+            { page: '017', label: t('m017'), href: p('017') },
+            { page: '018', label: t('m018'), href: p('018') },
+            { page: '019', label: t('m019'), href: p('019') },
+            { page: '020', label: t('m020'), href: p('020') },
+            { page: '021', label: t('m021'), href: p('021') },
+            { page: '022', label: t('m022'), href: p('022') },
+            { page: '023', label: t('m023'), href: p('023') },
+            { page: '024', label: t('m024'), href: p('024') },
+            { page: '025', label: t('m025'), href: p('025') },
+            { page: '026', label: t('m026'), href: p('026') },
+            { page: '027', label: t('m027'), href: p('027') },
+            { page: '028', label: t('m028'), href: p('028') },
+            { page: '029', label: t('m029'), href: p('029') },
+            { page: '030', label: t('m030'), href: p('030') },
           ]}
         />
 
@@ -124,8 +153,14 @@ export default function Sidebar() {
           number="2"
           title={t('part2').replace('ส่วนที่ 2 ', '')}
           items={[
-            { page: '254', label: t('part2_1'), href: p('254') },
-            { page: '282', label: t('part2_2'), href: p('282') },
+            { page: '031', label: t('m031'), href: p('031') },
+            { page: '032', label: t('m032'), href: p('032') },
+            { page: '033', label: t('m033'), href: p('033') },
+            { page: '034', label: t('m034'), href: p('034') },
+            { page: '035', label: t('m035'), href: p('035') },
+            { page: '036', label: t('m036'), href: p('036') },
+            { page: '037', label: t('m037'), href: p('037') },
+            { page: '038', label: t('m038'), href: p('038') },
           ]}
         />
 
@@ -133,12 +168,11 @@ export default function Sidebar() {
           number="3"
           title={t('part3').replace('ส่วนที่ 3 ', '')}
           items={[
-            { page: '342', label: t('part3_1'), href: p('342') },
-            { page: '354', label: t('part3_2'), href: p('342') },
+            { page: '039', label: t('m039'), href: p('039') },
+            { page: '040', label: t('m040'), href: p('040') },
           ]}
         />
       </nav>
-
     </aside>
   );
 }

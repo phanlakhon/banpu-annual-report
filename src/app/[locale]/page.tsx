@@ -64,7 +64,7 @@ export default async function HomePage({ params }: Props) {
                     {/* CTAs */}
                     <div className="flex flex-wrap gap-3 mt-2">
                         <Link
-                            href={`/${locale}/pages/00`}
+                            href={`/${locale}/pages/000`}
                             className="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm text-white shadow-md hover:opacity-90 transition-opacity"
                             style={{ background: "#3ab4e8" }}
                         >
@@ -74,7 +74,7 @@ export default async function HomePage({ params }: Props) {
                             </span>
                         </Link>
                         <a
-                            href={`/${locale}/pages/04`}
+                            href={`/${locale}/pages/001`}
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm text-white shadow-md hover:opacity-90 transition-opacity"
                             style={{ background: "#2a2e82" }}
