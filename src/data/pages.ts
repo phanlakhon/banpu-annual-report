@@ -644,7 +644,161 @@ export const pagesData: Record<string, PageData> = {
             en: "Summary of Major Changes and Development in 2025 and Current Events",
         },
         accentColor: "#1e90e6",
-        sections: [],
+        layout: "pdf_composition",
+        sections: [
+            {
+                type: "pdf_page",
+                backgroundColor: "#ffffff",
+                desktopFullImage: {
+                    th: "/page_008/008_p01_full_th.webp",
+                    en: "/page_008/008_p01_full_en.webp",
+                },
+                items: [
+                    {
+                        type: "pdf_title",
+                        text: {
+                            th: "สรุปการเปลี่ยนแปลงและพัฒนาการที่สำคัญในรอบปี 2568 รวมทั้งเหตุการณ์ปัจจุบัน",
+                            en: "SUMMARY OF MAJOR CHANGES AND DEVELOPMENT IN 2025 AND CURRENT EVENTS",
+                        },
+                    },
+                    {
+                        type: "pdf_banner",
+                        src: {
+                            th: "/page_008/008_p01_mobile_th.webp",
+                            en: "/page_008/008_p01_mobile_en.webp",
+                        },
+                    },
+                ],
+            },
+            {
+                type: "pdf_page",
+                desktopFullImage: {
+                    th: "/page_008/008_p02_full_th.webp",
+                    en: "/page_008/008_p02_full_en.webp",
+                },
+                items: [
+                    {
+                        type: "pdf_banner",
+                        src: {
+                            th: "/page_008/008_p02_mobile_th.webp",
+                            en: "/page_008/008_p02_mobile_en.webp",
+                        },
+                    },
+                ],
+            },
+            {
+                type: "pdf_page",
+                desktopFullImage: {
+                    th: "/page_008/008_p03_full_th.webp",
+                    en: "/page_008/008_p03_full_en.webp",
+                },
+                items: [
+                    {
+                        type: "pdf_banner",
+                        src: {
+                            th: "/page_008/008_p03_mobile_th.webp",
+                            en: "/page_008/008_p03_mobile_en.webp",
+                        },
+                    },
+                ],
+            },
+            {
+                type: "pdf_page",
+                desktopFullImage: {
+                    th: "/page_008/008_p04_full_th.webp",
+                    en: "/page_008/008_p04_full_en.webp",
+                },
+                items: [
+                    {
+                        type: "pdf_banner",
+                        src: {
+                            th: "/page_008/008_p04_mobile_th.webp",
+                            en: "/page_008/008_p04_mobile_en.webp",
+                        },
+                    },
+                ],
+            },
+            {
+                type: "pdf_page",
+                desktopFullImage: {
+                    th: "/page_008/008_p05_full_th.webp",
+                    en: "/page_008/008_p05_full_en.webp",
+                },
+                items: [
+                    {
+                        type: "pdf_banner",
+                        src: {
+                            th: "/page_008/008_p05_mobile_th.webp",
+                            en: "/page_008/008_p05_mobile_en.webp",
+                        },
+                    },
+                ],
+            },
+            {
+                type: "pdf_page",
+                desktopFullImage: {
+                    th: "/page_008/008_p06_full_th.webp",
+                    en: "/page_008/008_p06_full_en.webp",
+                },
+                items: [
+                    {
+                        type: "pdf_banner",
+                        src: {
+                            th: "/page_008/008_p06_mobile_th.webp",
+                            en: "/page_008/008_p06_mobile_en.webp",
+                        },
+                    },
+                ],
+            },
+            {
+                type: "pdf_page",
+                desktopFullImage: {
+                    th: "/page_008/008_p07_full_th.webp",
+                    en: "/page_008/008_p07_full_en.webp",
+                },
+                items: [
+                    {
+                        type: "pdf_banner",
+                        src: {
+                            th: "/page_008/008_p07_mobile_th.webp",
+                            en: "/page_008/008_p07_mobile_en.webp",
+                        },
+                    },
+                ],
+            },
+            {
+                type: "pdf_page",
+                desktopFullImage: {
+                    th: "/page_008/008_p08_full_th.webp",
+                    en: "/page_008/008_p08_full_en.webp",
+                },
+                items: [
+                    {
+                        type: "pdf_banner",
+                        src: {
+                            th: "/page_008/008_p08_mobile_th.webp",
+                            en: "/page_008/008_p08_mobile_en.webp",
+                        },
+                    },
+                ],
+            },
+            {
+                type: "pdf_page",
+                desktopFullImage: {
+                    th: "/page_008/008_p09_full_th.webp",
+                    en: "/page_008/008_p09_full_en.webp",
+                },
+                items: [
+                    {
+                        type: "pdf_banner",
+                        src: {
+                            th: "/page_008/008_p09_mobile_th.webp",
+                            en: "/page_008/008_p09_mobile_en.webp",
+                        },
+                    },
+                ],
+            },
+        ],
         prevPage: "007",
         nextPage: "009",
     },

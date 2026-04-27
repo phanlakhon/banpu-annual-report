@@ -302,7 +302,7 @@ function renderSection(
     if (section.type === "pdf_title") {
         return (
             <div className="px-4 sm:px-8 md:px-[2%] py-6 sm:py-8 md:py-10">
-                <h2 className="text-2xl font-medium text-gradient-banpu leading-tight">
+                <h2 className="text-base sm:text-lg font-medium text-gradient-banpu leading-tight">
                     {t(section.text)}
                 </h2>
             </div>
