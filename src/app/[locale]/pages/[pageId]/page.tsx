@@ -168,7 +168,7 @@ function renderSection(
         const gapClasses = section.withGap ? "gap-6 sm:gap-[2%]" : "gap-6 sm:gap-0";
 
         return (
-            <div className={`flex flex-col sm:flex-row justify-center sm:justify-between items-center sm:items-start ${gapClasses} my-8 sm:my-12 md:my-16 lg:my-20 px-8 sm:px-[6%]`}>
+            <div className={`flex flex-col sm:flex-row justify-center sm:justify-between items-center sm:items-start ${gapClasses} my-8 sm:my-12 md:my-16 lg:my-20 px-4 sm:px-[6%]`}>
                 {section.items.map((item, idx) => (
                     <FadeImage
                         key={idx}
@@ -311,7 +311,7 @@ function renderSection(
 
     if (section.type === "pdf_sub_title") {
         return (
-            <div className="w-full mt-6 mb-3 px-8 sm:px-[6%]">
+            <div className="w-full pt-6 pb-3 px-4 sm:px-8 md:px-[6%]">
                 <h3 className="text-base sm:text-lg font-bold text-banpu-cyan-vivid">
                     {t(section.text)}
                 </h3>
@@ -321,9 +321,9 @@ function renderSection(
 
     if (section.type === "pdf_quote_block") {
         return (
-            <div className="w-full px-8 sm:px-[10%] py-8 md:py-12 flex flex-col items-center text-center relative mt-2 mb-6">
+            <div className="w-full px-4 sm:px-[10%] py-8 md:py-12 flex flex-col items-center text-center relative mt-2 mb-6">
                 {/* Solid light blue container with rounded feel */}
-                <div className="absolute inset-0 bg-[#e3f6fc] -z-10 rounded-2xl mx-4 sm:mx-8 md:mx-[2%]"></div>
+                <div className="absolute inset-0 bg-[#e3f6fc] -z-10 rounded-2xl mx-2 sm:mx-8 md:mx-[2%]"></div>
 
                 {/* Opening Quote */}
                 <div className="text-[#3ab4e8] opacity-60 mb-4">
@@ -359,7 +359,7 @@ function renderSection(
 
     if (section.type === "pdf_text_columns") {
         return (
-            <div className={`px-8 sm:px-[6%] py-4 md:py-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ${section.fontFamily === 'sarabun' ? 'font-sarabun' : ''
+            <div className={`px-4 sm:px-8 md:px-[6%] py-4 md:py-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 ${section.fontFamily === 'sarabun' ? 'font-sarabun' : ''
                 }`}>
                 {section.columns.map((col, i) => (
                     <div key={i} className="text-[13px] md:text-[14px] text-gray-800 leading-[1.6] text-left whitespace-pre-line">
@@ -376,8 +376,11 @@ function renderSection(
 
     if (section.type === "pdf_note") {
         return (
-            <div className="font-sarabun px-4 sm:px-8 md:px-[2%] py-4 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed whitespace-pre-line">
-                {!section.hidePrefix && <strong>{locale === 'th' ? 'หมายเหตุ :' : 'Remarks :'} </strong>}{t(section.text)}
+            <div className="font-sarabun px-4 sm:px-8 md:px-[2%] py-4 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed">
+                <div className="flex gap-1 items-start">
+                    {!section.hidePrefix && <strong className="shrink-0">{locale === 'th' ? 'หมายเหตุ :' : 'Remarks :'}</strong>}
+                    <span className="whitespace-pre-line">{t(section.text)}</span>
+                </div>
             </div>
         );
     }
@@ -401,8 +404,8 @@ export default async function PageDetail({ params }: Props) {
         <div className="min-h-screen flex flex-col transition-colors duration-300" style={{ backgroundColor: page.backgroundColor || '#f5f8ff' }}>
             {firstImageSrc && <link rel="preload" as="image" href={firstImageSrc} />}
             {/* Page content */}
-            <div className={`flex-grow ${page.layout === 'pdf_composition' ? "w-full max-w-[1320px] mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-[660px] mx-auto" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}`}>
-                <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-4 sm:p-5 md:p-6 lg:p-8"}>
+            <div className={`flex-grow ${page.layout === 'pdf_composition' ? "w-full max-w-[1320px] mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-[660px] mx-auto lg:p-2 p-1" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}`}>
+                <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full md:gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto"}>
                     {page.sections.length > 0 ? (
                         page.sections.map((section, i) => (
                             <div key={i}>
