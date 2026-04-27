@@ -1,8 +1,7 @@
 import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import { pagesData, type PageSection, type BilingualSrc } from "@/data/pages";
 import FadeImage from "@/components/FadeImage";
+import PrevNextNav from "@/components/PrevNextNav";
 import React from "react";
 
 type Props = {
@@ -402,7 +401,7 @@ export default async function PageDetail({ params }: Props) {
         <div className="min-h-screen flex flex-col transition-colors duration-300" style={{ backgroundColor: page.backgroundColor || '#f5f8ff' }}>
             {firstImageSrc && <link rel="preload" as="image" href={firstImageSrc} />}
             {/* Page content */}
-            <div className={page.layout === 'pdf_composition' ? "w-full max-w-[1320px] mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-[660px] mx-auto" : "px-4 sm:px-6 md:px-10 py-4 md:py-6" + " flex-grow"}>
+            <div className={`flex-grow ${page.layout === 'pdf_composition' ? "w-full max-w-[1320px] mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-[660px] mx-auto" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}`}>
                 <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-4 sm:p-5 md:p-6 lg:p-8"}>
                     {page.sections.length > 0 ? (
                         page.sections.map((section, i) => (
@@ -438,63 +437,11 @@ export default async function PageDetail({ params }: Props) {
                 </div>
             </div>
 
-            {/* Prev / Next navigation */}
-            <div className="shrink-0 border-t border-gray-100 bg-white/80 backdrop-blur-md px-4 sm:px-6 md:px-10 py-3 md:py-4 bottom-0 z-20">
-                <div className="max-w-[1100px] mx-auto flex items-center justify-between gap-4">
-                    {page.prevPage ? (
-                        <Link
-                            href={`/${locale}/pages/${page.prevPage}`}
-                            className="group flex items-center gap-2 text-xs md:text-sm font-semibold text-gray-600 hover:text-[#2a2e82] transition-all max-w-[40%]"
-                        >
-                            <div className="w-8 h-8 shrink-0 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-[#2a2e82] group-hover:bg-[#f0f7fb] transition-all">
-                                <ChevronLeft size={18} />
-                            </div>
-                            <div className="flex flex-col min-w-0">
-                                <span className="text-[10px] text-gray-400 font-normal uppercase tracking-wider">{locale === "th" ? "ก่อนหน้า" : "Previous"}</span>
-                                <span className="truncate text-[#2a2e82]">
-                                    {pagesData[page.prevPage] ? t(pagesData[page.prevPage].title) : `${locale === "th" ? "หน้า" : "Page"} ${page.prevPage}`}
-                                </span>
-                            </div>
-                        </Link>
-                    ) : (
-                        <Link
-                            href={`/${locale}`}
-                            className="group flex items-center gap-2 text-xs md:text-sm font-semibold text-gray-600 hover:text-[#2a2e82] transition-all"
-                        >
-                            <div className="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-[#2a2e82] group-hover:bg-[#f0f7fb] transition-all">
-                                <ChevronLeft size={18} />
-                            </div>
-                            <span>{locale === "th" ? "หน้าหลัก" : "Home"}</span>
-                        </Link>
-                    )}
-
-                    <div className="hidden md:flex flex-col items-center">
-                        <span className="text-[10px] font-bold text-[#2a2e82] tracking-[0.2em] uppercase">Banpu</span>
-                        <span className="text-[9px] text-gray-400 mt-0.5">
-                            {locale === "th" ? "รายงานประจำปี 2568" : "Annual Report 2025"}
-                        </span>
-                    </div>
-
-                    {page.nextPage ? (
-                        <Link
-                            href={`/${locale}/pages/${page.nextPage}`}
-                            className="group flex items-center gap-2 text-right text-xs md:text-sm font-semibold text-gray-600 hover:text-[#2a2e82] transition-all max-w-[40%]"
-                        >
-                            <div className="flex flex-col min-w-0">
-                                <span className="text-[10px] text-gray-400 font-normal uppercase tracking-wider">{locale === "th" ? "ถัดไป" : "Next"}</span>
-                                <span className="truncate text-[#2a2e82]">
-                                    {pagesData[page.nextPage] ? t(pagesData[page.nextPage].title) : `${locale === "th" ? "หน้า" : "Page"} ${page.nextPage}`}
-                                </span>
-                            </div>
-                            <div className="w-8 h-8 shrink-0 rounded-full border border-gray-200 flex items-center justify-center group-hover:border-[#2a2e82] group-hover:bg-[#f0f7fb] transition-all">
-                                <ChevronRight size={18} />
-                            </div>
-                        </Link>
-                    ) : (
-                        <div className="w-[80px]"></div>
-                    )}
-                </div>
-            </div>
+            <PrevNextNav
+                locale={locale}
+                prevPage={page.prevPage ? { id: page.prevPage, title: t(pagesData[page.prevPage].title) } : undefined}
+                nextPage={page.nextPage ? { id: page.nextPage, title: t(pagesData[page.nextPage].title) } : undefined}
+            />
         </div>
     );
 }

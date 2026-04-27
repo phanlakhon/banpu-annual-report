@@ -13,12 +13,13 @@ type NavLinkProps = {
   pageId: string;
   label: string;
   pathname: string;
+  onNavigate?: () => void;
 };
 
-function NavLink({ href, pageId, label, pathname }: NavLinkProps) {
+function NavLink({ href, pageId, label, pathname, onNavigate }: NavLinkProps) {
   const isActive = pathname === href;
   return (
-    <Link href={href} className="flex gap-3 group items-start">
+    <Link href={href} className="flex gap-3 group items-start" onClick={onNavigate}>
       {isDev && (
         <span className={`text-sm min-w-7.5 transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold'}`}>
           {pageId}
@@ -36,9 +37,10 @@ type AccordionItemProps = {
   number: string;
   items: { label: string; page: string; href: string }[];
   defaultOpen?: boolean;
+  onNavigate?: () => void;
 };
 
-function AccordionItem({ title, number, items, defaultOpen = false }: AccordionItemProps) {
+function AccordionItem({ title, number, items, defaultOpen = false, onNavigate }: AccordionItemProps) {
   const pathname = usePathname();
   const hasActiveItem = items.some(item => pathname === item.href);
   const [isOpen, setIsOpen] = useState(defaultOpen || hasActiveItem);
@@ -68,7 +70,7 @@ function AccordionItem({ title, number, items, defaultOpen = false }: AccordionI
           {items.map((item, idx) => {
             const isActive = pathname === item.href;
             return (
-              <Link key={idx} href={item.href} className="flex gap-3 group/item items-start">
+              <Link key={idx} href={item.href} className="flex gap-3 group/item items-start" onClick={onNavigate}>
                 {isDev && (
                   <span className={`text-xs min-w-7.5 mt-px transition-colors ${isActive ? 'text-gradient-banpu font-bold' : 'text-[#5b3e96] font-bold group-hover/item:text-sky-500'}`}>
                     {item.page}
@@ -86,7 +88,7 @@ function AccordionItem({ title, number, items, defaultOpen = false }: AccordionI
   );
 }
 
-export default function Sidebar() {
+export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
   const t = useTranslations('Menu');
   const locale = useLocale();
   const pathname = usePathname();
@@ -96,7 +98,7 @@ export default function Sidebar() {
   return (
     <aside className="w-72 h-full bg-[#f0f8ff] flex flex-col shadow-xl z-20 overflow-y-auto">
       <div className="p-6 shrink-0">
-        <Link href={`/${locale}/`} className="flex justify-center mb-6">
+        <Link href={`/${locale}/`} className="flex justify-center mb-6" onClick={onNavigate}>
           <div className="text-center">
             <img src="/logo.webp" alt="BANPU" className="h-14" />
           </div>
@@ -107,11 +109,11 @@ export default function Sidebar() {
         <h2 className="text-[#1e40af] text-xl font-bold mb-4">สารบัญ</h2>
 
         <div className="space-y-3">
-          <NavLink href={p('000')} pageId="000" label={t('m000')} pathname={pathname} />
-          <NavLink href={p('001')} pageId="001" label={t('m001')} pathname={pathname} />
-          <NavLink href={p('002')} pageId="002" label={t('m002')} pathname={pathname} />
-          <NavLink href={p('003')} pageId="003" label={t('m003')} pathname={pathname} />
-          <NavLink href={p('004')} pageId="004" label={t('m004')} pathname={pathname} />
+          <NavLink href={p('000')} pageId="000" label={t('m000')} pathname={pathname} onNavigate={onNavigate} />
+          <NavLink href={p('001')} pageId="001" label={t('m001')} pathname={pathname} onNavigate={onNavigate} />
+          <NavLink href={p('002')} pageId="002" label={t('m002')} pathname={pathname} onNavigate={onNavigate} />
+          <NavLink href={p('003')} pageId="003" label={t('m003')} pathname={pathname} onNavigate={onNavigate} />
+          <NavLink href={p('004')} pageId="004" label={t('m004')} pathname={pathname} onNavigate={onNavigate} />
         </div>
 
         <div className="my-4 border-t border-blue-100" />
@@ -119,6 +121,7 @@ export default function Sidebar() {
         <AccordionItem
           number="1"
           title={t('part1').replace('ส่วนที่ 1 ', '')}
+          onNavigate={onNavigate}
           items={[
             { page: '005', label: t('m005'), href: p('005') },
             { page: '006', label: t('m006'), href: p('006') },
@@ -152,6 +155,7 @@ export default function Sidebar() {
         <AccordionItem
           number="2"
           title={t('part2').replace('ส่วนที่ 2 ', '')}
+          onNavigate={onNavigate}
           items={[
             { page: '031', label: t('m031'), href: p('031') },
             { page: '032', label: t('m032'), href: p('032') },
@@ -167,6 +171,7 @@ export default function Sidebar() {
         <AccordionItem
           number="3"
           title={t('part3').replace('ส่วนที่ 3 ', '')}
+          onNavigate={onNavigate}
           items={[
             { page: '039', label: t('m039'), href: p('039') },
             { page: '040', label: t('m040'), href: p('040') },
