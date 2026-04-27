@@ -13,10 +13,27 @@ export function generateStaticParams() {
     return Object.keys(pagesData).map((pageId) => ({ pageId }));
 }
 
+function getFirstImageSrc(sections: PageSection[], locale: string): string | null {
+    const getSrc = (s: BilingualSrc) =>
+        typeof s === "string" ? s : locale === "th" ? s.th : s.en;
+    for (const section of sections) {
+        if (section.type === "pdf_page") {
+            if (section.desktopFullImage) return getSrc(section.desktopFullImage);
+            for (const item of section.items) {
+                if (item.type === "pdf_banner") return getSrc(item.src);
+            }
+        }
+        if (section.type === "pdf_banner") return getSrc(section.src);
+        if (section.type === "pdf_row" && section.items.length > 0) return getSrc(section.items[0].src);
+    }
+    return null;
+}
+
 function renderSection(
     section: PageSection,
     locale: string,
     accentColor: string,
+    isFirst = false,
 ) {
     const t = (text: { th: string; en: string }) =>
         locale === "th" ? text.th : text.en;
@@ -132,9 +149,17 @@ function renderSection(
         const imgStyle = section.minWidth ? { minWidth: section.minWidth, width: '100%' } : undefined;
         return (
             <div className={section.minWidth ? 'w-full overflow-x-auto custom-scrollbar' : 'w-full'}>
-                <FadeImage src={src(section.src)} alt={section.alt || "banner"} className={imgClass} style={imgStyle} decoding="async" />
+                <FadeImage
+                    src={src(section.src)}
+                    alt={section.alt || "banner"}
+                    className={imgClass}
+                    style={imgStyle}
+                    decoding="async"
+                    loading={isFirst ? "eager" : "lazy"}
+                    fetchPriority={isFirst ? "high" : "auto"}
+                />
                 {section.mobileSrcs?.map((mobileSrc, i) => (
-                    <FadeImage key={`mob-${i}`} src={src(mobileSrc)} className="w-full h-auto object-contain sm:hidden block" decoding="async" />
+                    <FadeImage key={`mob-${i}`} src={src(mobileSrc)} className="w-full h-auto object-contain sm:hidden block" decoding="async" loading="lazy" />
                 ))}
             </div>
         );
@@ -152,6 +177,8 @@ function renderSection(
                         alt={item.alt || `column-${idx}`}
                         className="w-full max-w-[300px] sm:max-w-none sm:w-auto h-auto object-contain min-w-0 shrink"
                         decoding="async"
+                        loading={isFirst && idx === 0 ? "eager" : "lazy"}
+                        fetchPriority={isFirst && idx === 0 ? "high" : "auto"}
                     />
                 ))}
             </div>
@@ -167,14 +194,17 @@ function renderSection(
                             src={src(section.desktopFullImage)}
                             alt={section.pageNumber ? `Page ${section.pageNumber}` : "PDF Page"}
                             className="w-full h-full object-contain"
+                            wrapperClassName="w-full h-full"
                             decoding="async"
+                            loading={isFirst ? "eager" : "lazy"}
+                            fetchPriority={isFirst ? "high" : "auto"}
                         />
                     </div>
                 )}
                 <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-[1100px] mx-auto w-full`}>
                     {section.items.map((subSection, i) => (
                         <div key={i}>
-                            {renderSection(subSection, locale, accentColor)}
+                            {renderSection(subSection, locale, accentColor, isFirst && i === 0)}
                         </div>
                     ))}
                 </div>
@@ -366,8 +396,11 @@ export default async function PageDetail({ params }: Props) {
     const t = (text: { th: string; en: string }) =>
         locale === "th" ? text.th : text.en;
 
+    const firstImageSrc = getFirstImageSrc(page.sections, locale);
+
     return (
         <div className="min-h-screen flex flex-col transition-colors duration-300" style={{ backgroundColor: page.backgroundColor || '#f5f8ff' }}>
+            {firstImageSrc && <link rel="preload" as="image" href={firstImageSrc} />}
             {/* Page content */}
             <div className={page.layout === 'pdf_composition' ? "w-full max-w-[1320px] mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-[660px] mx-auto" : "px-4 sm:px-6 md:px-10 py-4 md:py-6" + " flex-grow"}>
                 <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto bg-white rounded-2xl shadow-sm p-4 sm:p-5 md:p-6 lg:p-8"}>
@@ -378,6 +411,7 @@ export default async function PageDetail({ params }: Props) {
                                     section,
                                     locale,
                                     page.accentColor,
+                                    i === 0,
                                 )}
                             </div>
                         ))
