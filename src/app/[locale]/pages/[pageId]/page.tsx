@@ -1,8 +1,8 @@
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { pagesData, type PageSection, type BilingualSrc } from "@/data/pages";
+import FadeImage from "@/components/FadeImage";
 import React from "react";
 
 type Props = {
@@ -132,11 +132,9 @@ function renderSection(
         const imgStyle = section.minWidth ? { minWidth: section.minWidth, width: '100%' } : undefined;
         return (
             <div className={section.minWidth ? 'w-full overflow-x-auto custom-scrollbar' : 'w-full'}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src(section.src)} alt={section.alt || "banner"} className={imgClass} style={imgStyle} decoding="async" />
+                <FadeImage src={src(section.src)} alt={section.alt || "banner"} className={imgClass} style={imgStyle} decoding="async" />
                 {section.mobileSrcs?.map((mobileSrc, i) => (
-                    /* eslint-disable-next-line @next/next/no-img-element */
-                    <img key={`mob-${i}`} src={src(mobileSrc)} className="w-full h-auto object-contain sm:hidden block" decoding="async" />
+                    <FadeImage key={`mob-${i}`} src={src(mobileSrc)} className="w-full h-auto object-contain sm:hidden block" decoding="async" />
                 ))}
             </div>
         );
@@ -147,18 +145,15 @@ function renderSection(
 
         return (
             <div className={`flex flex-col sm:flex-row justify-center sm:justify-between items-center sm:items-start ${gapClasses} my-8 sm:my-12 md:my-16 lg:my-20 px-8 sm:px-[6%]`}>
-                {section.items.map((item, idx) => {
-                    return (
-                        /* eslint-disable-next-line @next/next/no-img-element */
-                        <img
-                            key={idx}
-                            src={src(item.src)}
-                            alt={item.alt || `column-${idx}`}
-                            className="w-full max-w-[300px] sm:max-w-none sm:w-auto h-auto object-contain min-w-0 shrink"
-                            decoding="async"
-                        />
-                    );
-                })}
+                {section.items.map((item, idx) => (
+                    <FadeImage
+                        key={idx}
+                        src={src(item.src)}
+                        alt={item.alt || `column-${idx}`}
+                        className="w-full max-w-[300px] sm:max-w-none sm:w-auto h-auto object-contain min-w-0 shrink"
+                        decoding="async"
+                    />
+                ))}
             </div>
         );
     }
@@ -168,8 +163,7 @@ function renderSection(
             <div className="w-full relative" style={{ backgroundColor: section.backgroundColor || '#f5f8ff' }}>
                 {section.desktopFullImage && (
                     <div className="hidden sm:block w-full" style={{ aspectRatio: '1 / 1.4142' }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
+                        <FadeImage
                             src={src(section.desktopFullImage)}
                             alt={section.pageNumber ? `Page ${section.pageNumber}` : "PDF Page"}
                             className="w-full h-full object-contain"
@@ -322,8 +316,7 @@ function renderSection(
 
                 {/* Signature area */}
                 <div className="mt-8 md:mt-10 self-end mr-10 md:mr-20 flex flex-col items-center gap-0.5">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={src(section.signatureSrc)} alt="Signature" className="h-10 md:h-12 object-contain" />
+                    <FadeImage src={src(section.signatureSrc)} alt="Signature" className="h-10 md:h-12 object-contain" decoding="async" />
                     <div className="text-sm md:text-base font-bold text-[#2a2e82] mt-2">
                         {t(section.signatureName)}
                     </div>
