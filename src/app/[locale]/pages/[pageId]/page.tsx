@@ -186,7 +186,7 @@ function renderSection(
 
     if (section.type === "pdf_page") {
         return (
-            <div className="w-full relative" style={{ backgroundColor: section.backgroundColor || '#f5f8ff' }}>
+            <div className="w-full relative" style={{ backgroundColor: section.backgroundColor || '#ffffff' }}>
                 {section.desktopFullImage && (
                     <div className="hidden sm:block w-full" style={{ aspectRatio: '1 / 1.4142' }}>
                         <FadeImage
@@ -372,6 +372,26 @@ function renderSection(
 
     if (section.type === "pdf_header") {
         return null; // Temporarily hidden as per user request
+    }
+
+    if (section.type === "pdf_gradient_text") {
+        return (
+            <div className="px-4 sm:px-8 md:px-[2%] py-4">
+                <p className="text-sm leading-relaxed text-gradient-banpu whitespace-pre-line">
+                    {t(section.text)}
+                </p>
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_body_text") {
+        return (
+            <div className="pr-4 sm:pr-8 md:pr-[2%] py-4" style={{ paddingLeft: section.paddingLeft ?? '2.2rem' }}>
+                <p className="font-sarabun font-light text-base text-gray-800 leading-relaxed whitespace-pre-line">
+                    {t(section.text)}
+                </p>
+            </div>
+        );
     }
 
     if (section.type === "pdf_note") {

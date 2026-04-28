@@ -44,11 +44,12 @@ function AccordionItem({ title, number, items, defaultOpen = false, onNavigate }
   const pathname = usePathname();
   const hasActiveItem = items.some(item => pathname === item.href);
   const [isOpen, setIsOpen] = useState(defaultOpen || hasActiveItem);
+  const open = hasActiveItem || isOpen;
 
   return (
     <div className="mb-4">
       <button
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => { if (!hasActiveItem) setIsOpen(!isOpen); }}
         className="flex w-full items-start gap-3 text-left group"
       >
         <div className={`text-3xl font-light -mt-1.25 transition-colors ${hasActiveItem ? 'text-gradient-banpu' : 'text-sky-400'}`}>{number}</div>
@@ -56,7 +57,7 @@ function AccordionItem({ title, number, items, defaultOpen = false, onNavigate }
           <div className="text-xs text-sky-500 font-medium mb-1">ส่วนที่</div>
           <div className={`font-semibold text-sm leading-tight flex items-center justify-between transition-colors ${hasActiveItem ? 'text-gradient-banpu' : 'text-[#1a365d]'}`}>
             {title}
-            {isOpen ? (
+            {open ? (
               <ChevronDown size={14} className="text-gray-400" />
             ) : (
               <ChevronRight size={14} className="text-gray-400" />
@@ -65,7 +66,7 @@ function AccordionItem({ title, number, items, defaultOpen = false, onNavigate }
         </div>
       </button>
 
-      {isOpen && (
+      {open && (
         <div className="mt-4 pl-10 space-y-3">
           {items.map((item, idx) => {
             const isActive = pathname === item.href;
