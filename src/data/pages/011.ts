@@ -243,6 +243,92 @@ const page: PageData = {
                 },
             ],
         },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_011/011_p08_full_th.webp",
+                en: "/page_011/011_p08_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p08_mobile_th.webp",
+                        en: "/page_011/011_p08_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_011/011_p09_full_th.webp",
+                en: "/page_011/011_p09_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p09_mobile_th.webp",
+                        en: "/page_011/011_p09_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_011/011_p10_full_th.webp",
+                en: "/page_011/011_p10_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_body_text",
+                    text: {
+                        th: "โดยในปี 2568 มีโครงการ CCUS ที่เริ่มดำเนินการเชิงพาณิชย์แล้วจำนวน 1 โครงการ และโครงการที่ได้รับการอนุมัติการลงทุนขั้นสุดท้าย (Final Investment Decision: FID) แล้วจำนวน 3 โครงการ มีรายละเอียดดังนี้",
+                        en: "In 2025, 1 project is in commercial operation, and 3 projects have received Final Investment Decisions (FID), with details as follows:",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p10_mobile_th.webp",
+                        en: "/page_011/011_p10_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_011/011_p11_full_th.webp",
+                en: "/page_011/011_p11_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p11_mobile_1_th.webp",
+                        en: "/page_011/011_p11_mobile_1_en.webp",
+                    },
+                },
+                {
+                    type: "pdf_body_text",
+                    text: {
+                        th: "บริษัท บ้านปู เพาเวอร์ จำกัด (มหาชน) หรือ BPP ซึ่งเป็นบริษัทย่อยที่บ้านปูถือหุ้นร้อยละ 91.07 ได้ถือหุ้นร้อยละ 100 ใน Banpu Power Investment Co., Ltd. (BPIC) ซึ่งจดทะเบียนในประเทศสิงคโปร์ผ่านบริษัท Banpu Power International Limited (BPPI) โดย BPIC ลงทุนในโรงไฟฟ้า CHP ในเขตภาคเหนือของสาธารณรัฐประชาชนจีนจำนวน 3 แห่ง มีกำลังผลิตไฟฟ้า 348 เมกะวัตต์ และกำลังผลิตไอน้ำ 1,508 ตันต่อชั่วโมง รวมเป็นกำลังผลิตติดตั้ง 618 เมกะวัตต์เทียบเท่า (548 เมกะวัตต์ เทียบเท่าตามสัดส่วนการลงทุน) โดยมีรายละเอียดดังนี้",
+                        en: "Banpu Power Public Company Limited (BPP), a 91.07% owned subsidiary of Banpu, holds 100% of the paid-up capital in Banpu Power Investment Co., Ltd. (BPIC), which was registered in Singapore through Banpu Power International Ltd. (BPPI). BPIC invested in three CHPs in northern China with a total installed capacity of 618 MWe (equity-based capacity of 548 MWe), comprising a power capacity of 348 MW and a steam production capacity of 1,508 tonnes per hour. Details are as follows:",
+                    },
+                    paddingLeft: "0.8rem",
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p11_mobile_2_th.webp",
+                        en: "/page_011/011_p11_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
     ],
     prevPage: "010",
     nextPage: "012",
