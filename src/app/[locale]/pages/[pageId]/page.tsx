@@ -386,7 +386,7 @@ function renderSection(
 
     if (section.type === "pdf_body_text") {
         return (
-            <div className="pr-4 sm:pr-8 md:pr-[2%] py-4" style={{ paddingLeft: '2.5rem' }}>
+            <div className="pr-4 sm:pr-8 md:pr-[2%] py-4" style={{ paddingLeft: section.paddingLeft ?? '2.2rem' }}>
                 <p className="font-sarabun font-light text-base text-gray-800 leading-relaxed whitespace-pre-line">
                     {t(section.text)}
                 </p>

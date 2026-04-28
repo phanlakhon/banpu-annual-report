@@ -58,7 +58,7 @@ export type PageSection =
     | { type: "pdf_title"; text: BilingualText }
     | { type: "pdf_sub_title"; text: BilingualText }
     | { type: "pdf_gradient_text"; text: BilingualText }
-    | { type: "pdf_body_text"; text: BilingualText }
+    | { type: "pdf_body_text"; text: BilingualText; paddingLeft?: string }
     | {
           type: "pdf_quote_block";
           text: BilingualText;

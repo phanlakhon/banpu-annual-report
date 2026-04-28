@@ -138,6 +138,111 @@ const page: PageData = {
                 },
             ],
         },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_011/011_p04_full_th.webp",
+                en: "/page_011/011_p04_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p04_mobile_th.webp",
+                        en: "/page_011/011_p04_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_011/011_p05_full_th.webp",
+                en: "/page_011/011_p05_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p05_mobile_th.webp",
+                        en: "/page_011/011_p05_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_011/011_p06_full_th.webp",
+                en: "/page_011/011_p06_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p06_mobile_title_th.webp",
+                        en: "/page_011/011_p06_mobile_title_en.webp",
+                    },
+                },
+                {
+                    type: "pdf_body_text",
+                    text: {
+                        th: "บ้านปูดำเนินการพัฒนาโครงการเหมืองถ่านหินในประเทศมองโกเลียอย่างต่อเนื่อง โดยได้เปิดดำเนินการเชิงพาณิชย์ (Commercial Operation Date: COD) ของเหมืองซานต์อูลในปี 2568 นอกจากนี้ บริษัทฯ ยังมีความก้าวหน้าในการสำรวจทางธรณีวิทยา การเจาะสำรวจเพื่อศึกษาความเป็นไปได้ของโครงการ ตลอดจนการประยุกต์ใช้เทคโนโลยีและนวัตกรรมเพื่อเพิ่มมูลค่าให้กับผลิตภัณฑ์ ทั้งนี้ มีเป้าหมายเพื่อเสริมสร้างศักยภาพของทรัพยากรถ่านหินในมองโกเลีย และตอบสนองความต้องการของตลาดทั้งในประเทศมองโกเลียและประเทศจีนอย่างมีประสิทธิภาพ",
+                        en: "Banpu has been continuously developing its coal mining projects in Mongolia and achieved the commercial operation date (COD) of the Tsant Uul Mine in 2025. In parallel, the Company has made progress in geological exploration, feasibility drilling, and the application of technology and innovation to enhance product value. These initiatives aim to strengthen the potential of Mongolia's coal resources while effectively responding to market demand in both Mongolia and China.",
+                    },
+                    paddingLeft: "0.8rem",
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p06_detail_th.webp",
+                        en: "/page_011/011_p06_detail_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_011/011_p07_full_th.webp",
+                en: "/page_011/011_p07_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p07_mobile_title_th.webp",
+                        en: "/page_011/011_p07_mobile_title_en.webp",
+                    },
+                },
+                {
+                    type: "pdf_gradient_text",
+                    text: {
+                        th: "บ้านปูให้ความสำคัญกับการดำเนินธุรกิจก๊าซธรรมชาติในสหรัฐอเมริกา ซึ่งเป็นประเทศยุทธศาสตร์ของกลุ่มบริษัทโดยมี BKV Corporation (BKV) ซึ่งจดทะเบียนในตลาดหลักทรัพย์นิวยอร์ก (NYSE: BKV) สหรัฐอเมริกา ทำหน้าที่เป็นกลไกหลักในการขับเคลื่อนธุรกิจ ทั้งในด้านการลงทุน การพัฒนา และการดำเนินงาน ปัจจุบันสินทรัพย์ด้านพลังงาน ก๊าซธรรมชาติในสหรัฐอเมริกาของกลุ่มบ้านปูถูกรวมและบริหารจัดการโดย BKV ภายใต้แนวคิด \"ธุรกิจก๊าซธรรมชาติครบวงจรในสหรัฐอเมริกา หรือ U.S. Closed-Loop Gas\" เพื่อเสริมสร้างประสิทธิภาพการดำเนินงานตลอดห่วงโซ่คุณค่าของธุรกิจก๊าซธรรมชาติ ครอบคลุมตั้งแต่การผลิตก๊าซธรรมชาติและก๊าซธรรมชาติเหลวจากแหล่งก๊าซธรรมชาติมาร์เซลลัส (Marcellus) ในรัฐเพนซิลเวเนีย และแหล่งก๊าซธรรมชาติบาร์เนตต์ (Barnett) ในรัฐเท็กซัส ควบคู่กับการนำเทคโนโลยีและนวัตกรรมมาประยุกต์ใช้เพื่อยกระดับประสิทธิภาพการดำเนินงาน นอกจากนี้ BKV ยังดำเนินโครงการดักจับและกักเก็บคาร์บอน (Carbon Capture, Utilization and Storage: CCUS) รวมถึงการพัฒนาก๊าซธรรมชาติที่มีคาร์บอนเป็นกลาง (Carbon-Sequestered Gas: CSG) ซึ่งเป็นผลิตภัณฑ์คุณภาพระดับพรีเมียม เพื่อตอบสนองความต้องการ ด้านพลังงานสะอาดและสนับสนุนการลดการปล่อยก๊าซเรือนกระจก",
+                        en: "Banpu places strategic importance on its natural gas business operations in the U.S. as a strategic country, through BKV Corporation (BKV), which is listed on the New York Stock Exchange (NYSE: BKV).\n\nBKV serves as the Group's primary platform for driving the natural gas business, covering investment, development, and operations. At present, Banpu's U.S. gas assets are consolidated and managed by BKV under the U.S. Closed-Loop Gas business concept, with the objective of enhancing operational efficiency across the entire natural gas value chain. This includes the production of natural gas and liquefied natural gas (LNG) from the Marcellus Shale in Pennsylvania and the Barnett Shale in Texas, alongside the application of technology and innovation to further improve operational performance.\n\nIn addition, BKV has expanded into the carbon capture, utilization and storage (CCUS) business and is developing premium-quality carbon-sequestered gas (CSG), a form of carbon-neutral natural gas, to meet growing demand for clean energy and to support greenhouse gas emissions reduction.",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: "/page_011/011_p07_mobile_detail_1.webp",
+                },
+                {
+                    type: "pdf_body_text",
+                    text: {
+                        th: "ทั้งนี้ ด้วยมาตรฐานการทำงานที่มีประสิทธิภาพ และความเป็นมืออาชีพในระดับสากล ปัจจุบัน BKV เป็นหนึ่งในผู้นำ ธุรกิจก๊าซธรรมชาติ 20 อันดับในสหรัฐอเมริกา ครอบคลุมพื้นที่การผลิตก๊าซธรรมชาติประมาณ 572,000 เอเคอร์ด้วยกำลังการผลิต ในปี 2568 เฉลี่ยที่ 836 ล้านลูกบาศก์ฟุตต่อวัน (MMcfed) โดย ณ วันที่ 31 ธันวาคม 2568 บริษัทฯ มีปริมาณสำรองก๊าซธรรมชาติที่พิสูจน์แล้ว (Proved Reserves) รวม 6.16 ล้านล้านลูกบาศก์ฟุตเทียบเท่า (Tcfe)",
+                        en: "With efficient work standards and international professionalism, BKV has become one of the top 20 natural gas business leaders in the U.S. Its total acreage position is approximately 572,000 net acres, and its net average daily production is 836 million cubic feet per day (MMcfed) in 2025. As of 31 December 2025, BKV had 6.16 trillion cubic feet equivalent (Tcfe) of proved reserves.",
+                    },
+                    paddingLeft: "1rem",
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_011/011_p07_mobile_detail_2_th.webp",
+                        en: "/page_011/011_p07_mobile_detail_2_en.webp",
+                    },
+                },
+            ],
+        },
     ],
     prevPage: "010",
     nextPage: "012",
