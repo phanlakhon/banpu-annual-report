@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import {NextIntlClientProvider} from 'next-intl';
 import {getMessages} from 'next-intl/server';
 import {notFound} from 'next/navigation';
@@ -48,6 +49,10 @@ const sarabun = Sarabun({
   display: 'swap',
   variable: '--font-sarabun',
 });
+
+export const metadata: Metadata = {
+  title: 'Banpu Annual Report 2025',
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({locale}));

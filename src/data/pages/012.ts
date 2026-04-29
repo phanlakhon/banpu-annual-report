@@ -725,6 +725,94 @@ const page: PageData = {
                 },
             ],
         },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p31_full_th.webp",
+                en: "/page_012/012_p31_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_body_text",
+                    paddingLeft: "0.9rem",
+                    text: {
+                        th: "ในปี 2568 โครงสร้างกำลังการผลิตไฟฟ้าของประเทศไทยยังคงพึ่งพาก๊าซธรรมชาติร้อยละ 54.2 รองลงมาคือถ่านหินและลิกไนต์ร้อยละ 15 พลังงานหมุนเวียนร้อยละ 10.4 และพลังงานน้ำร้อยละ 3.2 อย่างไรก็ตาม ตามร่างแผนพัฒนากำลังการผลิตไฟฟ้าในปี 2580 ประเทศไทยมีเป้าหมายลดการพึ่งพาก๊าซธรรมชาติลงเหลือร้อยละ 41 และถ่านหินเหลือ ร้อยละ 7 พร้อมเพิ่มสัดส่วนพลังงานสะอาดเป็นร้อยละ 51 รวมทั้งการนำพลังงานนิวเคลียร์และระบบกักเก็บพลังงานมาใช้ในระบบ การเปลี่ยนแปลงนี้สะท้อนถึงความพยายามของประเทศไทยในการลดการปล่อยก๊าซเรือนกระจกและมุ่งสู่การใช้พลังงานสะอาดมากขึ้น เพื่อสนับสนุนเป้าหมายความเป็นกลางทางคาร์บอน (Carbon Neutrality) และความยั่งยืนในอนาคต",
+                        en: "In 2025, Thailand's power generation capacity remained reliant on natural gas, accounting for 54.2%, followed by coal and lignite at 15%, renewables at 10.4%, and hydropower at 3.2%. However, under the draft Power Development Plan (PDP) 2037, Thailand aims to reduce its dependence on natural gas to 41% and coal to 7%, while increasing the share of clean energy to 51%. The plan also includes the integration of nuclear power and energy storage systems into the grid. This shift reflects Thailand's efforts to reduce greenhouse gas emissions and accelerate the transition toward cleaner energy sources, supporting its carbon neutrality and sustainability goals in the future.",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p31_mobile_1_table_th.webp",
+                        en: "/page_012/012_p31_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p31_mobile_2_th.webp",
+                        en: "/page_012/012_p31_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p32_full_th.webp",
+                en: "/page_012/012_p32_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p32_mobile_1_table_th.webp",
+                        en: "/page_012/012_p32_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p32_mobile_2_th.webp",
+                        en: "/page_012/012_p32_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p33_full_th.webp",
+                en: "/page_012/012_p33_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_body_text",
+                    paddingLeft: "0.9rem",
+                    text: {
+                        th: "สำหรับพลังงานความร้อน บทบาทของโรงไฟฟ้าพลังงานความร้อนมีแนวโน้มลดลงเหลือประมาณ ร้อยละ 30-40ในระยะยาว โดยมุ่งเน้นการใช้เทคโนโลยีคาร์บอนต่ำ เช่น การผสมเชื้อเพลิงไฮโดรเจนและแอมโมเนีย เพื่อรักษาเสถียรภาพของระบบไฟฟ้าและสนับสนุนการลดการปล่อยก๊าซเรือนกระจก โดยภาพรวม นโยบายพลังงานของญี่ปุ่นสะท้อนถึงการแข่งขันที่เข้มข้นขึ้นในตลาดไฟฟ้า และยังเปิดโอกาสให้เกิดการลงทุนด้านพลังงานสะอาดอย่างต่อเนื่องในระยะยาว",
+                        en: "Thermal power generation is projected to decline gradually over the long term to around 30-40%, with emphasis on low-carbon technologies such as hydrogen and ammonia co-firing to enhance grid stability while lowering greenhouse gas emissions. Overall, Japan's energy strategy reflects a more competitive electricity market environment while creating sustained long-term investment opportunities in clean energy.",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p33_mobile_1_table_th.webp",
+                        en: "/page_012/012_p33_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p33_mobile_2_th.webp",
+                        en: "/page_012/012_p33_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
     ],
     prevPage: "011",
     nextPage: "013",
