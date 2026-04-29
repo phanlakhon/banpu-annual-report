@@ -311,8 +311,11 @@ function renderSection(
 
     if (section.type === "pdf_sub_title") {
         return (
-            <div className="w-full pt-6 pb-3 px-4 sm:px-8 md:px-[6%]">
-                <h3 className="text-base sm:text-lg font-bold text-banpu-cyan-vivid">
+            <div className="w-full pt-3 pb-1 px-4 sm:px-8 md:px-[6%]">
+                <h3
+                    className="text-base sm:text-lg font-bold"
+                    style={{ color: section.color ?? 'var(--color-banpu-cyan-vivid)' }}
+                >
                     {t(section.text)}
                 </h3>
             </div>
