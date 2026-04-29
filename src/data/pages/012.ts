@@ -335,6 +335,396 @@ const page: PageData = {
                 },
             ],
         },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p15_full_th.webp",
+                en: "/page_012/012_p15_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_body_text",
+                    paddingLeft: "0.9rem",
+                    text: {
+                        th: "สำหรับตลาดถ่านหินค่าความร้อนต่ำ ในปี 2568 ราคาซื้อขายในตลาดจรมีแนวโน้มปรับตัวลดลงในภาพรวม แม้จะมีช่วงเวลา ที่ราคาทรงตัวเป็นระยะ โดยอุปสงค์ที่อ่อนแอจากจีนและอินเดียประกอบกับอุปทานส่วนเกินจากอินโดนีเซียที่ยังคงอยู่ในระดับสูงได้กดดันราคาอย่างต่อเนื่อง แม้จะมีปัจจัยรบกวนจากสภาพอากาศหรือมาตรการภาครัฐเข้ามาหนุนตลาดเป็นบางช่วงก็ตาม",
+                        en: "In the lower-calorific value market, spot prices generally trended lower in 2025, with brief periods of stability, as weak demand from China and India coincided with persistent oversupply from Indonesia, keeping prices under sustained downward pressure despite occasional weather- and policy-related disruptions.",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p15_mobile_1_table_th.webp",
+                        en: "/page_012/012_p15_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p15_mobile_2_th.webp",
+                        en: "/page_012/012_p15_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p16_full_th.webp",
+                en: "/page_012/012_p16_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p16_mobile_th.webp",
+                        en: "/page_012/012_p16_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p17_full_th.webp",
+                en: "/page_012/012_p17_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p17_mobile_1_table_th.webp",
+                        en: "/page_012/012_p17_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p17_mobile_2_th.webp",
+                        en: "/page_012/012_p17_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p18_full_th.webp",
+                en: "/page_012/012_p18_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p18_mobile_th.webp",
+                        en: "/page_012/012_p18_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p19_full_th.webp",
+                en: "/page_012/012_p19_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p19_mobile_th.webp",
+                        en: "/page_012/012_p19_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p20_full_th.webp",
+                en: "/page_012/012_p20_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p20_mobile_th.webp",
+                        en: "/page_012/012_p20_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p21_full_th.webp",
+                en: "/page_012/012_p21_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p21_mobile_1_table_th.webp",
+                        en: "/page_012/012_p21_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p21_mobile_2_th.webp",
+                        en: "/page_012/012_p21_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p22_full_th.webp",
+                en: "/page_012/012_p22_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p22_mobile_1_table_th.webp",
+                        en: "/page_012/012_p22_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p22_mobile_2_th.webp",
+                        en: "/page_012/012_p22_mobile_2_en.webp",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p22_mobile_3_table_th.webp",
+                        en: "/page_012/012_p22_mobile_3_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p23_full_th.webp",
+                en: "/page_012/012_p23_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p23_mobile_1_th.webp",
+                        en: "/page_012/012_p23_mobile_1_en.webp",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p23_mobile_2_table_th.webp",
+                        en: "/page_012/012_p23_mobile_2_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p24_full_th.webp",
+                en: "/page_012/012_p24_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p24_mobile_1_table_th.webp",
+                        en: "/page_012/012_p24_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p24_mobile_2_th.webp",
+                        en: "/page_012/012_p24_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p25_full_th.webp",
+                en: "/page_012/012_p25_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p25_mobile_th.webp",
+                        en: "/page_012/012_p25_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p26_full_th.webp",
+                en: "/page_012/012_p26_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p26_mobile_1_table_th.webp",
+                        en: "/page_012/012_p26_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p26_mobile_2_th.webp",
+                        en: "/page_012/012_p26_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p27_full_th.webp",
+                en: "/page_012/012_p27_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_sub_title",
+                    color: "#472f92",
+                    text: {
+                        th: "3. แหล่งพลังงานหลักทางเลือกอื่น",
+                        en: "3. Alternative Sources of Primary Energy",
+                    },
+                },
+                {
+                    type: "pdf_body_text",
+                    paddingLeft: "0.9rem",
+                    text: {
+                        th: "แหล่งการแข่งขันประการที่สามของก๊าซธรรมชาติ มาจากการทดแทนเชื้อเพลิง โดยมีปัจจัยหลักจากการขยายตัวอย่างต่อเนื่องของพลังงานหมุนเวียนในภาคการผลิตไฟฟ้า ควบคู่กับการเพิ่มประสิทธิภาพการใช้พลังงานในภาคพาณิชยกรรมและ ที่อยู่อาศัย ในช่วงห้าปีที่ผ่านมา การผลิตไฟฟ้าจากพลังงานหมุนเวียนในสหรัฐอเมริกาเพิ่มขึ้นอย่างมีนัยสำคัญ โดยได้รับแรงหนุนหลักจากการเติบโตของกำลังการผลิตพลังงานลมและพลังงานแสงอาทิตย์ แม้ว่าพลังงานหมุนเวียนจะมีสัดส่วน ที่มีความหมายในระบบการผลิตไฟฟ้าและมีบทบาทเพิ่มขึ้นในการทดแทนก๊าซธรรมชาติในเชิงพลังงาน แต่ข้อจำกัดด้านความไม่สม่ำเสมอของการผลิตยังคงทำให้พลังงานหมุนเวียนไม่สามารถทดแทนก๊าซธรรมชาติได้อย่างสมบูรณ์ในฐานะแหล่งพลังงานที่มีความมั่นคงและสามารถจ่ายไฟได้ตามความต้องการ ส่งผลให้ผลกระทบต่อการทดแทนความต้องการ ก๊าซธรรมชาติในเชิงโครงสร้างยังคงอยู่ในระดับจำกัด ทั้งนี้นโยบายภาคการผลิตไฟฟ้าของสหรัฐฯ พัฒนาโครงข่ายไฟฟ้าและการเพิ่มขึ้นของความต้องการใช้ไฟฟ้า จะยังคงเป็นปัจจัยสำคัญที่มีอิทธิพลต่ออัตราการทดแทนความต้องการก๊าซธรรมชาติในอนาคต และมีความจำเป็นอย่างยิ่งที่จะต้องติดตามสถานการณ์อย่างใกล้ชิด",
+                        en: "The third source of competition for natural gas comes from fuel substitution, primarily driven by the continued expansion of renewable energy in the power sector, alongside efficiency gains in the commercial and residential sectors. Over the past five years, renewable electricity generation in the United States has increased materially, led by growth in wind and solar capacity. While renewables now account for a meaningful share of power generation and increasingly displace natural gas on an energy basis, their intermittency limits their ability to fully replace natural gas as a source of firm, dispatchable power. As a result, the overall impact on structural natural gas demand substitution remains moderated. Looking ahead, U.S. power sector policies, grid development, and rising electricity demand will continue to influence the pace of future demand substitution and should be monitored closely.",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p27_mobile_1_table_th.webp",
+                        en: "/page_012/012_p27_mobile_1_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p27_mobile_2_th.webp",
+                        en: "/page_012/012_p27_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p28_full_th.webp",
+                en: "/page_012/012_p28_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p28_mobile_th.webp",
+                        en: "/page_012/012_p28_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p29_full_th.webp",
+                en: "/page_012/012_p29_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p29_mobile_1_th.webp",
+                        en: "/page_012/012_p29_mobile_1_en.webp",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p29_mobile_2_table_th.webp",
+                        en: "/page_012/012_p29_mobile_2_table_en.webp",
+                    },
+                    minWidth: 560,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p29_mobile_3_th.webp",
+                        en: "/page_012/012_p29_mobile_3_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p30_full_th.webp",
+                en: "/page_012/012_p30_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p30_mobile_1_th.webp",
+                        en: "/page_012/012_p30_mobile_1_en.webp",
+                    },
+                },
+                {
+                    type: "pdf_sub_title",
+                    color: "#00a5ef",
+                    text: {
+                        th: "1.2 ภาวะตลาดและการแข่งขันในประเทศไทย",
+                        en: "1.2 Market and Competition in Thailand",
+                    },
+                },
+                {
+                    type: "pdf_body_text",
+                    paddingLeft: "0.9rem",
+                    text: {
+                        th: "เปรียบเทียบแผนพัฒนากำลังผลิตไฟฟ้าและสัดส่วนกำลังผลิตไฟฟ้าจากเชื้อเพลิงแต่ละประเภทในประเทศไทย",
+                        en: "Comparison of Thailand's Power Development Plan and Current Proportion of Power Generation Capacity by Energy Source",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p30_mobile_2_th.webp",
+                        en: "/page_012/012_p30_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
     ],
     prevPage: "011",
     nextPage: "013",
