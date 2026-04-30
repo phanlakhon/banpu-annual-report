@@ -58,7 +58,7 @@ const page: PageData = {
                         th: "/page_012/012_p03_mobile_2_table_th.webp",
                         en: "/page_012/012_p03_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -91,7 +91,7 @@ const page: PageData = {
                         th: "/page_012/012_p04_mobile_table_th.webp",
                         en: "/page_012/012_p04_mobile_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_body_text",
@@ -155,7 +155,7 @@ const page: PageData = {
                         th: "/page_012/012_p07_mobile_2_table_th.webp",
                         en: "/page_012/012_p07_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_body_text",
@@ -180,7 +180,7 @@ const page: PageData = {
                         th: "/page_012/012_p08_mobile_1_table_th.webp",
                         en: "/page_012/012_p08_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -211,7 +211,7 @@ const page: PageData = {
                         th: "/page_012/012_p09_mobile_2_table_th.webp",
                         en: "/page_012/012_p09_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -251,7 +251,7 @@ const page: PageData = {
                         th: "/page_012/012_p11_mobile_2_table_th.webp",
                         en: "/page_012/012_p11_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -276,7 +276,7 @@ const page: PageData = {
                         th: "/page_012/012_p12_mobile_1_table_th.webp",
                         en: "/page_012/012_p12_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -308,7 +308,7 @@ const page: PageData = {
                         th: "/page_012/012_p13_mobile_1_table_th.webp",
                         en: "/page_012/012_p13_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -356,7 +356,7 @@ const page: PageData = {
                         th: "/page_012/012_p15_mobile_1_table_th.webp",
                         en: "/page_012/012_p15_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -396,7 +396,7 @@ const page: PageData = {
                         th: "/page_012/012_p17_mobile_1_table_th.webp",
                         en: "/page_012/012_p17_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -468,7 +468,7 @@ const page: PageData = {
                         th: "/page_012/012_p21_mobile_1_table_th.webp",
                         en: "/page_012/012_p21_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -492,7 +492,7 @@ const page: PageData = {
                         th: "/page_012/012_p22_mobile_1_table_th.webp",
                         en: "/page_012/012_p22_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -507,7 +507,7 @@ const page: PageData = {
                         th: "/page_012/012_p22_mobile_3_table_th.webp",
                         en: "/page_012/012_p22_mobile_3_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -531,7 +531,7 @@ const page: PageData = {
                         th: "/page_012/012_p23_mobile_2_table_th.webp",
                         en: "/page_012/012_p23_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -548,7 +548,7 @@ const page: PageData = {
                         th: "/page_012/012_p24_mobile_1_table_th.webp",
                         en: "/page_012/012_p24_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -588,7 +588,7 @@ const page: PageData = {
                         th: "/page_012/012_p26_mobile_1_table_th.webp",
                         en: "/page_012/012_p26_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -628,7 +628,7 @@ const page: PageData = {
                         th: "/page_012/012_p27_mobile_1_table_th.webp",
                         en: "/page_012/012_p27_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -675,7 +675,7 @@ const page: PageData = {
                         th: "/page_012/012_p29_mobile_2_table_th.webp",
                         en: "/page_012/012_p29_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -746,7 +746,7 @@ const page: PageData = {
                         th: "/page_012/012_p31_mobile_1_table_th.webp",
                         en: "/page_012/012_p31_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -770,7 +770,7 @@ const page: PageData = {
                         th: "/page_012/012_p32_mobile_1_table_th.webp",
                         en: "/page_012/012_p32_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -802,7 +802,7 @@ const page: PageData = {
                         th: "/page_012/012_p33_mobile_1_table_th.webp",
                         en: "/page_012/012_p33_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -812,6 +812,197 @@ const page: PageData = {
                     },
                 },
             ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p34_full_th.webp",
+                en: "/page_012/012_p34_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_body_text",
+                    paddingLeft: "0.9rem",
+                    text: {
+                        th: "ภายใต้นโยบายด้านสภาพภูมิอากาศ รัฐบาลออสเตรเลียยังคงยึดเป้าหมายการปล่อยก๊าซเรือนกระจกสุทธิเป็นศูนย์ (Net Zero Emissions) ภายในปี 2593 ส่งผลให้รัฐบาลกลางและรัฐบาลของแต่ละรัฐออกมาตรการสนับสนุนการลงทุน ด้านพลังงานหมุนเวียน โครงสร้างพื้นฐานระบบไฟฟ้า และเทคโนโลยีด้านพลังงานอย่างต่อเนื่อง โดยคาดว่าสัดส่วนการผลิตไฟฟ้าจากพลังงานหมุนเวียน โดยเฉพาะพลังงานลมและพลังงานแสงอาทิตย์ จะเพิ่มขึ้นอย่างมีนัยสำคัญในระยะยาวและกลายเป็นแหล่งพลังงานหลักของระบบไฟฟ้าออสเตรเลีย ส่งผลให้ตลาดไฟฟ้าออสเตรเลียในปี 2568 ยังคงมีการแข่งขันสูงและเปิดโอกาสให้เกิดการลงทุนใหม่ในพลังงานสะอาดและเทคโนโลยีเสริมความยึดหยุ่นของระบบไฟฟ้า",
+                        en: "Under its climate policy framework, the Australian government remains committed to achieving Net Zero Emissions by 2050. This commitment is reflected in ongoing federal and state-level support for renewable energy development, electricity infrastructure upgrades, and energy technologies. Over the long term, electricity generation from renewable sources, especially wind and solar, is expected to rise substantially and become the dominant source of supply within the Australian power system. As a result, the Australian electricity market remained highly competitive in 2025, while offering expanding investment opportunities in clean energy projects and grid-resilience technologies.",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p34_mobile_1_table_th.webp",
+                        en: "/page_012/012_p34_mobile_1_table_en.webp",
+                    },
+                    minWidth: 800,
+                },
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p34_mobile_2_th.webp",
+                        en: "/page_012/012_p34_mobile_2_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: {
+                th: "/page_012/012_p35_full_th.webp",
+                en: "/page_012/012_p35_full_en.webp",
+            },
+            items: [
+                {
+                    type: "pdf_banner",
+                    src: {
+                        th: "/page_012/012_p35_mobile_th.webp",
+                        en: "/page_012/012_p35_mobile_en.webp",
+                    },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p36_full_th.webp", en: "/page_012/012_p36_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p36_mobile_th.webp", en: "/page_012/012_p36_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p37_full_th.webp", en: "/page_012/012_p37_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p37_mobile_th.webp", en: "/page_012/012_p37_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p38_full_th.webp", en: "/page_012/012_p38_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p38_mobile_th.webp", en: "/page_012/012_p38_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p39_full_th.webp", en: "/page_012/012_p39_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p39_mobile_th.webp", en: "/page_012/012_p39_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p40_full_th.webp", en: "/page_012/012_p40_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p40_mobile_th.webp", en: "/page_012/012_p40_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p41_full_th.webp", en: "/page_012/012_p41_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p41_mobile_th.webp", en: "/page_012/012_p41_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p42_full_th.webp", en: "/page_012/012_p42_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p42_mobile_th.webp", en: "/page_012/012_p42_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p43_full_th.webp", en: "/page_012/012_p43_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p43_mobile_th.webp", en: "/page_012/012_p43_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p44_full_th.webp", en: "/page_012/012_p44_full_en.webp" },
+            items: [
+                  {
+                    type: "pdf_note",
+                    text: {
+                        th: "รายงานฉบับนี้นำเสนอผลการดำเนินงานของปี 2568 ก่อนวันที่ 29 มกราคม 2569 ที่ประชุมวิสามัญผู้ถือหุ้นครั้งที่ 1/2569 ที่ได้มีมติอนุมัติการปรับโครงสร้างกลุ่มบริษัท โดยการควบรวม (Amalgamation) ระหว่างบริษัทฯ และ BPP เพื่อจัดตั้งบริษัทใหม่ (NewCo)",
+                        en: "This report presents the Company's operating performance for 2025 prior to 29 January 2026, the date of the Extraordinary General Meeting of Shareholders No. 1/2026, at which shareholders considered and approved a group restructuring transaction through an amalgamation between Banpu and BPP to form a new entity (NewCo).",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: { th: "/page_012/012_p44_mobile_th.webp", en: "/page_012/012_p44_mobile_en.webp" },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p45_full_th.webp", en: "/page_012/012_p45_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p45_mobile_th.webp", en: "/page_012/012_p45_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p46_full_th.webp", en: "/page_012/012_p46_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p46_mobile_th.webp", en: "/page_012/012_p46_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p47_full_th.webp", en: "/page_012/012_p47_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p47_mobile_th.webp", en: "/page_012/012_p47_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p48_full_th.webp", en: "/page_012/012_p48_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p48_mobile_th.webp", en: "/page_012/012_p48_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p49_full_th.webp", en: "/page_012/012_p49_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p49_mobile_th.webp", en: "/page_012/012_p49_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p50_full_th.webp", en: "/page_012/012_p50_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p50_mobile_th.webp", en: "/page_012/012_p50_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p51_full_th.webp", en: "/page_012/012_p51_full_en.webp" },
+            items: [
+                {
+                    type: "pdf_body_text",
+                    text: {
+                        th: "",
+                        en: "• Launching the Infinite Podcast and short-form video series through Banpu NEXT's social media channels to deliver useful information and communicate its businesses, while expanding reach among target audiences. The content covers business trend updates, easy-to-understand insights, and highlights of integrating Al and smart technologies in clean energy solutions that help businesses improve operational efficiency, achieve sustainable cost reductions, reduce carbon emissions across all scopes, and advance toward Net Zero targets.",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: { th: "/page_012/012_p51_mobile_th.webp", en: "/page_012/012_p51_mobile_en.webp" },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p52_full_th.webp", en: "/page_012/012_p52_full_en.webp" },
+            items: [
+                {
+                    type: "pdf_body_text",
+                    paddingLeft: "0.9rem",
+                    text: {
+                        th: "นอกจากนี้ ประธานเจ้าหน้าที่บริหาร ผู้บริหารระดับสูง และผู้เชี่ยวชาญด้าน Net Zero Solutions จากบ้านปู เน็กซ์ได้รับเกียรติเป็นวิทยากรบรรยาย ร่วมเสวนา แลกเปลี่ยนความรู้และประสบการณ์ให้กับหน่วยงานภาครัฐและเอกชน ได้แก่",
+                        en: "In addition, Banpu NEXT's Chief Executive Officer, senior executives, and Net Zero Solutions experts were honored to serve as speakers, participating in panel discussions and knowledge-sharing sessions with public and private sector organizations, including:",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: { th: "/page_012/012_p52_mobile_1_th.webp", en: "/page_012/012_p52_mobile_1_en.webp" },
+                },
+                {
+                    type: "pdf_body_text",
+                    text: {
+                        th: "• ร่วมเสวนาในงาน Enlit Asia 2025 งานประชุมและนิทรรศการด้านพลังงานที่ใหญ่ที่สุดในอาเชียน ที่จัดขึ้น ณ ศูนย์นิทรรศการและการประชุมไบเทค กรุงเทพฯ ภายใต้ตีม \"การเปลี่ยนผ่านพลังงานที่ตอบโจทย์ในภูมิภาคอาเซียน (Advancing a Realistic Energy Transition in ASEAN)\" โดยแลกเปลี่ยนมุมมองและแนวทางความร่วมมือในการลดคาร์บอนและการเปลี่ยนผ่านสู่การใช้พลังงานสะอาดในภาคอุตสาหกรรม และการขนส่ง ตอกย้ำวิสัยทัศน์และความมุ่งมั่นของ บ้านปู เน็กซ์ในการลดการปล่อยคาร์บอนและบรรลุเป้าหมาย Net Zero",
+                        en: "• Participating in a panel discussion at Enlit Asia 2025, ASEAN's largest power and energy exhibition and conference, held at BITEC in Bangkok under the theme \"Advancing a Realistic Energy Transition in ASEAN.\" The discussion focused on sharing perspectives and collaborative approaches on decarbonization and the clean energy transition in the industrial and transportation sectors, reinforcing Banpu NEXT's vision and commitment to reducing carbon emissions and achieving Net Zero targets.",
+                    },
+                },
+                {
+                    type: "pdf_banner",
+                    src: { th: "/page_012/012_p52_mobile_2_th.webp", en: "/page_012/012_p52_mobile_2_en.webp" },
+                },
+            ],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p53_full_th.webp", en: "/page_012/012_p53_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p53_mobile_th.webp", en: "/page_012/012_p53_mobile_en.webp" } }],
+        },
+        {
+            type: "pdf_page",
+            desktopFullImage: { th: "/page_012/012_p54_full_th.webp", en: "/page_012/012_p54_full_en.webp" },
+            items: [{ type: "pdf_banner", src: { th: "/page_012/012_p54_mobile_th.webp", en: "/page_012/012_p54_mobile_en.webp" } }],
         },
     ],
     prevPage: "011",

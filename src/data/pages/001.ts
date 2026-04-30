@@ -79,7 +79,7 @@ const page: PageData = {
                         th: "/page_001/001_p04_mobile_table_th.webp",
                         en: "/page_001/001_p04_mobile_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },

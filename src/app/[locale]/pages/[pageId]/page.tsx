@@ -302,7 +302,7 @@ function renderSection(
     if (section.type === "pdf_title") {
         return (
             <div className="px-4 sm:px-8 md:px-[2%] py-6 sm:py-8 md:py-10">
-                <h2 className="text-base sm:text-lg font-medium text-gradient-banpu leading-tight">
+                <h2 className={`font-medium text-gradient-banpu leading-tight ${section.large ? 'text-xl sm:text-2xl md:text-3xl' : 'text-base sm:text-lg'}`}>
                     {t(section.text)}
                 </h2>
             </div>
@@ -310,10 +310,13 @@ function renderSection(
     }
 
     if (section.type === "pdf_sub_title") {
+        const sizeClass = section.size === 'md' ? 'text-sm sm:text-base font-bold'
+            : section.size === 'sm' ? 'text-xs sm:text-sm font-semibold'
+            : 'text-base sm:text-lg font-bold';
         return (
             <div className="w-full pt-3 pb-1 px-4 sm:px-8 md:px-[6%]">
                 <h3
-                    className="text-base sm:text-lg font-bold"
+                    className={sizeClass}
                     style={{ color: section.color ?? 'var(--color-banpu-cyan-vivid)' }}
                 >
                     {t(section.text)}
@@ -388,10 +391,12 @@ function renderSection(
     }
 
     if (section.type === "pdf_body_text") {
+        const bodyText = t(section.text);
+        if (!bodyText) return null;
         return (
             <div className="pr-4 sm:pr-8 md:pr-[2%] py-4" style={{ paddingLeft: section.paddingLeft ?? '2.2rem' }}>
                 <p className="font-sarabun font-light text-base text-gray-800 leading-relaxed whitespace-pre-line">
-                    {t(section.text)}
+                    {bodyText}
                 </p>
             </div>
         );
@@ -427,7 +432,7 @@ export default async function PageDetail({ params }: Props) {
         <div className="min-h-screen flex flex-col transition-colors duration-300" style={{ backgroundColor: page.backgroundColor || '#f5f8ff' }}>
             {firstImageSrc && <link rel="preload" as="image" href={firstImageSrc} />}
             {/* Page content */}
-            <div className={`flex-grow ${page.layout === 'pdf_composition' ? "w-full max-w-[1320px] mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-[660px] mx-auto lg:p-2 p-1" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}`}>
+            <div className={`flex-grow ${page.layout === 'pdf_composition' ? "w-full max-w-360 mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-165 mx-auto lg:p-2 p-1" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}`}>
                 <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full md:gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto"}>
                     {page.sections.length > 0 ? (
                         page.sections.map((section, i) => (

@@ -415,7 +415,7 @@ const page: PageData = {
                         th: "/page_011/011_p14_mobile_1_table_th.webp",
                         en: "/page_011/011_p14_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -456,7 +456,7 @@ const page: PageData = {
                         th: "/page_011/011_p15_mobile_2_table_th.webp",
                         en: "/page_011/011_p15_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_body_text",
@@ -536,7 +536,7 @@ const page: PageData = {
                         th: "/page_011/011_p17_mobile_1_table_th.webp",
                         en: "/page_011/011_p17_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_sub_title",
@@ -564,7 +564,7 @@ const page: PageData = {
                         th: "/page_011/011_p17_mobile_3_table_th.webp",
                         en: "/page_011/011_p17_mobile_3_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -612,7 +612,7 @@ const page: PageData = {
                 {
                     type: "pdf_banner",
                     src: "/page_011/011_p19_mobile_1_table.webp",
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",

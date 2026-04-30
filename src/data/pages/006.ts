@@ -20,7 +20,7 @@ const page: PageData = {
                         th: "/page_006/006_p01_mobile_head_th.webp",
                         en: "/page_006/006_p01_mobile_head_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",

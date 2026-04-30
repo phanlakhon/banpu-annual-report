@@ -20,7 +20,7 @@ const page: PageData = {
                         th: "/page_002/002_p01_table_th.webp",
                         en: "/page_002/002_p01_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },

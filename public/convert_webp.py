@@ -1,8 +1,8 @@
 from PIL import Image, ImageEnhance
 import os
 
-INPUT = "page_012"
-OUTPUT = "page_012_webp"
+INPUT = "page_013"
+OUTPUT = "page_013_webp"
 os.makedirs(OUTPUT, exist_ok=True)
 
 for filename in os.listdir(INPUT):
@@ -10,7 +10,7 @@ for filename in os.listdir(INPUT):
         img = Image.open(f"{INPUT}/{filename}")
         
         # เพิ่มความคมชัด
-        img = ImageEnhance.Sharpness(img).enhance(2.0)
+        img = ImageEnhance.Sharpness(img).enhance(2.5)
         # เพิ่ม contrast ให้ตัวหนังสือเข้มขึ้น
         img = ImageEnhance.Contrast(img).enhance(1.2)
         
