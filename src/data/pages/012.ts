@@ -58,7 +58,7 @@ const page: PageData = {
                         th: "/page_012/012_p03_mobile_2_table_th.webp",
                         en: "/page_012/012_p03_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -91,7 +91,7 @@ const page: PageData = {
                         th: "/page_012/012_p04_mobile_table_th.webp",
                         en: "/page_012/012_p04_mobile_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_body_text",
@@ -155,7 +155,7 @@ const page: PageData = {
                         th: "/page_012/012_p07_mobile_2_table_th.webp",
                         en: "/page_012/012_p07_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_body_text",
@@ -180,7 +180,7 @@ const page: PageData = {
                         th: "/page_012/012_p08_mobile_1_table_th.webp",
                         en: "/page_012/012_p08_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -211,7 +211,7 @@ const page: PageData = {
                         th: "/page_012/012_p09_mobile_2_table_th.webp",
                         en: "/page_012/012_p09_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -251,7 +251,7 @@ const page: PageData = {
                         th: "/page_012/012_p11_mobile_2_table_th.webp",
                         en: "/page_012/012_p11_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -276,7 +276,7 @@ const page: PageData = {
                         th: "/page_012/012_p12_mobile_1_table_th.webp",
                         en: "/page_012/012_p12_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -308,7 +308,7 @@ const page: PageData = {
                         th: "/page_012/012_p13_mobile_1_table_th.webp",
                         en: "/page_012/012_p13_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -356,7 +356,7 @@ const page: PageData = {
                         th: "/page_012/012_p15_mobile_1_table_th.webp",
                         en: "/page_012/012_p15_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -396,7 +396,7 @@ const page: PageData = {
                         th: "/page_012/012_p17_mobile_1_table_th.webp",
                         en: "/page_012/012_p17_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -468,7 +468,7 @@ const page: PageData = {
                         th: "/page_012/012_p21_mobile_1_table_th.webp",
                         en: "/page_012/012_p21_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -492,7 +492,7 @@ const page: PageData = {
                         th: "/page_012/012_p22_mobile_1_table_th.webp",
                         en: "/page_012/012_p22_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -507,7 +507,7 @@ const page: PageData = {
                         th: "/page_012/012_p22_mobile_3_table_th.webp",
                         en: "/page_012/012_p22_mobile_3_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -531,7 +531,7 @@ const page: PageData = {
                         th: "/page_012/012_p23_mobile_2_table_th.webp",
                         en: "/page_012/012_p23_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
             ],
         },
@@ -548,7 +548,7 @@ const page: PageData = {
                         th: "/page_012/012_p24_mobile_1_table_th.webp",
                         en: "/page_012/012_p24_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -588,7 +588,7 @@ const page: PageData = {
                         th: "/page_012/012_p26_mobile_1_table_th.webp",
                         en: "/page_012/012_p26_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -628,7 +628,7 @@ const page: PageData = {
                         th: "/page_012/012_p27_mobile_1_table_th.webp",
                         en: "/page_012/012_p27_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -675,7 +675,7 @@ const page: PageData = {
                         th: "/page_012/012_p29_mobile_2_table_th.webp",
                         en: "/page_012/012_p29_mobile_2_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -746,7 +746,7 @@ const page: PageData = {
                         th: "/page_012/012_p31_mobile_1_table_th.webp",
                         en: "/page_012/012_p31_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -770,7 +770,7 @@ const page: PageData = {
                         th: "/page_012/012_p32_mobile_1_table_th.webp",
                         en: "/page_012/012_p32_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -802,7 +802,7 @@ const page: PageData = {
                         th: "/page_012/012_p33_mobile_1_table_th.webp",
                         en: "/page_012/012_p33_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",
@@ -834,7 +834,7 @@ const page: PageData = {
                         th: "/page_012/012_p34_mobile_1_table_th.webp",
                         en: "/page_012/012_p34_mobile_1_table_en.webp",
                     },
-                    minWidth: 560,
+                    minWidth: 800,
                 },
                 {
                     type: "pdf_banner",

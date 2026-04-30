@@ -1,7 +1,7 @@
 export default function Loading() {
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="grow w-full max-w-[1320px] mx-auto lg:p-2 p-1">
+      <div className="grow w-full max-w-360 mx-auto lg:p-2 p-1">
         <div className="grid grid-cols-1 xl:grid-cols-2 w-full gap-y-2">
           {[0, 1].map((i) => (
             <div
