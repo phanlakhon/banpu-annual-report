@@ -17,7 +17,8 @@ Converting BANPU's **360-page 56-1 One Report (2025)** from PDF into an interact
 | Styling | Tailwind CSS | v4 |
 | i18n | next-intl | 4.9.1 |
 | Icons | lucide-react | 1.8.0 |
-| Font | Noto Sans Thai (Google) | — |
+| Font (Latin/heading) | Banpu (local OTF) | — |
+| Font (Thai body) | Sarabun (Google) | — |
 
 ---
 
@@ -27,13 +28,13 @@ Converting BANPU's **360-page 56-1 One Report (2025)** from PDF into an interact
 src/
 ├── app/
 │   └── [locale]/                  # Locale routing (th / en)
-│       ├── layout.tsx             # Root layout: MINIMAL — only i18n provider + html/body
+│       ├── layout.tsx             # Root layout: fonts + i18n provider + html/body + metadata
 │       ├── page.tsx               # Homepage: FULL-SCREEN, no sidebar/header
 │       ├── globals.css
 │       └── pages/
 │           ├── layout.tsx         # Pages layout: wraps children in PagesShell
 │           └── [pageId]/
-│               └── page.tsx       # Dynamic page renderer (reads from src/data/pages.ts)
+│               └── page.tsx       # Dynamic page renderer (reads from src/data/pages/)
 │
 ├── components/
 │   ├── PagesShell.tsx             # Client: hamburger + sidebar overlay + auto-close on nav
@@ -41,7 +42,12 @@ src/
 │   └── LanguageSwitcher.tsx       # TH / EN toggle buttons (top-right bar)
 │
 ├── data/
-│   └── pages.ts                   # ALL page content + metadata (source of truth)
+│   └── pages/
+│       ├── index.ts               # Aggregator: imports all per-page files, exports pagesData + pageOrder
+│       ├── types.ts               # All TypeScript types: PageData, PageSection, BilingualText, etc.
+│       ├── 000.ts                 # Page data for /pages/000
+│       ├── 001.ts                 # Page data for /pages/001
+│       └── ...040.ts              # One file per page ID
 │
 └── i18n/
     ├── routing.ts                 # Supported locales: th, en (default: th)
@@ -56,14 +62,14 @@ public/
 ├── page_1.webp                    # Annual report cover (used on homepage)
 ├── homepage-bg.webp               # Homepage background
 ├── convert_webp.py                # Script: convert PNG → WebP (run locally as needed)
-├── fonts/                         # Local font files
-├── page-intro/                    # Images for page 000 (intro)
-├── page-001/                      # Images for page 001 (financial highlights)
-├── page-002/                      # Images for page 002 (operational results)
-└── page-003/                      # Images for page 003 (board report)
+├── fonts/                         # Local font files (BANPU OTF family)
+├── page_intro/                    # Images for page 000 (intro)
+├── page_001/                      # Images for page 001
+├── page_002/                      # Images for page 002
+└── page_NNN/                      # Images for page NNN (underscore, not hyphen)
 ```
 
-> **All image assets must be `.webp`** — the project uses WebP throughout for smaller file sizes. Use `public/convert_webp.py` to batch-convert PNG/JPG exports from PDF.
+> **All image assets must be `.webp`** — the project uses WebP throughout. Use `public/convert_webp.py` to batch-convert PNG/JPG exports from PDF.
 
 > **Key architecture note:** The homepage (`/th`, `/en`) has NO sidebar or header — it's a standalone full-screen page. Only routes under `/pages/*` show the sidebar and language switcher. This is achieved through Next.js **nested layouts**.
 
@@ -95,17 +101,16 @@ Page IDs are **sequential numbers (000–040)**, independent of actual PDF page 
 /th/pages/001         → จุดเด่นในรอบปี / Financial Highlights
 /th/pages/002         → ผลการดำเนินงาน / Operational Results
 /th/pages/003         → รายงานคณะกรรมการ / Board of Directors' Review
-/th/pages/004         → สารจากประธานฯ / CEO Review
+/th/pages/004         → สารจากประธานเจ้าหน้าที่บริหาร / CEO Review
 /th/pages/005         → นโยบายและภาพรวมฯ / Policy & Business Overview
 /th/pages/006         → แผนที่ธุรกิจ / Group Map of Operations
 /th/pages/007         → วิสัยทัศน์และพันธกิจ / Vision & Mission
-...
-/th/pages/030         → คดีความที่สำคัญ / Significant Litigation
-/th/pages/031         → นโยบายการกำกับดูแล / Corporate Governance Policy
-...
-/th/pages/038         → การควบคุมภายใน / Internal Control
-/th/pages/039         → เอกสารแนบ 1 / Attachment 1
-/th/pages/040         → เอกสารแนบ 2 / Attachment 2
+/th/pages/008         → สรุปการเปลี่ยนแปลงที่สำคัญ / Key Developments
+/th/pages/009         → ข้อมูลทั่วไปของบริษัท / Banpu Information
+/th/pages/010         → โครงสร้างรายได้ / Revenue Structure
+/th/pages/011         → ข้อมูลกลุ่มธุรกิจ / Business Group Information
+/th/pages/012         → ภาวะตลาดและการแข่งขัน / Market and Competition
+/th/pages/013–040     → (pending)
 ```
 Replace `/th/` with `/en/` for English versions. The page ID in the URL is always the same for both languages.
 
@@ -166,7 +171,7 @@ The sidebar (`src/components/Sidebar.tsx`) is wired to translation keys in `mess
 
 ---
 
-## Current Status (as of 2026-04-25)
+## Current Status (as of 2026-04-30)
 
 ### ✅ Done
 - [x] Project setup (Next.js + next-intl + Tailwind v4)
@@ -177,73 +182,90 @@ The sidebar (`src/components/Sidebar.tsx`) is wired to translation keys in `mess
 - [x] Thai/English language switcher
 - [x] Prev/Next navigation bar (shows actual page title, not just page number)
 - [x] All image assets converted to WebP
-- [x] Sequential page ID system (000–040) — language-agnostic, not tied to PDF page numbers
+- [x] Sequential page ID system (000–040) — language-agnostic
 - [x] Complete sidebar menu (all 41 items, exact text from PDF)
-- [x] Page `000` — บทนำ/Introduction (image-based, desktop + mobile variants)
-- [x] Page `001` — จุดเด่นในรอบปี (images + financial table)
-- [x] Page `002` — ผลการดำเนินงาน (data table + chart images)
-- [x] Page `003` — รายงานคณะกรรมการ (quote photo + two-column text)
+- [x] Browser tab title: "Banpu Annual Report 2025"
+- [x] Page `000` — บทนำ / Introduction
+- [x] Page `001` — จุดเด่นในรอบปี / Financial Highlights
+- [x] Page `002` — ผลการดำเนินงาน / Operational Results
+- [x] Page `003` — รายงานคณะกรรมการ / Board of Directors' Review
+- [x] Page `004` — สารจากประธานเจ้าหน้าที่บริหาร / CEO Review
+- [x] Page `005` — นโยบายและภาพรวมการประกอบธุรกิจ / Policy & Business Overview
+- [x] Page `006` — แผนที่แสดงธุรกิจของกลุ่มบ้านปู / Group Map of Operations
+- [x] Page `007` — วิสัยทัศน์และพันธกิจ / Vision & Mission
+- [x] Page `008` — สรุปการเปลี่ยนแปลงและพัฒนาการที่สำคัญ / Key Developments
+- [x] Page `009` — ข้อมูลทั่วไปของบริษัท / Banpu Information
+- [x] Page `010` — โครงสร้างรายได้ / Revenue Structure
+- [x] Page `011` — ข้อมูลกลุ่มธุรกิจ / Business Group Information (21 sub-pages)
+- [x] Page `012` — ภาวะตลาดและการแข่งขัน / Market and Competition (54 sub-pages)
 
 ### 🚧 Pending — awaiting content from client
-- [ ] Page `004` — สารจากประธานเจ้าหน้าที่บริหาร
-- [ ] Pages `005`–`030` — Section 1 (26 items)
-- [ ] Pages `031`–`038` — Section 2 (8 items)
+- [ ] Page `013` — ทรัพย์สินที่ใช้ในการประกอบธุรกิจ
+- [ ] Pages `014`–`030` — Section 1 remaining items
+- [ ] Pages `031`–`038` — Section 2 (Corporate Governance)
 - [ ] Pages `039`–`040` — Section 3 / Attachments
 
 ---
 
-## Section Types (`src/data/pages.ts`)
+## Section Types
 
-Each page entry has a `layout` field and a `sections` array.
+Each page file exports a `PageData` object with a `layout` field and a `sections` array. Types are defined in `src/data/pages/types.ts`.
 
 ### `layout` options
 
 | Value | Description |
 |-------|-------------|
-| `'pdf_composition'` | Multiple PDF pages composed in a 2-column grid (1 col on mobile, 2 cols on `xl`+). Each direct child must be a `pdf_page` block. |
+| `'pdf_composition'` | Multiple PDF sub-pages in a 2-column grid (1 col mobile, 2 cols `xl`+). Each direct child must be a `pdf_page` block. Used for long menus with many sub-pages (e.g. 011, 012). |
 | `'article'` | White card, max-w-4xl, simple article layout. |
-| `'pdf_single_full'` | Single full-width image (max-w-660px). Not yet used. |
+| `'pdf_single_full'` | Single full-width image layout. Used for single-page menus (e.g. 007, 009). |
 
 ### Section types
 
 | Type | Description |
 |------|-------------|
-| `pdf_page` | Container for one PDF page. `backgroundColor`, `pageNumber`, `pageNumberAlign` (`'left'`/`'right'`), `pageNumberColor`. When `desktopFullImage` is set, shows that image on `sm+` screens and renders child `items` only on mobile. |
-| `pdf_banner` | Full-width image. Optional `mobileSrcs[]` — if provided, the main `src` is hidden on mobile and replaced with the mobile array. |
-| `pdf_row` | Row of images in equal columns. On mobile stacks vertically. `withGap` adds spacing between columns. |
-| `pdf_header` | Breadcrumb-style header text (bilingual). **Currently renders `null` — hidden.** |
+| `pdf_page` | Container for one PDF sub-page. Props: `backgroundColor`, `noPadding`, `noMinHeight`, `pageNumber`, `pageNumberAlign` (`'left'`/`'right'`), `pageNumberColor`, `desktopFullImage`. When `desktopFullImage` is set, shows that image on `sm+` screens and renders child `items` only on mobile. |
+| `pdf_banner` | Full-width image. `minWidth` (number, px) triggers horizontal scroll wrapper — use for table images (e.g. `minWidth: 560`). Optional `mobileSrcs[]` replaces the main image on mobile. |
+| `pdf_row` | Row of images in equal columns. `withGap` adds gap between columns. On mobile, stacks vertically. |
 | `pdf_title` | Large gradient heading (bilingual). |
-| `pdf_sub_title` | Centered subtitle (bilingual). |
-| `pdf_quote_block` | Quote in a light-blue box with opening/closing quote marks and a signature (image + name + position). |
-| `pdf_text_columns` | Two-column flowing text. `fontFamily: 'sarabun'` applies serif Thai via `font-sarabun` class. |
-| `pdf_table` | Financial data table. `columns[]` are year headers. `sections[]` each have a `title`, optional `unit`, and `rows[]`. `highlightColumnIndex` highlights one column. `rows` support `isBold` and per-row `unit` override. |
-| `pdf_note` | Footnote text. `hidePrefix: true` hides the "หมายเหตุ:" / "Note:" label. Supports `\n` for line breaks. |
+| `pdf_sub_title` | Section subtitle (bilingual). `color` prop overrides default color (default: `var(--color-banpu-cyan-vivid)`). Spacing is tight (`pt-3 pb-1`). |
+| `pdf_gradient_text` | Body-size text with gradient color (bilingual). Used as a highlighted intro paragraph. |
+| `pdf_body_text` | Regular body paragraph (bilingual, Sarabun Light). `paddingLeft` prop (string, default `'2.2rem'`). **Renders `null` if the translated text is empty** — safe to use `th: ""` or `en: ""` for locale-specific text. |
+| `pdf_text_columns` | Two-column flowing text. `fontFamily: 'sarabun'` applies Thai font via `font-sarabun` class. |
+| `pdf_quote_block` | Quote in a light-blue box with opening/closing marks and a signature (image + name + position). |
+| `pdf_table` | Financial data table. `columns[]` are year headers. `sections[]` each have optional `title`, `unit`, and `rows[]`. `highlightColumnIndex` highlights one column. Rows support `isBold` and per-row `unit` override. |
+| `pdf_note` | Footnote text. `hidePrefix: true` hides the "หมายเหตุ :" / "Remarks :" label. Supports `\n` for line breaks. |
+| `pdf_header` | Breadcrumb-style header text. **Currently renders `null` — hidden by design.** |
 | `text` | Simple paragraph with optional title (article layout only). |
-| `highlights` | KPI cards grid, 2 cols on mobile / 3 cols on desktop (article layout only). |
+| `highlights` | KPI cards grid, 2 cols mobile / 3 cols desktop (article layout only). |
 | `quote` | Blockquote with attribution (article layout only). |
 | `list` | Bullet list (article layout only). |
 | `image` | Standalone image with optional caption (article layout only). |
 
 ### `desktopFullImage` pattern
 
-Set on a `pdf_page` to show a full-res image on `sm+` screens while rendering child items on mobile. This avoids slicing images for desktop.
+Set on a `pdf_page` to show a full-res image on `sm+` screens while rendering child items on mobile. Both `string` and `{ th, en }` are accepted (use plain string when the same image works for both locales).
 
 ```ts
 {
   type: 'pdf_page',
-  backgroundColor: '#d0f5fe',
-  pageNumber: '04',
-  pageNumberAlign: 'left',
-  desktopFullImage: '/page-04/04_p04_full.webp',  // shown on sm+ screens
+  desktopFullImage: {
+    th: '/page_012/012_p01_full_th.webp',
+    en: '/page_012/012_p01_full_en.webp',
+  },
   items: [
     // rendered on mobile only
-    { type: 'pdf_banner', src: '/page-04/04_p04_banner.webp' },
-    { type: 'pdf_row', items: [
-      { src: '/page-04/04_p04_col1.webp' },
-      { src: '/page-04/04_p04_col2.webp' },
-    ]},
+    { type: 'pdf_banner', src: { th: '/page_012/012_p01_mobile_th.webp', en: '/page_012/012_p01_mobile_en.webp' } },
+    { type: 'pdf_body_text', paddingLeft: '0.9rem', text: { th: '...', en: '...' } },
   ]
 }
+```
+
+### Locale-specific text
+
+If a section should only appear in one language, pass an empty string for the other locale. The renderer will skip the element entirely (no empty space left behind):
+
+```ts
+{ type: 'pdf_body_text', text: { th: '', en: 'English-only content here.' } }
 ```
 
 ---
@@ -252,59 +274,59 @@ Set on a `pdf_page` to show a full-res image on `sm+` screens while rendering ch
 
 ### Step 1 — Export and convert images
 
-Export each PDF page as PNG from Acrobat/Preview, then convert to WebP:
+Export each PDF sub-page as PNG, then convert to WebP:
 
 ```bash
 cd public
 python3 convert_webp.py   # converts all PNG/JPG in current folder tree to .webp
 ```
 
-Naming convention:
+Naming convention (use **underscore**, not hyphen):
 ```
-public/page-{pageId}/
-  {pageId}_p{pdfPageNum}_full.webp      ← full desktop image (used in desktopFullImage)
-  {pageId}_p{pdfPageNum}_banner.webp    ← top banner strip (for mobile pdf_banner)
-  {pageId}_p{pdfPageNum}_col1.webp      ← column slices (for mobile pdf_row)
-  {pageId}_p{pdfPageNum}_col2.webp
-  ...
+public/page_{pageId}/
+  {pageId}_p{N}_full_th.webp      ← full desktop image (TH)
+  {pageId}_p{N}_full_en.webp      ← full desktop image (EN)
+  {pageId}_p{N}_mobile_th.webp    ← mobile banner (TH)
+  {pageId}_p{N}_mobile_en.webp    ← mobile banner (EN)
+  {pageId}_p{N}_mobile_1_th.webp  ← first of multiple mobile images (TH)
+  {pageId}_p{N}_mobile_1_table_th.webp  ← table image → add minWidth: 560
 ```
 
-### Step 2 — Add entry to `src/data/pages.ts`
+Use a plain string (no `{th, en}`) when the same image works for both locales.
 
-The `pageId` is the sequential ID (e.g. `'004'`). The `pageNumber` inside each `pdf_page` section is the actual PDF page number (display only — can differ between TH and EN PDFs).
+### Step 2 — Create/edit `src/data/pages/{pageId}.ts`
+
+Each page is its own file. The stub (3-line placeholder) is already in place for all IDs 000–040. Replace the stub with the real content:
 
 ```ts
-'004': {
-  pageId: '004',
-  title: { th: 'สารจากประธานเจ้าหน้าที่บริหาร', en: "Chief Executive Officer's Review" },
-  accentColor: '#1565c0',
-  backgroundColor: '#ffffff',
-  layout: 'pdf_composition',
-  sections: [
-    {
-      type: 'pdf_page',
-      backgroundColor: '#e3f6fc',
-      pageNumber: '12',          // ← actual PDF page number (TH), display only
-      pageNumberAlign: 'left',
-      desktopFullImage: '/page-004/004_p12_full.webp',
-      items: [
-        { type: 'pdf_banner', src: '/page-004/004_p12_banner.webp' },
-        // add more section types as needed
-      ]
-    }
-  ],
-  prevPage: '003',
-  nextPage: '005',
-},
+import type { PageData } from './types';
+
+const page: PageData = {
+    pageId: "013",
+    title: { th: 'ทรัพย์สินที่ใช้ในการประกอบธุรกิจ', en: 'Properties Used in Business Operations' },
+    accentColor: '#1e90e6',
+    layout: 'pdf_composition',
+    sections: [
+        {
+            type: 'pdf_page',
+            desktopFullImage: { th: '/page_013/013_p01_full_th.webp', en: '/page_013/013_p01_full_en.webp' },
+            items: [
+                { type: 'pdf_banner', src: { th: '/page_013/013_p01_mobile_th.webp', en: '/page_013/013_p01_mobile_en.webp' } },
+            ],
+        },
+    ],
+    prevPage: '012',
+    nextPage: '014',
+};
+
+export default page;
 ```
 
-### Step 3 — Update Sidebar if needed
+No changes needed to `index.ts` — all 000–040 are already imported and registered there.
 
-In `src/components/Sidebar.tsx`, add a `<NavLink>` or add an item to an existing `<AccordionItem>`.
+### Step 3 — That's it
 
-### Step 4 — Update messages if needed
-
-Add the translation key to both `messages/th.json` and `messages/en.json` under `"Menu"`.
+`index.ts` and the Sidebar already reference all 41 pages. No other files need updating for content changes.
 
 ---
 
@@ -312,35 +334,13 @@ Add the translation key to both `messages/th.json` and `messages/en.json` under 
 
 > Use this checklist after copying the project folder to a new directory.
 
-### 1. `src/app/[locale]/page.tsx` — Homepage text + cover image
-
-Change heading, subheading, and description (both TH and EN inline in the file). Change the cover image:
-```
-public/page_1.webp   ← replace with the new report's cover
-```
-
-### 2. `messages/th.json` + `messages/en.json` — Menu labels
-
-Edit all keys under `"Menu"` to match the new report's section names.
-
-### 3. `src/components/Sidebar.tsx` — Page numbers + menu structure
-
-Change the `pageId` values in `<NavLink>` and `<AccordionItem>` to match the new report's page numbers. Add or remove `<AccordionItem>` blocks to match the number of parts.
-
-### 4. `src/data/pages.ts` — All page content
-
-- Change `pageId`, `title`, `prevPage`, `nextPage` for every entry
-- Set `sections: []` initially (shows "กำลังเตรียมเนื้อหา" placeholder)
-- Update `pageOrder` array at the bottom of the file
-
-### 5. `public/` — Images
-
-Delete old `page-XX/` folders, create new ones following the naming convention above.  
-Files shared between reports (`logo.webp`, `fonts/`) don't need to change.
-
-### 6. `PROJECT.md` — Update this file
-
-Update the company name, URL structure, Current Status, and any other changed details.
+1. **`src/app/[locale]/page.tsx`** — change homepage heading, subheading, cover image (`public/page_1.webp`)
+2. **`src/app/[locale]/layout.tsx`** — update `metadata.title`
+3. **`messages/th.json` + `messages/en.json`** — edit all keys under `"Menu"`
+4. **`src/components/Sidebar.tsx`** — update `pageId` values and accordion structure
+5. **`src/data/pages/*.ts`** — replace all page content; start from the 3-line stubs
+6. **`public/page_NNN/`** — delete old folders, create new ones with new images
+7. **`PROJECT.md`** — update company name, URL structure, Current Status
 
 ---
 
@@ -359,10 +359,16 @@ npm run dev
 - **`params` are async in Next.js 16**: always `await params` before destructuring `locale` or `pageId`
 - **`'use client'`** components: `PagesShell`, `Sidebar`, `LanguageSwitcher`
 - **Server components**: all `layout.tsx` and `page.tsx` files
-- **Tailwind v4 canonical classes**: `shrink-0` (not `flex-shrink-0`), `-mt-1.25` (not `mt-[-5px]`), `min-w-7.5` (not `min-w-[30px]`), `mt-px` (not `mt-[1px]`)
+- **Tailwind v4 canonical classes**: `shrink-0` not `flex-shrink-0`, `-mt-1.25` not `mt-[-5px]`
 - **Never define components inside render functions** — causes "Cannot create components during render". Always define at module scope.
-- **Images must be `.webp`** — use `convert_webp.py` to convert exports before adding to `public/`
+- **Images must be `.webp`** — use `convert_webp.py` to convert exports
+- **Image folders use underscore**: `public/page_012/` not `public/page-012/`
 - **i18n routing**: `src/middleware.ts` handles locale detection; root `/` redirects to `/th`
 - **Locale list**: `['en', 'th']`, default `'th'` — defined in `src/i18n/routing.ts`
-- **`pdf_header` is hidden**: `renderSection` returns `null` for `pdf_header` type (intentional, can be un-hidden by removing the `return null`)
-- **`pdf_page` desktop breakpoint is `sm`**, not `lg` — the full image shows from 640px up
+- **`pdf_header` is hidden**: returns `null` in renderer (intentional, can be un-hidden by removing the `return null`)
+- **`pdf_page` desktop breakpoint is `sm`** (640px), not `lg` — the full image shows from 640px up
+- **Double quotes inside strings**: must be escaped `\"` when the string value itself is double-quoted. Example: Thai text containing `"คำพูด"` → `"...\"คำพูด\"..."`. Alternatively wrap the string value in backtick template literals.
+- **`pdf_body_text` with empty locale text**: renderer checks `if (!bodyText) return null` — safe to leave `th: ""` or `en: ""` for locale-specific paragraphs
+- **`minWidth` on `pdf_banner`**: wraps the image in `overflow-x-auto`, enabling horizontal scroll on mobile. Always use for `_table` images (recommended: `minWidth: 560`)
+- **`pdf_sub_title` color**: defaults to `var(--color-banpu-cyan-vivid)`. Override per-section with `color: '#939598'` etc.
+- **`pdf_body_text` paddingLeft**: defaults to `'2.2rem'`. Override per-section with `paddingLeft: '0.9rem'` for bullet-aligned text
