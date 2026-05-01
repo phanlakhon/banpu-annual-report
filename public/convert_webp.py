@@ -1,8 +1,8 @@
 from PIL import Image, ImageEnhance
 import os
 
-INPUT = "page_013"
-OUTPUT = "page_013_webp"
+INPUT = "page_016"
+OUTPUT = "page_016_webp"
 os.makedirs(OUTPUT, exist_ok=True)
 
 for filename in os.listdir(INPUT):
