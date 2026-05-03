@@ -185,12 +185,14 @@ function renderSection(
     }
 
     if (section.type === "pdf_page") {
+        const desktopSrc = section.desktopFullImage ? src(section.desktopFullImage) : null;
+        if (!desktopSrc && section.items.length === 0) return null;
         return (
             <div className="w-full relative" style={{ backgroundColor: section.backgroundColor || '#ffffff' }}>
-                {section.desktopFullImage && (
+                {desktopSrc && (
                     <div className="hidden sm:block w-full" style={{ aspectRatio: '1 / 1.4142' }}>
                         <FadeImage
-                            src={src(section.desktopFullImage)}
+                            src={desktopSrc!}
                             alt={section.pageNumber ? `Page ${section.pageNumber}` : "PDF Page"}
                             className="w-full h-full object-contain"
                             wrapperClassName="w-full h-full"
@@ -200,7 +202,7 @@ function renderSection(
                         />
                     </div>
                 )}
-                <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-[1100px] mx-auto w-full`}>
+                <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-275 mx-auto w-full`}>
                     {section.items.map((subSection, i) => (
                         <div key={i}>
                             {renderSection(subSection, locale, accentColor, isFirst && i === 0)}
@@ -376,6 +378,17 @@ function renderSection(
         );
     }
 
+    if (section.type === "pdf_gradient_divider") {
+        return (
+            <div className="px-4 sm:px-8 md:px-[2%] py-2">
+                <div
+                    className={section.thin ? "h-px" : "h-0.5"}
+                    style={{ backgroundImage: 'linear-gradient(to right, var(--color-banpu-cyan), var(--color-banpu-purple))' }}
+                />
+            </div>
+        );
+    }
+
     if (section.type === "pdf_header") {
         return null; // Temporarily hidden as per user request
     }
@@ -432,8 +445,8 @@ export default async function PageDetail({ params }: Props) {
         <div className="min-h-screen flex flex-col transition-colors duration-300" style={{ backgroundColor: page.backgroundColor || '#f5f8ff' }}>
             {firstImageSrc && <link rel="preload" as="image" href={firstImageSrc} />}
             {/* Page content */}
-            <div className={`flex-grow ${page.layout === 'pdf_composition' ? "w-full max-w-360 mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-165 mx-auto lg:p-2 p-1" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}`}>
-                <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full md:gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto"}>
+            <div className={`flex-grow ${page.layout === 'pdf_composition' ? "w-full max-w-360 mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_column' ? "w-full max-w-275 mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-275 mx-auto lg:p-2 p-1" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}`}>
+                <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full md:gap-y-2" : page.layout === 'pdf_single_column' ? "grid grid-cols-1 w-full md:gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto"}>
                     {page.sections.length > 0 ? (
                         page.sections.map((section, i) => (
                             <div key={i}>

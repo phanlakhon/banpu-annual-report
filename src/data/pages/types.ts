@@ -58,6 +58,7 @@ export type PageSection =
     | { type: "pdf_title"; text: BilingualText; large?: boolean }
     | { type: "pdf_sub_title"; text: BilingualText; color?: string; size?: "lg" | "md" | "sm" }
     | { type: "pdf_gradient_text"; text: BilingualText }
+    | { type: "pdf_gradient_divider"; thin?: boolean }
     | { type: "pdf_body_text"; text: BilingualText; paddingLeft?: string }
     | {
           type: "pdf_quote_block";
@@ -85,7 +86,7 @@ export type PageData = {
     subtitle?: BilingualText;
     accentColor: string;
     backgroundColor?: string;
-    layout?: "article" | "pdf_composition" | "pdf_single_full";
+    layout?: "article" | "pdf_composition" | "pdf_single_column" | "pdf_single_full";
     sections: PageSection[];
     prevPage?: string;
     nextPage?: string;
