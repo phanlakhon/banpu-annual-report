@@ -314,6 +314,8 @@ function renderSection(
     }
 
     if (section.type === "pdf_sub_title") {
+        const subTitleText = t(section.text);
+        if (!subTitleText) return null;
         const weightClass = section.weight === 'semibold' ? 'font-semibold' : section.weight === 'medium' ? 'font-medium' : 'font-bold';
         const sizeClass = section.size === 'md' ? `text-sm sm:text-base ${weightClass}`
             : section.size === 'sm' ? 'text-xs sm:text-sm font-semibold'
@@ -324,7 +326,7 @@ function renderSection(
                     className={sizeClass}
                     style={{ color: section.color ?? 'var(--color-banpu-cyan-vivid)' }}
                 >
-                    {t(section.text)}
+                    {subTitleText}
                 </h3>
             </div>
         );
