@@ -42,6 +42,7 @@ export default function FadeImage({
         {...(fill ? { fill: true } : { width: 0, height: 0 })}
         sizes={sizes}
         priority={priority}
+        unoptimized
         onLoad={() => setLoaded(true)}
         className={`transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'} ${className ?? ''}`}
         style={fill ? undefined : { width: '100%', height: 'auto', ...style }}
