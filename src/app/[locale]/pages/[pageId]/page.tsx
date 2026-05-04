@@ -144,12 +144,14 @@ function renderSection(
     }
 
     if (section.type === "pdf_banner") {
+        const bannerSrc = src(section.src);
+        if (!bannerSrc) return null;
         const imgClass = `h-auto object-contain ${section.mobileSrcs?.length ? 'sm:block hidden' : ''} ${section.minWidth ? '' : 'w-full'}`;
         const imgStyle = section.minWidth ? { minWidth: section.minWidth, width: '100%' } : undefined;
         return (
             <div className={section.minWidth ? 'w-full overflow-x-auto custom-scrollbar' : 'w-full'}>
                 <FadeImage
-                    src={src(section.src)}
+                    src={bannerSrc}
                     alt={section.alt || "banner"}
                     className={imgClass}
                     style={imgStyle}
