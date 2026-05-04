@@ -417,6 +417,21 @@ function renderSection(
         );
     }
 
+    if (section.type === "pdf_list") {
+        return (
+            <div className="pr-4 sm:pr-8 md:pr-[2%] py-2" style={{ paddingLeft: section.paddingLeft ?? '2.2rem' }}>
+                <ul className="space-y-2">
+                    {section.items.map((item, i) => (
+                        <li key={i} className="flex gap-2 items-start font-sarabun font-light text-base text-gray-800 leading-relaxed">
+                            <span className="shrink-0" style={{ color: '#5b3e96' }}>•</span>
+                            <span>{t(item)}</span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
+    }
+
     if (section.type === "pdf_note") {
         return (
             <div className="font-sarabun px-4 sm:px-8 md:px-[2%] py-4 text-[10px] sm:text-[11px] xl:text-xs text-gray-800 font-medium leading-relaxed">
