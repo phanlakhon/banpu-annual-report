@@ -60,7 +60,7 @@ export type PageSection =
     | { type: "pdf_gradient_text"; text: BilingualText }
     | { type: "pdf_gradient_divider"; thin?: boolean }
     | { type: "pdf_body_text"; text: BilingualText; paddingLeft?: string }
-    | { type: "pdf_list"; items: BilingualText[]; paddingLeft?: string }
+    | { type: "pdf_list"; items: Array<BilingualText | { label: BilingualText; description: BilingualText }>; paddingLeft?: string }
     | {
           type: "pdf_quote_block";
           text: BilingualText;

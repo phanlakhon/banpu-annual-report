@@ -424,7 +424,11 @@ function renderSection(
                     {section.items.map((item, i) => (
                         <li key={i} className="flex gap-2 items-start font-sarabun font-light text-base text-gray-800 leading-relaxed">
                             <span className="shrink-0" style={{ color: '#5b3e96' }}>•</span>
-                            <span>{t(item)}</span>
+                            {'label' in item ? (
+                                <span><strong className="font-bold" style={{ color: '#5b3e96' }}>{t(item.label)}</strong> – {t(item.description)}</span>
+                            ) : (
+                                <span>{t(item)}</span>
+                            )}
                         </li>
                     ))}
                 </ul>
