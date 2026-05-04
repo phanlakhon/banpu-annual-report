@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { pagesData, type PageSection, type BilingualSrc } from "@/data/pages";
+import { pagesData, type PageSection } from "@/data/pages";
 import FadeImage from "@/components/FadeImage";
 import PrevNextNav from "@/components/PrevNextNav";
 import React from "react";
@@ -12,21 +12,6 @@ export function generateStaticParams() {
     return Object.keys(pagesData).map((pageId) => ({ pageId }));
 }
 
-function getFirstImageSrc(sections: PageSection[], locale: string): string | null {
-    const getSrc = (s: BilingualSrc) =>
-        typeof s === "string" ? s : locale === "th" ? s.th : s.en;
-    for (const section of sections) {
-        if (section.type === "pdf_page") {
-            if (section.desktopFullImage) return getSrc(section.desktopFullImage);
-            for (const item of section.items) {
-                if (item.type === "pdf_banner") return getSrc(item.src);
-            }
-        }
-        if (section.type === "pdf_banner") return getSrc(section.src);
-        if (section.type === "pdf_row" && section.items.length > 0) return getSrc(section.items[0].src);
-    }
-    return null;
-}
 
 function renderSection(
     section: PageSection,
@@ -37,7 +22,7 @@ function renderSection(
     const t = (text: { th: string; en: string }) =>
         locale === "th" ? text.th : text.en;
 
-    const src = (s: BilingualSrc) =>
+    const src = (s: string | { th: string; en: string }) =>
         typeof s === "string" ? s : locale === "th" ? s.th : s.en;
 
     if (section.type === "text") {
@@ -176,7 +161,8 @@ function renderSection(
                         key={idx}
                         src={src(item.src)}
                         alt={item.alt || `column-${idx}`}
-                        className="w-full max-w-[300px] sm:max-w-none sm:w-auto h-auto object-contain min-w-0 shrink"
+                        wrapperClassName="w-full max-w-[300px] sm:max-w-none sm:flex-1 min-w-0 shrink"
+                        className="h-auto object-contain"
                         decoding="async"
                         loading={isFirst && idx === 0 ? "eager" : "lazy"}
                         fetchPriority={isFirst && idx === 0 ? "high" : "auto"}
@@ -196,15 +182,16 @@ function renderSection(
                         <FadeImage
                             src={desktopSrc!}
                             alt={section.pageNumber ? `Page ${section.pageNumber}` : "PDF Page"}
-                            className="w-full h-full object-contain"
+                            className="object-contain"
                             wrapperClassName="w-full h-full"
-                            decoding="async"
+                            fill
+                            sizes="(max-width: 1280px) 100vw, 50vw"
                             loading={isFirst ? "eager" : "lazy"}
                             fetchPriority={isFirst ? "high" : "auto"}
                         />
                     </div>
                 )}
-                <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-110 mx-auto w-full`}>
+                <div className={`${section.desktopFullImage ? 'sm:hidden max-w-110' : 'max-w-275'} mx-auto w-full`}>
                     {section.items.map((subSection, i) => (
                         <div key={i}>
                             {renderSection(subSection, locale, accentColor, isFirst && i === 0)}
@@ -358,7 +345,7 @@ function renderSection(
 
                 {/* Signature area */}
                 <div className="mt-8 md:mt-10 self-end mr-10 md:mr-20 flex flex-col items-center gap-0.5">
-                    <FadeImage src={src(section.signatureSrc)} alt="Signature" className="h-10 md:h-12 object-contain" decoding="async" />
+                    <FadeImage src={src(section.signatureSrc)} alt="Signature" className="object-contain" style={{ width: 'auto', height: '2.5rem' }} decoding="async" />
                     <div className="text-sm md:text-base font-bold text-[#2a2e82] mt-2">
                         {t(section.signatureName)}
                     </div>
@@ -463,11 +450,8 @@ export default async function PageDetail({ params }: Props) {
     const t = (text: { th: string; en: string }) =>
         locale === "th" ? text.th : text.en;
 
-    const firstImageSrc = getFirstImageSrc(page.sections, locale);
-
     return (
         <div className="min-h-screen flex flex-col transition-colors duration-300" style={{ backgroundColor: page.backgroundColor || '#f5f8ff' }}>
-            {firstImageSrc && <link rel="preload" as="image" href={firstImageSrc} />}
             {/* Page content */}
             <div className={`flex-grow ${page.layout === 'pdf_composition' ? "w-full max-w-360 mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_column' ? "w-full max-w-275 mx-auto lg:p-2 p-1" : page.layout === 'pdf_single_full' ? "w-full max-w-275 mx-auto lg:p-2 p-1" : "px-4 sm:px-6 md:px-10 py-4 md:py-6"}`}>
                 <div className={page.layout === 'pdf_composition' ? "grid grid-cols-1 xl:grid-cols-2 w-full md:gap-y-2" : page.layout === 'pdf_single_column' ? "grid grid-cols-1 w-full md:gap-y-2" : page.layout === 'pdf_single_full' ? "flex flex-col w-full" : "max-w-4xl mx-auto"}>
