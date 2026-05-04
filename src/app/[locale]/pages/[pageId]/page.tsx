@@ -204,7 +204,7 @@ function renderSection(
                         />
                     </div>
                 )}
-                <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-275 mx-auto w-full`}>
+                <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-110 mx-auto w-full`}>
                     {section.items.map((subSection, i) => (
                         <div key={i}>
                             {renderSection(subSection, locale, accentColor, isFirst && i === 0)}
@@ -314,9 +314,10 @@ function renderSection(
     }
 
     if (section.type === "pdf_sub_title") {
-        const sizeClass = section.size === 'md' ? 'text-sm sm:text-base font-bold'
+        const weightClass = section.weight === 'semibold' ? 'font-semibold' : section.weight === 'medium' ? 'font-medium' : 'font-bold';
+        const sizeClass = section.size === 'md' ? `text-sm sm:text-base ${weightClass}`
             : section.size === 'sm' ? 'text-xs sm:text-sm font-semibold'
-            : 'text-base sm:text-lg font-bold';
+            : `text-base sm:text-lg ${weightClass}`;
         return (
             <div className="w-full pt-3 pb-1 px-4 sm:px-8 md:px-[6%]">
                 <h3
