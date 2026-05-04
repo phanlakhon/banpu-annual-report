@@ -144,12 +144,14 @@ function renderSection(
     }
 
     if (section.type === "pdf_banner") {
+        const bannerSrc = src(section.src);
+        if (!bannerSrc) return null;
         const imgClass = `h-auto object-contain ${section.mobileSrcs?.length ? 'sm:block hidden' : ''} ${section.minWidth ? '' : 'w-full'}`;
         const imgStyle = section.minWidth ? { minWidth: section.minWidth, width: '100%' } : undefined;
         return (
             <div className={section.minWidth ? 'w-full overflow-x-auto custom-scrollbar' : 'w-full'}>
                 <FadeImage
-                    src={src(section.src)}
+                    src={bannerSrc}
                     alt={section.alt || "banner"}
                     className={imgClass}
                     style={imgStyle}
@@ -202,7 +204,7 @@ function renderSection(
                         />
                     </div>
                 )}
-                <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-275 mx-auto w-full`}>
+                <div className={`${section.desktopFullImage ? 'sm:hidden' : ''} max-w-110 mx-auto w-full`}>
                     {section.items.map((subSection, i) => (
                         <div key={i}>
                             {renderSection(subSection, locale, accentColor, isFirst && i === 0)}
@@ -312,16 +314,19 @@ function renderSection(
     }
 
     if (section.type === "pdf_sub_title") {
-        const sizeClass = section.size === 'md' ? 'text-sm sm:text-base font-bold'
+        const subTitleText = t(section.text);
+        if (!subTitleText) return null;
+        const weightClass = section.weight === 'semibold' ? 'font-semibold' : section.weight === 'medium' ? 'font-medium' : 'font-bold';
+        const sizeClass = section.size === 'md' ? `text-sm sm:text-base ${weightClass}`
             : section.size === 'sm' ? 'text-xs sm:text-sm font-semibold'
-            : 'text-base sm:text-lg font-bold';
+            : `text-base sm:text-lg ${weightClass}`;
         return (
             <div className="w-full pt-3 pb-1 px-4 sm:px-8 md:px-[6%]">
                 <h3
                     className={sizeClass}
                     style={{ color: section.color ?? 'var(--color-banpu-cyan-vivid)' }}
                 >
-                    {t(section.text)}
+                    {subTitleText}
                 </h3>
             </div>
         );
@@ -411,6 +416,25 @@ function renderSection(
                 <p className="font-sarabun font-light text-base text-gray-800 leading-relaxed whitespace-pre-line">
                     {bodyText}
                 </p>
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_list") {
+        return (
+            <div className="pr-4 sm:pr-8 md:pr-[2%] py-2" style={{ paddingLeft: section.paddingLeft ?? '2.2rem' }}>
+                <ul className="space-y-2">
+                    {section.items.map((item, i) => (
+                        <li key={i} className="flex gap-2 items-start font-sarabun font-light text-base text-gray-800 leading-relaxed">
+                            <span className="shrink-0" style={{ color: '#5b3e96' }}>•</span>
+                            {'label' in item ? (
+                                <span><strong className="font-bold" style={{ color: '#5b3e96' }}>{t(item.label)}</strong> – {t(item.description)}</span>
+                            ) : (
+                                <span>{t(item)}</span>
+                            )}
+                        </li>
+                    ))}
+                </ul>
             </div>
         );
     }
