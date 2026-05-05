@@ -27,7 +27,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "บริษัทฯ ให้ความสำคัญกับการบริหารความเสี่ยงในฐานะกลไกสำคัญในการสนับสนุนการดำเนินกลยุทธ์ การตัดสินใจลงทุนและการสร้างการเติบโตอย่างยั่งยืนในระยะยาว โดยกำหนดโครงสร้างการบริหารความเสี่ยงที่ชัดเจน ครอบคลุมตั้งแต่ระดับคณะกรรมการผู้บริหารระดับสูง ไปจนถึงหน่วยงานปฏิบัติการ เพื่อให้การบริหารความเสี่ยงถูกนำมาใช้ประกอบการตัดสินใจในทุกระดับขององค์กร ภายใต้แนวคิดการบริหารความเสี่ยงแบบบูรณาการทั่วทั้งองค์กร (Enterprise-wide Risk Management)",
                         en: "Banpu places great importance on risk management, viewing it as a key mechanism for supporting strategy execution, guiding investment decisions, and fostering long-term sustainable growth. A clearly defined risk management structure has been established, encompassing the Board of Directors, senior management, and operational units to ensure that risk management is integrated into decision-making at all levels, in line with the principles of enterprise-wide risk management.",
@@ -62,7 +61,6 @@ const page: PageData = {
                 { type: "pdf_banner", src: { th: "/page_021/021_p15_mobile_th.webp", en: "/page_021/021_p15_mobile_en.webp" } },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "บริษัทฯ ได้กำหนดนโยบายสิ่งแวดล้อมและนโยบายที่เกี่ยวข้องอื่น ๆ และเป้าหมายการพัฒนาที่ยั่งยืนทั้งระยะสั้นและระยะยาวเพื่อขับเคลื่อนบริษัทฯ สู่การบรรลุเป้าหมายการพัฒนาที่ยั่งยืนของสหประชาชาติ (Sustainable Development Goals: SDGs)โดยคำนึงถึงความเสี่ยงและผลกระทบด้านสิ่งแวดล้อมที่อาจเกิดขึ้นตลอดการดำเนินธุรกิจ บริษัทฯ ได้ปฏิบัติตามมาตรฐาน ด้านสิ่งแวดล้อม (Environmental Standard) ตามที่กฎหมายกำหนด และมุ่งเน้นการใช้ทรัพยากรอย่างมีประสิทธิผล (Effective Resource Utilization) เพื่อเป็นการอนุรักษ์ทรัพยากรธรรมชาติ และลดผลกระทบทั้งทางตรงและทางอ้อมอาทิ การเปลี่ยนแปลงทางสภาพภูมิอากาศ (Climate Change) การจัดการทางด้านคุณภาพอากาศ การจัดการของเสีย ที่เกิดจากกระบวนการ (Waste Management) การใช้ประโยชน์ที่ดิน (Land Utilization) ความหลากหลายทางชีวภาพ (Biodiversity) และการใช้ทรัพยากรน้ำ เป็นต้น โดยบริษัทฯ ได้ดำเนินมาตรการจัดการความเสี่ยงด้านสิ่งแวดล้อม ดังต่อไปนี้",
                         en: "",
@@ -85,7 +83,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "",
                         en: "Banpu has established environmental and related policies, as well as short- and long-term sustainable development goals, to drive the Company toward achieving the UN's Sustainable Development Goals (SDGs), while taking into account potential environmental risks and impacts across its business operations.\nThe Company complies with environmental standards as required by law and emphasizes efficient resource utilization to conserve natural resources and minimize both direct and indirect environmental impacts.\nThese impacts include climate change, air quality management, waste management from operational processes, land utilization, biodiversity, and water resource utilization. The Company has implemented the following environmental risk management measures:",

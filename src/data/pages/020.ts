@@ -29,7 +29,6 @@ const page: PageData = {
                 { type: "pdf_gradient_divider", thin: true },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "บริษัทย่อยมีนโยบายจ่ายเงินปันจากผลกำไรสุทธิจากการประกอบกิจการหลังหักเงินสำรองตามที่กฎหมายกำหนดโดยคณะกรรมการจะพิจารณาถึงกำไรจากการดำเนินงาน เงื่อนไขทางการเงิน และความต้องการเงินทุน หลังจากนั้น จึงนำเสนอผู้ถือหุ้นเพื่ออนุมัติการจ่ายเงินปันผล โดย 5 ปีที่ผ่านมา บริษัท บ้านปู จำกัด (มหาชน) มีการจ่ายเงินปันผลตามรายละเอียดดังต่อไปนี้",
                         en: "The Company's affiliates have a policy to pay the dividend from net profits after the deduction of all reserves required by governing laws. The Board of Directors shall consider the dividend payout rate based on operating income, financial conditions, and capital requirements. After that, it will be proposed to shareholders for approval. For the past five years, Banpu Public Company Limited has paid out dividends as follows:",

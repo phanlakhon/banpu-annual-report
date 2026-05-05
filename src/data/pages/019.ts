@@ -20,7 +20,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "หุ้นกู้ชนิดระบุชื่อผู้ถือ ประเภทไม่ด้อยสิทธิ ไม่มีหลักประกัน",
                         en: "Unsecured and Unsubordinated Registered Debentures",
@@ -44,7 +43,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "ในปี 2568 บริษัทฯ ได้ออกหุ้นกู้และได้นำเงินที่ได้จากการออกและเสนอขายหุ้นกู้ดังกล่าวไปใช้ตามวัตถุประสงค์ที่ระบุในแบบแสดงรายการข้อมูลการเสนอขายหุ้นกู้ครบถ้วนแล้ว",
                         en: "In 2025, the Company issued debentures and has fully utilized the proceeds from the issuance of such debentures in accordance with the purposes stated in the debenture offering memorandum.",

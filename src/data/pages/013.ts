@@ -25,7 +25,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "บริษัทฯ ประกอบธุรกิจเหมืองถ่านหิน ธุรกิจก๊าซธรรมชาติ ธุรกิจในการผลิตและจำหน่ายไฟฟ้า ไอน้ำ พลังงานหมุนเวียนและธุรกิจเทคโนโลยีพลังงาน รวมถึงธุรกิจเกี่ยวเนื่องทั้งในและต่างประเทศ ด้วยเหตุนี้ สินทรัพย์ถาวรที่แสดงในตารางด้านล่างจึงประกอบด้วยสินทรัพย์ถาวรของบริษัทฯ และสินทรัพย์ถาวรของบริษัทย่อย โดยมีมูลค่าสุทธิตามบัญชีหลังหักค่าเสื่อมราคาสะสม และสำรองการด้อยค่าต่าง ๆ ตามที่แสดงในงบการเงินรวมของบริษัทฯ และบริษัทย่อยณ วันที่ 31 ธันวาคม 2568 และวันที่ 31 ธันวาคม 2567 เท่ากับ 4,830.37 ล้านเหรียญสหรัฐ และ 4,280.68 ล้านเหรียญสหรัฐตามลำดับ โดยมีรายละเอียดดังต่อไปนี้",
                         en: "Banpu's business assets in Thailand and overseas include coal mining, natural gas, generation and distribution of power and steam, renewables, energy technology, and related businesses.\nThe fixed assets illustrated in the tables below consist of the Company's and its subsidiaries' fixed assets. Net book value after deducting accumulated depreciation and impairment losses, as reported in the consolidated financial statements of the Company and its subsidiaries for the year ended 31 December 2025 and 31 December 2024, amounted to USD 4,830.37 million and USD 4,280.68 million, respectively, as detailed below:",
