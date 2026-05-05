@@ -405,17 +405,53 @@ function renderSection(
     if (section.type === "pdf_body_text") {
         const bodyText = t(section.text);
         if (!bodyText) return null;
+        const boldPhraseText = section.boldPhrase ? t(section.boldPhrase) : null;
         const colorPhraseText = section.colorPhrase ? t(section.colorPhrase) : null;
+        const boldParts = boldPhraseText && bodyText.includes(boldPhraseText) ? bodyText.split(boldPhraseText) : null;
         const colorParts = colorPhraseText && bodyText.includes(colorPhraseText) ? bodyText.split(colorPhraseText) : null;
         return (
             <div className="pr-4 sm:pr-8 md:pr-[2%] py-4" style={{ paddingLeft: section.paddingLeft ?? '1rem' }}>
                 <p className="font-sarabun font-light text-base text-gray-800 leading-relaxed whitespace-pre-line">
-                    {colorParts
+                    {boldParts
+                        ? boldParts.flatMap((part, i) =>
+                            i < boldParts.length - 1 ? [part, <strong key={i}>{boldPhraseText}</strong>] : [part]
+                        )
+                        : colorParts
                         ? colorParts.flatMap((part, i) =>
                             i < colorParts.length - 1 ? [part, <span key={i} style={{ color: '#00a6f4' }}>{colorPhraseText}</span>] : [part]
                         )
                         : bodyText}
                 </p>
+            </div>
+        );
+    }
+
+    if (section.type === "pdf_numbered_list") {
+        return (
+            <div className="pr-4 sm:pr-8 md:pr-[2%] py-2" style={{ paddingLeft: section.paddingLeft ?? '1rem' }}>
+                <ol className="space-y-4">
+                    {section.items.map((item, i) => (
+                        <li key={i} className="flex gap-2 items-start text-base text-gray-800 leading-relaxed">
+                            <span className="shrink-0 font-bold">{i + 1}.</span>
+                            <div>
+                                <span>
+                                    <span className="font-medium">{t(item.label)}</span>
+                                    <span className="font-sarabun font-light"> {t(item.description)}</span>
+                                </span>
+                                {item.subItems && item.subItems.length > 0 && (
+                                    <ul className="mt-2 space-y-1 ml-4">
+                                        {item.subItems.map((sub, j) => (
+                                            <li key={j} className="flex gap-2 items-start font-sarabun font-light">
+                                                <span className="shrink-0" style={{ color: '#5b3e96' }}>•</span>
+                                                <span>{t(sub)}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
+                        </li>
+                    ))}
+                </ol>
             </div>
         );
     }
@@ -430,7 +466,7 @@ function renderSection(
                         <li key={i} className="flex gap-2 items-start text-base text-gray-800 leading-relaxed">
                             <span className="shrink-0 font-sarabun font-light" style={{ color: listColor }}>•</span>
                             {'label' in item ? (
-                                <span><strong style={{ color: listColor }}>{t(item.label)}</strong><span className="font-sarabun font-light">{itemSep}{t(item.description)}</span></span>
+                                <span><span className="font-medium" style={{ color: listColor }}>{t(item.label)}</span><span className="font-sarabun font-light whitespace-pre-line">{itemSep}{t(item.description)}</span></span>
                             ) : (
                                 <span className="font-sarabun font-light">{t(item)}</span>
                             )}
