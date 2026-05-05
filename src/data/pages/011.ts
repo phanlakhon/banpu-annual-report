@@ -128,7 +128,6 @@ const page: PageData = {
                         th: "Centennial Coal Co. Pty Ltd. (Centennial) ซึ่งเป็นบริษัทย่อยของบ้านปู เป็นหนึ่งในผู้ดำเนินการเหมืองถ่านหินใต้ดินในรัฐนิวเซาท์เวลส์ (New South Wales) โดยถ่านหินที่ Centennial ผลิตและจำหน่ายถูกจัดส่งให้แก่ลูกค้าทั้งในประเทศ อาทิ โรงไฟฟ้าถ่านหินในรัฐดังกล่าว รวมถึงตลาดส่งออก ทั้งนี้ Centennial มีกรรมสิทธิ์ในเหมืองถ่านหินในพื้นที่ภาคเหนือและภาคตะวันตกของรัฐนิวเซาท์เวลส์ โดยในปี 2568 มีปริมาณการผลิตรวม 7.4 ล้านตัน ประกอบด้วยเหมืองดังต่อไปนี้",
                         en: "Centennial Coal Co. Pty Ltd. (Centennial), a subsidiary of Banpu and one of the underground coal mining operators in New South Wales. Coal produced and sold by Centennial is supplied to both domestic customers, such as coal-fired power plants in the state, as well as export markets. Its main assets consist of possessions to operate coal mining business in Northern and Western parts of New South Wales.\n\nThe total production capacity in 2025 was 7.4 million tonnes with the share of production from the following mines:",
                     },
-                    paddingLeft: "0.9rem",
                 },
                 {
                     type: "pdf_banner",
@@ -289,7 +288,6 @@ const page: PageData = {
                         th: "โดยในปี 2568 มีโครงการ CCUS ที่เริ่มดำเนินการเชิงพาณิชย์แล้วจำนวน 1 โครงการ และโครงการที่ได้รับการอนุมัติการลงทุนขั้นสุดท้าย (Final Investment Decision: FID) แล้วจำนวน 3 โครงการ มีรายละเอียดดังนี้",
                         en: "In 2025, 1 project is in commercial operation, and 3 projects have received Final Investment Decisions (FID), with details as follows:",
                     },
-                    paddingLeft: "0.9rem",
                 },
                 {
                     type: "pdf_banner",
@@ -351,7 +349,6 @@ const page: PageData = {
                         th: "BPP ได้ร่วมทุนกับบริษัทย่อยของบริษัท ราช กรุ๊ป จำกัด (มหาชน) (RATCH) และ Lao Holding State Enterprise (LHSE) ซึ่งเป็นรัฐวิสาหกิจสาธารณรัฐประชาธิปไตยประชาชนลาว (สปป.ลาว) เพื่อร่วมจัดตั้ง Hongsa Power Co., Ltd. (HPC)และ Phu Fai Mining Co., Ltd. (PEMC) โดยทั้ง 2 บริษัทมีสำนักงานใหญ่ตั้งอยู่ที่เมืองเวียงจันทน์ สปป.ลาว ทั้งนี้ HPC และ PEMC มีวัตถุประสงค์ในการดำเนินธุรกิจโรงไฟฟ้าเอชพีชี ในสปป.ลาว โดยมีสาระสำคัญการร่วมทุนสรุปได้ดังนี้",
                         en: "BPP entered into a joint venture with a subsidiary of Ratch Group Pcl. (RATCH) and Lao Holding State Enterprise (LHSE), a state enterprise of the Government of Lao PDR, to establish Hongsa Power Co., Ltd (HPC) and Phu Fai Mining Co., Ltd. (PFMC). The headquarters of the two companies are in Vientiane, Lao PDR, and they have an objective to operate the HPC power plant in Lao PDR under the following joint venture's terms and conditions:",
                     },
-                    paddingLeft: "0.9rem",
                 },
                 {
                     type: "pdf_banner",
@@ -407,7 +404,6 @@ const page: PageData = {
                         th: "บริษัท บ้านปู เน็กซ์ จำกัด (บ้านปู เน็กซ์) ที่บ้านปูและ BPP ถือหุ้นในสัดส่วนเท่ากันที่ร้อยละ 50 ได้ถือหุ้นร้อยละ 100ใน BPP Renewable Investment (China) Co., Ltd. (BPPRIC) ซึ่งเข้าลงทุนในโรงไฟฟ้าพลังงานแสงอาทิตย์ในจีนจำนวน 8 แห่ง กำลังผลิตรวม 297.32 เมกะวัตต์ โดยเป็นโรงไฟฟ้าที่เปิดดำเนินการเชิงพาณิชย์แล้วจำนวน 7 แห่ง ซึ่งอยู่ภายใต้โครงสร้างราคารับซื้อไฟฟ้าระยะยาวแบบ Feed-in Tariff (FiT) เป็นระยะเวลา 20 ปี สำหรับโครงการที่อยู่ระหว่างพัฒนาอีก 1 โครงการ คาดว่าจะสามารถเปิดดำเนินการเชิงพาณิชย์ได้ภายในไตรมาส 3 ปี 2569 โดยมีรายละเอียดดังนี้",
                         en: "Banpu NEXT Co., Ltd. (Banpu NEXT), a subsidiary in which Banpu and BPP equally hold 50% ownership, holds 100% shares of BPP Renewable Investment (China) Co., Ltd. (BPPRIC). BPPRIC invested in eight solar power plants in China with a combined capacity of 297.32 MW. Of these, seven projects have commenced commercial operation under the Feed-in Tariff (FiT) schemes for a 20-year period. The remaining one project is currently under development and is expected to commence commercial operation by the third quarter of 2026. The details are as follows:",
                     },
-                    paddingLeft: "0.9rem",
                 },
                 {
                     type: "pdf_banner",
@@ -448,7 +444,6 @@ const page: PageData = {
                         th: "บ้านปู เน็กซ์ ได้ลงทุนในโรงไฟฟ้าและโครงการผลิตไฟฟ้าจากพลังงานแสงอาทิตย์ในญี่ปุ่นผ่านบริษัทย่อย ซึ่ง ณ วันที่ 31 ธันวาคม 2568 มีกำลังผลิตตามสัดส่วนการลงทุนจำนวน 54.00 เมกะวัตต์ โดยมีรายละเอียดดังนี้",
                         en: "Banpu NEXT has invested in several solar power plants and projects in Japan through subsidiaries. As of 31 December 2025, the Company's total equity-based capacity was 54.00 MW, as detailed below.",
                     },
-                    paddingLeft: "0.9rem",
                 },
                 {
                     type: "pdf_banner",
@@ -464,7 +459,6 @@ const page: PageData = {
                         th: "นอกจากนี้ บ้านปู เน็กซ์ ลงทุนใน Amp Co, Ltd. (แอมป์ เจแปน) บริษัทชั้นนำในประเทศญี่ปุ่น ผู้พัฒนาโครงการพลังงานหมุนเวียนตั้งแต่ระยะเริ่มต้นจนถึงการนำออกสู่ตลาด โดยมีกองทุนโครงสร้างพื้นฐานเพื่อความยั่งยืนและการลดคาร์บอนในภูมิภาคเอเชียแปซิฟิก (Asia-Pacific Sustainable & Decarbonisation Infrastructure Equity Fund หรือ SDIEF) ที่สนับสนุนโดยบริษัท อาราเวสต์และเอสเอ็มบีซี กรุ๊ป (Aravest and SMBC Group) ร่วมลงทุนเพื่อพัฒนาโครงการผลิตไฟฟ้าพลังงานแสงอาทิตย์และพลังงานลม 800 เมกะวัตต์ สู่เป้าหมายกำลังผลิตของแอมป์ เจแปนเป็น 2 กิกะวัตต์ภายในทศวรรษนี้",
                         en: "In addition, Banpu NEXT has invested in Amp Co., Ltd. (Amp Japan), a leading energy transition platform in Japan and developer of renewable energy projects from an early stage until commercialization, with the Asia Pacific Sustainable & Decarbonisation and Infrastructure Equity (SDIEF), a fund sponsored by Aravest and the SMBC Group, this joint investment contributes to the development of 800 MW of solar and wind energy assets in Japan. Amp Japan's objective is to create a 2 GW platform before the turn of the decade.",
                     },
-                    paddingLeft: "0.9rem",
                 },
             ],
         },
@@ -489,7 +483,6 @@ const page: PageData = {
                         th: "บ้านปูได้ลงทุนในโรงไฟฟ้าพลังงานแสงอาทิตย์ที่เปิดดำเนินการเชิงพาณิชย์แล้ว 2 แห่ง ในรัฐนิวเซาท์เวลส์ (New South Wales)ประเทศออสเตรเลีย ผ่านหน่วยลงทุน Banpu Energy Hold Trust ที่จัดตั้งโดย Banpu Energy Australia Pty Ltd. (BEN) ซึ่งเป็นบริษัทย่อยของบ้านปู และ Banpu Renewable Australia Pty Ltd. (BREA) ซึ่งเป็นบริษัทย่อยของบ้านปู เน็กซ์โดย BEN ถือหุ้นร้อยละ 80 และ BREA ถือหุ้นร้อยละ 20 ในหน่วยลงทุน Banpu Energy Hold Trust ที่เข้าซื้อหุ้นโรงไฟฟ้าพลังงานแสงอาทิตย์เบอริล (Beryl หรือ BSF) และมานิลดรา (Manildra หรือ MSF) ในสัดส่วนร้อยละ 100 ซึ่งโรงไฟฟ้า ทั้ง 2 แห่ง ถือว่าเป็นโรงไฟฟ้าพลังงานแสงอาทิตย์ขนาดใหญ่โครงการแรกของบ้านปูในออสเตรเลีย โดยมีรายละเอียดดังนี้",
                         en: "Banpu acquired two operating solar farms in New South Wales, Australia, through Banpu Energy Hold Trust, jointly established by Banpu Energy Australia Pty Ltd. (BEN), a subsidiary of Banpu, and Banpu Renewable Australia Pty Ltd. (BREA), a subsidiary of Banpu NEXT. BEN's and BREA's shareholding percentage in Banpu Energy Hold Trust is 80% and 20%, respectively. Banpu Energy Hold Trust acquired 100% shares of both Beryl Solar Farm (Beryl or BSF) and Manildra Solar Farm (Manildra or MSF), which are Banpu's first two utility-scale solar farms in Australia, as detailed below:",
                     },
-                    paddingLeft: "0.9rem",
                 },
                 {
                     type: "pdf_banner",
@@ -504,7 +497,6 @@ const page: PageData = {
                         th: "โรงไฟฟ้าทั้งสองแห่งมีปริมาณความต้องการและการเติบโตของการใช้ไฟฟ้าอย่างต่อเนื่อง ประกอบกับทางภาครัฐได้มีนโยบายที่ชัดเจนในการสนับสนุนการผลิตไฟฟ้าจากพลังงานหมุนเวียน โดยจ่ายไฟฟ้าเข้าตลาดซื้อขายไฟฟ้าแห่งชาติ (National Electricity Market: NEM) ตามสัญญาการซื้อขายไฟฟ้า (PPA) ระยะยาว การลงทุนในครั้งนี้นับเป็นการสร้างรากฐานการลงทุนในธุรกิจพลังงานหมุนเวียนในออสเตรเลียและยังเป็นการก้าวสู่ตลาดซื้อขายไฟฟ้าที่มีความก้าวหน้าและเป็นตลาดขายส่ง (Wholesale Electricity Market)",
                         en: "These two solar farms are driven by growing electricity demand and consumption as well as the government policy to promote electricity generation from renewable energy. They supply electricity through the National Electricity Market (NEM) under the long-term Power Purchase Agreement (PPA). This acquisition paved the way for investment in a renewable business in Australia under the Wholesale Electricity Market with an advanced trading system.",
                     },
-                    paddingLeft: "0.9rem",
                 },
                 {
                     type: "pdf_sub_title",
@@ -552,7 +544,6 @@ const page: PageData = {
                         th: "BKV-BPP ลงทุนและพัฒนาโครงการโรงไฟฟ้าพลังงานแสงอาทิตย์ในสหรัฐอเมริกา ซึ่งเปิดดำเนินการเชิงพาณิชย์แล้วจำนวน 1 แห่ง ขนาดกำลังการผลิต 2.5เมกะวัตต์ ตั้งอยู่ในเมืองเดนตัน รัฐเท็กซัส สหรัฐอเมริกา โดยเป็นผู้ผลิตและจำหน่ายไฟฟ้าให้กับ Denton County Electric Cooperative, Inc. (\"CoServ\") ซึ่งมีหน้าที่ดูแลจำหน่ายไฟฟ้าและก๊าซธรรมชาติให้กับ 8 เขต ทางตอนเหนือของรัฐเท็กซัส",
                         en: "BKV-BPP has invested in and developed a 2.5 MW solar power plant, which is commercially operational, located in Denton, Texas, U.S. The plant generates and supplies electricity to Denton County Electric Cooperative, Inc. (CoServ), which serves eight counties in North Texas with electricity and natural gas.",
                     },
-                    paddingLeft: "0.9rem",
                 },
                 {
                     type: "pdf_banner",

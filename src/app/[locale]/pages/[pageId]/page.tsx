@@ -191,7 +191,7 @@ function renderSection(
                         />
                     </div>
                 )}
-                <div className={`${section.desktopFullImage ? 'sm:hidden max-w-110' : 'max-w-275'} mx-auto w-full`}>
+                <div className={`${section.desktopFullImage ? 'sm:hidden max-w-[410px]' : 'max-w-275'} mx-auto w-full`}>
                     {section.items.map((subSection, i) => (
                         <div key={i}>
                             {renderSection(subSection, locale, accentColor, isFirst && i === 0)}
@@ -304,11 +304,11 @@ function renderSection(
         const subTitleText = t(section.text);
         if (!subTitleText) return null;
         const weightClass = section.weight === 'semibold' ? 'font-semibold' : section.weight === 'medium' ? 'font-medium' : 'font-bold';
-        const sizeClass = section.size === 'md' ? `text-sm sm:text-base ${weightClass}`
-            : section.size === 'sm' ? 'text-xs sm:text-sm font-semibold'
-            : `text-base sm:text-lg ${weightClass}`;
+        const sizeClass = section.size === 'sm' ? `text-base ${weightClass}`
+            : section.size === 'md' ? `text-base sm:text-lg ${weightClass}`
+            : `text-lg sm:text-xl ${weightClass}`;
         return (
-            <div className="w-full pt-3 pb-1 px-4 sm:px-8 md:px-[6%]">
+            <div className={`w-full pt-3 pb-1 px-4 sm:px-8 md:px-[6%] ${section.textAlign === 'center' ? 'text-center' : ''}`}>
                 <h3
                     className={sizeClass}
                     style={{ color: section.color ?? 'var(--color-banpu-cyan-vivid)' }}
@@ -386,10 +386,17 @@ function renderSection(
     }
 
     if (section.type === "pdf_gradient_text") {
+        const fullText = t(section.text);
+        const phrase = section.boldPhrase ? t(section.boldPhrase) : null;
+        const parts = phrase && fullText.includes(phrase) ? fullText.split(phrase) : null;
         return (
             <div className="px-4 sm:px-8 md:px-[2%] py-4">
                 <p className="text-sm leading-relaxed text-gradient-banpu whitespace-pre-line">
-                    {t(section.text)}
+                    {parts
+                        ? parts.flatMap((part, i) =>
+                            i < parts.length - 1 ? [part, <strong key={i}>{phrase}</strong>] : [part]
+                        )
+                        : fullText}
                 </p>
             </div>
         );
@@ -398,26 +405,34 @@ function renderSection(
     if (section.type === "pdf_body_text") {
         const bodyText = t(section.text);
         if (!bodyText) return null;
+        const colorPhraseText = section.colorPhrase ? t(section.colorPhrase) : null;
+        const colorParts = colorPhraseText && bodyText.includes(colorPhraseText) ? bodyText.split(colorPhraseText) : null;
         return (
-            <div className="pr-4 sm:pr-8 md:pr-[2%] py-4" style={{ paddingLeft: section.paddingLeft ?? '2.2rem' }}>
+            <div className="pr-4 sm:pr-8 md:pr-[2%] py-4" style={{ paddingLeft: section.paddingLeft ?? '1rem' }}>
                 <p className="font-sarabun font-light text-base text-gray-800 leading-relaxed whitespace-pre-line">
-                    {bodyText}
+                    {colorParts
+                        ? colorParts.flatMap((part, i) =>
+                            i < colorParts.length - 1 ? [part, <span key={i} style={{ color: '#00a6f4' }}>{colorPhraseText}</span>] : [part]
+                        )
+                        : bodyText}
                 </p>
             </div>
         );
     }
 
     if (section.type === "pdf_list") {
+        const listColor = section.color ?? '#5b3e96';
+        const itemSep = section.itemSeparator ?? ' – ';
         return (
-            <div className="pr-4 sm:pr-8 md:pr-[2%] py-2" style={{ paddingLeft: section.paddingLeft ?? '2.2rem' }}>
+            <div className="pr-4 sm:pr-8 md:pr-[2%] py-2" style={{ paddingLeft: section.paddingLeft ?? '1rem' }}>
                 <ul className="space-y-2">
                     {section.items.map((item, i) => (
-                        <li key={i} className="flex gap-2 items-start font-sarabun font-light text-base text-gray-800 leading-relaxed">
-                            <span className="shrink-0" style={{ color: '#5b3e96' }}>•</span>
+                        <li key={i} className="flex gap-2 items-start text-base text-gray-800 leading-relaxed">
+                            <span className="shrink-0 font-sarabun font-light" style={{ color: listColor }}>•</span>
                             {'label' in item ? (
-                                <span><strong className="font-bold" style={{ color: '#5b3e96' }}>{t(item.label)}</strong> – {t(item.description)}</span>
+                                <span><strong style={{ color: listColor }}>{t(item.label)}</strong><span className="font-sarabun font-light">{itemSep}{t(item.description)}</span></span>
                             ) : (
-                                <span>{t(item)}</span>
+                                <span className="font-sarabun font-light">{t(item)}</span>
                             )}
                         </li>
                     ))}

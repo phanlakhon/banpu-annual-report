@@ -56,11 +56,11 @@ export type PageSection =
     | { type: "pdf_note"; text: BilingualText; hidePrefix?: boolean }
     | { type: "pdf_header"; text: BilingualText }
     | { type: "pdf_title"; text: BilingualText; large?: boolean }
-    | { type: "pdf_sub_title"; text: BilingualText; color?: string; size?: "lg" | "md" | "sm"; weight?: "bold" | "semibold" | "medium" }
-    | { type: "pdf_gradient_text"; text: BilingualText }
+    | { type: "pdf_sub_title"; text: BilingualText; color?: string; size?: "lg" | "md" | "sm"; weight?: "bold" | "semibold" | "medium"; textAlign?: "center" }
+    | { type: "pdf_gradient_text"; text: BilingualText; boldPhrase?: BilingualText }
     | { type: "pdf_gradient_divider"; thin?: boolean }
-    | { type: "pdf_body_text"; text: BilingualText; paddingLeft?: string }
-    | { type: "pdf_list"; items: Array<BilingualText | { label: BilingualText; description: BilingualText }>; paddingLeft?: string }
+    | { type: "pdf_body_text"; text: BilingualText; paddingLeft?: string; colorPhrase?: BilingualText }
+    | { type: "pdf_list"; items: Array<BilingualText | { label: BilingualText; description: BilingualText }>; paddingLeft?: string; color?: string; itemSeparator?: string }
     | {
           type: "pdf_quote_block";
           text: BilingualText;

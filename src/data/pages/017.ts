@@ -20,7 +20,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "ผู้ถือหุ้นสูงสุด 10 รายแรก ณ วันที่ 31 ธันวาคม 2568 มีดังนี้",
                         en: "Top 10 Major Shareholders, as of 31 December 2025",

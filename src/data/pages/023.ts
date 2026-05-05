@@ -25,7 +25,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "บริษัทฯ ดำเนินธุรกิจในภูมิภาคเอเชีย-แปซิฟิก ภายใต้ระบบนิเวศทางธุรกิจที่ส่งเสริมซึ่งกันและกันของทั้ง 4 กลุ่มธุรกิจหลักภายใต้กลยุทธ์ \"Energy Symphonics\" ได้แก่ เหมืองยุคใหม่ (Next-Gen Mining) ก๊าซธรรมชาติครบวงจรในสหรัฐฯ (U.S. Closed-Loop Gas) ไฟฟ้าและธุรกิจที่เกี่ยวเนื่อง (Power+) และเทคโนโลยีแห่งอนาคต (Future Tech)",
                         en: "Banpu operates across the Asia-Pacific region, leveraging an ecosystem driven by 4 core business pillars under \"Energy Symphonics\" Strategy: Next-Gen Mining, U.S. Closed-Loop Gas, Power+, and Future Tech.",
@@ -33,7 +32,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_list",
-                    paddingLeft: "0.9rem",
                     items: [
                         {
                             label: { th: "เหมืองยุคใหม่ (Next-Gen Mining)", en: "Next-Gen Mining" },
@@ -72,7 +70,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "บริษัทฯ ใช้มาตรฐานการบริหารจัดการการวิเคราะห์ผู้มีส่วนได้เสีย (Stakeholder Analysis) ที่อ้างอิงจากมาตรฐานสากล AA1000 Stakeholder Engagement Standard (AA1000SES) ภายใต้ 3 หลักการที่สำคัญ ได้แก่ การมีส่วนร่วมของ ผู้มีส่วนได้เสียทุกภาคส่วน (Inclusivity) การพิจารณาประเด็นที่มีนัยสำคัญต่อบริษัทฯ และผู้มีส่วนได้เสีย (Materiality)และการบริหารจัดการที่เป็นระบบและการเปิดเผยผลการดำเนินงานด้วยความโปร่งใส (Responsiveness) ทั้งนี้แต่ละหน่วย ธุรกิจมีหน้าที่ระบุและวิเคราะห์ผู้มีส่วนได้เสียที่เกี่ยวข้องกับการดำเนินงานของตนเอง โดยผลการวิเคราะห์ของแต่ละหน่วย ธุรกิจจะถูกรวบรวมและทบทวนในระดับองค์กรอีกครั้งภายใต้การกำกับดูแลของผู้บริหารโดยคณะกรรมการการพัฒนา ที่ยั่งยืน และคณะกรรมการ ESG ในระดับกรรมการบริษัท เพื่อให้มั่นใจว่าผลการวิเคราะห์มีความสอดคล้องกับกลยุทธ์ความยั่งยืนขององค์กร และความคาดหวังของผู้มีส่วนได้เสีย",
                         en: "The Company conducts stakeholder analysis in accordance with AA1000 Stakeholder Engagement Standard (AA1000SES), grounded in the three key principles of inclusivity, materiality, and responsiveness.\nEach business unit is responsible for identifying and analyzing stakeholders relevant to its operation.\nThese insights are consolidated and reviewed at the organizational level under the oversight of the Sustainability Committee - at management level and ESG Committee - at the board level, ensuring alignment with group-wide ESG strategy and responsiveness to stakeholder expectations.",
@@ -112,7 +109,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "บริษัทฯ ดำเนินการประเมินประเด็นด้านความยั่งยืนที่สำคัญตามมาตรฐานที่ได้รับการยอมรับในระดับสากล ได้แก่ มาตรฐาน AA1000 AccountAbility Principles Standard (AA1000APS) มาตรฐาน GRI Standards และมาตรฐาน IFRS Sustainability Disclosure Standards โดยพิจารณาทั้งผลกระทบที่เกิดขึ้นจริงและผลกระทบที่อาจเกิดขึ้นต่อบริษัทฯ สิ่งแวดล้อม มนุษย์ และสังคม และยังรวมถึงประเด็นที่ผู้มีส่วนได้เสียคาดหวังหรือให้ความสนใจ เพื่อให้มั่นใจในมุมมอง ที่สมดุลและครอบคลุมทั้งต่อบริษัทและระบบนิเวศภายนอก",
                         en: "Banpu conducts materiality assessment and prioritization of sustainability topics in accordance with internationally recognized standards - namely the AA1000 AccountAbility Principles Standard (AA1000APS), the GRI Standards, and the IFRS Sustainability Disclosure Standards. The process considers both actual and potential impacts on the Company, the environment, people, and society, and also incorporates the expectations and interests of stakeholders, ensuring a balanced, inclusive view of what matters most to the business and its broader ecosystem.",
@@ -120,7 +116,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "ผลการประเมินประเด็นที่สำคัญจะได้รับการทบทวนเป็นประจำทุกปี เพื่อให้มั่นใจในความเกี่ยวข้องอย่างต่อเนื่องและความสอดคล้องกับกลยุทธ์ของบริษัทและบริบทด้าน ESG ที่เปลี่ยนแปลงไปทั้งนี้ ประเด็นที่สำคัญจะได้รับการทบทวนและอนุมัติอย่างเป็นทางการจากหน่วยงานกำกับดูแลหลัก 2 หน่วยงาน ได้แก่",
                         en: "The material topics are reviewed annually to ensure continued relevance and alignment with the Company's strategic direction and external ESG landscape. The finalized material topics are submitted for review and formal approval by 2 key governance bodies:",
@@ -128,7 +123,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_list",
-                    paddingLeft: "0.9rem",
                     items: [
                         {
                             th: "คณะกรรมการการพัฒนาที่ยั่งยืน (คณะกรรมการระดับผู้บริหาร)",
@@ -142,7 +136,6 @@ const page: PageData = {
                 },
                 {
                     type: "pdf_body_text",
-                    paddingLeft: "0.9rem",
                     text: {
                         th: "โครงสร้างการกำกับดูแลนี้เสริมสร้างความโปร่งใสและความรับผิดชอบในการจัดการและการรายงานผลการดำเนินงาน ด้านความยั่งยืนขององค์กร",
                         en: "This governance structure reinforces transparency and accountability in ESG performance management and reporting.",
