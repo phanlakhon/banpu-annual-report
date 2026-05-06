@@ -69,6 +69,7 @@ export type PageSection =
               subItems?: BilingualText[];
           }>;
           paddingLeft?: string;
+          startFrom?: number;
       }
     | {
           type: "pdf_quote_block";
