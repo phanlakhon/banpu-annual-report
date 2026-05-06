@@ -432,7 +432,7 @@ function renderSection(
                 <ol className="space-y-4">
                     {section.items.map((item, i) => (
                         <li key={i} className="flex gap-2 items-start text-base text-gray-800 leading-relaxed">
-                            <span className="shrink-0 font-bold">{i + 1}.</span>
+                            <span className={`shrink-0 ${item.label.th || item.label.en ? 'font-medium' : 'font-normal'}`}>{(section.startFrom ?? 1) + i}.</span>
                             <div>
                                 <span>
                                     <span className="font-medium">{t(item.label)}</span>
