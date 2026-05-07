@@ -458,6 +458,7 @@ function renderSection(
 
     if (section.type === "pdf_list") {
         const listColor = section.color ?? '#5b3e96';
+        const labelColor = section.labelColor ?? listColor;
         const itemSep = section.itemSeparator ?? ' – ';
         return (
             <div className="pr-4 sm:pr-8 md:pr-[2%] py-2" style={{ paddingLeft: section.paddingLeft ?? '1rem' }}>
@@ -466,7 +467,7 @@ function renderSection(
                         <li key={i} className="flex gap-2 items-start text-base text-gray-800 leading-relaxed">
                             <span className="shrink-0 font-sarabun font-light" style={{ color: listColor }}>•</span>
                             {'label' in item ? (
-                                <span><span className="font-medium" style={{ color: listColor }}>{t(item.label)}</span><span className="font-sarabun font-light whitespace-pre-line">{itemSep}{t(item.description)}</span></span>
+                                <span><span className="font-medium" style={{ color: labelColor }}>{t(item.label)}</span><span className="font-sarabun font-light whitespace-pre-line">{itemSep}{t(item.description)}</span></span>
                             ) : (
                                 <span className="font-sarabun font-light">{t(item)}</span>
                             )}
