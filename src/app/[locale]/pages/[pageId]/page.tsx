@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { setRequestLocale } from "next-intl/server";
 import { pagesData, type PageSection } from "@/data/pages";
 import FadeImage from "@/components/FadeImage";
 import PrevNextNav from "@/components/PrevNextNav";
@@ -496,6 +497,7 @@ function renderSection(
 
 export default async function PageDetail({ params }: Props) {
     const { locale, pageId } = await params;
+    setRequestLocale(locale);
     const page = pagesData[pageId];
     if (!page) notFound();
 
