@@ -77,16 +77,16 @@ const page: PageData = {
                 },
             ],
         },
-        {
-            type: "pdf_page",
-            desktopFullImage: { th: "/page_040/040_p05_full_th.webp", en: "/page_040/040_p05_full_en.webp" },
-            items: [
-                {
-                    type: "pdf_banner",
-                    src: { th: "/page_040/040_p05_mobile_th.webp", en: "/page_040/040_p05_mobile_en.webp" },
-                },
-            ],
-        },
+        // {
+        //     type: "pdf_page",
+        //     desktopFullImage: { th: "/page_040/040_p05_full_th.webp", en: "/page_040/040_p05_full_en.webp" },
+        //     items: [
+        //         {
+        //             type: "pdf_banner",
+        //             src: { th: "/page_040/040_p05_mobile_th.webp", en: "/page_040/040_p05_mobile_en.webp" },
+        //         },
+        //     ],
+        // },
     ],
     prevPage: "039",
 };
