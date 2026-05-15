@@ -55,15 +55,14 @@ export default async function HomePage({ params }: Props) {
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-600 text-sm md:text-xl leading-relaxed">
-                        {``}
-                        {/* {isEn
+                    {/* <p className="text-gray-600 text-sm md:text-xl leading-relaxed">
+                        {isEn
                             ? "Committed to building a sustainable energy future to continuously elevate the quality of life for people everywhere."
-                            : "มุ่งมั่นสร้างสรรค์อนาคตพลังงานที่ยั่งยืน เพื่อยกระดับคุณภาพชีวิตของผู้คนอย่างต่อเนื่อง"} */}
-                    </p>
+                            : "มุ่งมั่นสร้างสรรค์อนาคตพลังงานที่ยั่งยืน เพื่อยกระดับคุณภาพชีวิตของผู้คนอย่างต่อเนื่อง"}
+                    </p> */}
 
                     {/* CTAs */}
-                    <div className="flex flex-wrap gap-3 mt-2">
+                    <div className="flex flex-wrap gap-3">
                         <Link
                             href={`/${locale}/pages/000`}
                             className="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm text-white shadow-md hover:opacity-90 transition-opacity"
