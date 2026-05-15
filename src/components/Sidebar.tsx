@@ -41,6 +41,7 @@ type AccordionItemProps = {
 };
 
 function AccordionItem({ title, number, items, defaultOpen = false, onNavigate }: AccordionItemProps) {
+  const t = useTranslations('Menu');
   const pathname = usePathname();
   const hasActiveItem = items.some(item => pathname === item.href);
   const [isOpen, setIsOpen] = useState(defaultOpen || hasActiveItem);
@@ -59,7 +60,7 @@ function AccordionItem({ title, number, items, defaultOpen = false, onNavigate }
           {number}
         </Link>
         <div className="flex-1">
-          <div className="text-xs text-sky-500 font-medium mb-1">ส่วนที่</div>
+          <div className="text-xs text-sky-500 font-medium mb-1">{t('section')}</div>
           <div className={`font-semibold text-sm leading-tight flex items-center justify-between transition-colors ${hasActiveItem ? 'text-gradient-banpu' : 'text-[#1a365d]'}`}>
             <Link href={firstHref} onClick={onNavigate} className={`flex-1 transition-colors ${!hasActiveItem ? 'hover:text-sky-500' : ''}`}>
               {title}
@@ -116,7 +117,7 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
       </div>
 
       <nav className="flex-1 px-6 pb-6 space-y-5">
-        <h2 className="text-[#1e40af] text-xl font-bold mb-4">สารบัญ</h2>
+        <h2 className="text-[#1e40af] text-xl font-bold mb-4">{t('contents')}</h2>
 
         <div className="space-y-3">
           <NavLink href={p('000')} pageId="000" label={t('m000')} pathname={pathname} onNavigate={onNavigate} />

@@ -44,21 +44,22 @@ export default async function HomePage({ params }: Props) {
                     <div className="space-y-2">
                         <h1 className="text-3xl md:text-4xl lg:text-4xl font-medium leading-relaxed text-gradient-banpu">
                             {isEn
-                                ? "Balanced Energy, Paving the Way Forward"
+                                ? "Paving the Way to a Sustainable Future"
                                 : "สมดุลพลังงาน ปูทางสู่อนาคต"}
                         </h1>
-                        <h2 className="text-xl md:text-3xl lg:text-3xl font-medium text-[#2a2e82]">
+                        {/* <h2 className="text-xl md:text-3xl lg:text-3xl font-medium text-[#2a2e82]">
                             {isEn
                                 ? "Smart Energy for Sustainability"
                                 : "พลังงานอัจฉริยะเพื่อความยั่งยืน"}
-                        </h2>
+                        </h2> */}
                     </div>
 
                     {/* Description */}
                     <p className="text-gray-600 text-sm md:text-xl leading-relaxed">
-                        {isEn
+                        {``}
+                        {/* {isEn
                             ? "Committed to building a sustainable energy future to continuously elevate the quality of life for people everywhere."
-                            : "มุ่งมั่นสร้างสรรค์อนาคตพลังงานที่ยั่งยืน เพื่อยกระดับคุณภาพชีวิตของผู้คนอย่างต่อเนื่อง"}
+                            : "มุ่งมั่นสร้างสรรค์อนาคตพลังงานที่ยั่งยืน เพื่อยกระดับคุณภาพชีวิตของผู้คนอย่างต่อเนื่อง"} */}
                     </p>
 
                     {/* CTAs */}
@@ -68,12 +69,12 @@ export default async function HomePage({ params }: Props) {
                             className="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm text-white shadow-md hover:opacity-90 transition-opacity"
                             style={{ background: "#3ab4e8" }}
                         >
-                            {isEn ? "Banpu Business" : "ธุรกิจบ้านปู"}
+                            {isEn ? "View Online" : "ดูออนไลน์"}
                             <span className="w-5 h-5 rounded-full border-2 border-white/50 flex items-center justify-center">
                                 <ExternalLink size={9} />
                             </span>
                         </Link>
-                        <a
+                        {/* <a
                             href={`/${locale}/pages/001`}
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 px-5 sm:px-7 py-2.5 sm:py-3 rounded-full font-semibold text-sm text-white shadow-md hover:opacity-90 transition-opacity"
@@ -83,7 +84,7 @@ export default async function HomePage({ params }: Props) {
                             <span className="w-5 h-5 rounded-full border-2 border-white/50 flex items-center justify-center">
                                 <ExternalLink size={9} />
                             </span>
-                        </a>
+                        </a> */}
                     </div>
                 </div>
 

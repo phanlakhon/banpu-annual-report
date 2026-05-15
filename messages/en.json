@@ -10,6 +10,8 @@
     "social": "Social Responsibility"
   },
   "Menu": {
+    "contents": "CONTENTS",
+    "section": "SECTION",
     "m000": "Introduction",
     "m001": "Financial Highlights",
     "m002": "Operational Results",
